@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConexionListComponent } from './conexion-list/conexion-list.component';
 
+import { RouterModule } from '@angular/router';
+
 
 
 @NgModule({
@@ -9,7 +11,8 @@ import { ConexionListComponent } from './conexion-list/conexion-list.component';
     ConexionListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ]
 })
 export class ConexionesModule { }

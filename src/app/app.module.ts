@@ -5,6 +5,10 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConexionesModule } from './conexiones/conexiones.module';
+import { FeedModule } from './feed/feed.module';
+import { GrupoModule } from './grupo/grupo.module';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ConexionesModule,
+    FeedModule,
+    GrupoModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
