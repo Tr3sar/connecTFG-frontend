@@ -1,0 +1,45 @@
+.main-container{
+  mat-toolbar > mat-toolbar-row{
+    height: auto;
+    background-color: white;
+
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid black;
+
+    img{
+      height: 5rem;
+    }
+
+    .center{
+      margin: 0 auto;
+      width: 20rem;
+
+      input{
+        border-radius: 20px;
+        border: 1px solid black;
+
+        width: 20rem;
+        height: 1.5rem;
+      }
+
+      .under{
+        width: 20rem;
+        text-align: center;
+
+        button{
+          width: auto;
+        }
+
+        button:hover{
+          span{
+            border-bottom: 1px solid black;
+          }
+        }
+      }
+    }
+
+    .right{
+
+    }
+  }
+}
