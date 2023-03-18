@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PublicationListComponent } from './publication-list/publication-list.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 
@@ -9,7 +10,9 @@ import { PublicationListComponent } from './publication-list/publication-list.co
     PublicationListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatCardModule
   ]
 })
-export class FeedModule { }
+export class FeedModule {
+}

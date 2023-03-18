@@ -1,1 +1,29 @@
-<p>publication-list works!</p>
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+  <title>Tu Feed</title>
+</head>
+
+<body ng-controller="FeedController">
+  <h1>Tu Feed</h1>
+  <div *ngfor="let post of posts">
+    <mat-card class="post-card">
+      <mat-card-header>
+        <mat-card-title>{{post.title}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          {{post.content}}
+          <small>{{post.CreatedAt | date:'medium'}}</small>
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>COMMENT</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</body>
+
+</html>
