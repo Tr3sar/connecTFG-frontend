@@ -3,6 +3,6 @@ export class Message {
     text: string;
     createdAt: Date;
     viewed: boolean;
-    /* emitter: User;
-    receiver: User[]; */
+    emitter_id: number;
+    receiver_id: number[];
 }
