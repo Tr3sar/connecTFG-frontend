@@ -9,24 +9,19 @@ import { UserService } from '../core/services/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  formularioLogin = new FormGroup({
-    nombre: new FormControl('', Validators.required),
-    contraseña: new FormControl('', Validators.required)
-  });
-  constructor() {userService: UserService }
+  constructor() { }
 
   ngOnInit(): void {
-      }
+  }
+  
+/*  onLoginUserClicked() {
+    const Name = this.formularioLogin.controls.email.value;
+    const Password = this.formularioLogin.controls.password.value;
+    try {
+      if (Name != null && Password != null)
+        this.AuthService.SignIn(Name, Password)
+    } catch (error) {
+      alert("El mail o contraseña es incorrecta")
+    }
 
-onLoginUserClicked() {
-  const email = this.formularioLogin.controls.nombre.value;
-  const password = this.formularioLogin.controls.contraseña.value;
- /* try {
-    if (email != null && password != null)
-      //this.SignIn(email, password)
-  } catch (error) {
-    alert("El mail o contraseña es incorrecta")
-  }*/
-
-}
-}
+}*/}

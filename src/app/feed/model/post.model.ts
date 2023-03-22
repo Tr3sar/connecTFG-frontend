@@ -4,7 +4,8 @@ export class Post{
     content: string;
     applicant: string[];
     likes: Number;
-    created_at: Date;
-    comment: string[];
     closed: boolean;
+    createdAt: Date;
+    comment: string[];
+    
 }

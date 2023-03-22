@@ -17,7 +17,7 @@
             <mat-label>Miembros del grupo</mat-label>
 
             <mat-chip-list #chipGrid>
-                <mat-chip *ngFor="let user from usersToAdd" (removed)="remove(user)">
+                <mat-chip *ngFor="let user of usersToAdd" (removed)="remove(user)">
                     {{user.name}}
                     <button matChipRemove><mat-icon>cancel</mat-icon></button>
                 </mat-chip>
@@ -26,9 +26,12 @@
             <input placeholder="Nuevo miembro..." #userInput [formControl]="userCtrl"
             [matChipInputFor]="chipGrid" [matAutocomplete]="auto" (matChipInputTokenEnd)="add($event)">
             <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-                <mat-option *ngFor="let user of filteredUsers | async" [value]="user">
-                    {{user.name}}
-                </mat-option>
+
+                <ng-container *ngFor="let user of filteredUsers | async">
+                    <mat-option *ngIf="!usersToAdd.includes(user)" [value]="user">
+                        {{user.name}}
+                    </mat-option>
+                </ng-container>
             </mat-autocomplete>
         </mat-form-field>
     </form>

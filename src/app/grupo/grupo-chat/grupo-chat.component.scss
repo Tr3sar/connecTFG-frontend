@@ -1,0 +1,25 @@
+.main-container{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+
+    .info-container{
+        height: 2rem;
+        width: 100%;
+        position: absolute;
+        top: 0;
+
+        border: 1px solid black;
+    }
+
+    .chat-container{
+
+    }
+
+    .message-container{
+        height: 2rem;
+        width: 100%;
+        position: absolute;
+        bottom: 0.5rem;
+    }
+}

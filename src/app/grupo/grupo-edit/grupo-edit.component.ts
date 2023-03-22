@@ -21,7 +21,7 @@ export class GrupoEditComponent implements OnInit {
 
   group: Group;
 
-  usersToAdd: User[];
+  usersToAdd: User[] = [];
   filteredUsers: Observable<User[]>;
   allUsers: User[];
 
@@ -81,7 +81,7 @@ export class GrupoEditComponent implements OnInit {
   }
 
   private _filter(value: string): User[] {
-    const filterValue = value.toLowerCase();
+    const filterValue = value.toString().toLowerCase();
 
     return this.allUsers.filter(user => user.name.toLowerCase().includes(filterValue));
   }
@@ -92,6 +92,10 @@ export class GrupoEditComponent implements OnInit {
 
   onSave() {
     if (this.group.name.trim() == "") { return; }
+
+    this.usersToAdd.forEach((user) => {
+      this.group.member_id.push(user.id)
+    })
 
     this.groupService.saveGroup(this.group).subscribe(result => {
       this.dialogRef.close();
