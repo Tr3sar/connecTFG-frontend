@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from '../model/post.model';
+import { PublicationService } from '../publication.service';
 
 
 @Component({
@@ -7,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./publication-list.component.scss']
 })
 export class PublicationListComponent implements OnInit {
-
-  constructor() { }
+  posts: Post[];
+  constructor(private publicationService: PublicationService) { }
 
   ngOnInit(): void {
+    this.publicationService.getAllPosts().subscribe(
+      posts => this.posts = posts
+    )
   }
 
 
