@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatAutocompleteModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
   providers: [
     {
