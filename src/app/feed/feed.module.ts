@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PublicationListComponent } from './publication-list/publication-list.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 
 
 
@@ -12,7 +10,9 @@ import { FormsModule } from '@angular/forms';
     PublicationListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatCardModule
   ]
 })
-export class FeedModule { }
+export class FeedModule {
+}

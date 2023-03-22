@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-publication-list',
   templateUrl: './publication-list.component.html',
@@ -12,4 +13,12 @@ export class PublicationListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  onShowComments(): void {
+
+  }
+
+  onLike(): void {
+
+  }
 }
