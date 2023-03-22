@@ -1,1 +1,17 @@
-<p>grupo-list works!</p>
+<div class="main-container">
+    <mat-drawer-container>
+        <mat-drawer mode="side" opened>
+            <div class="sidenav-header">
+                <input type="text">
+                <button mat-fab color="primary" (click)="onCreateGroup()">+</button>
+            </div>
+
+            <div class="groups-container">
+                <button *ngFor="let group of groups" (click)="onChangeSelectedGroup(group.id)">{{group.name}}</button>
+            </div>
+        </mat-drawer>
+        <mat-drawer-content>
+            <app-grupo-chat [group_id]="selectedChatId"></app-grupo-chat>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

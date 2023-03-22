@@ -1,0 +1,30 @@
+.main-container{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+
+    mat-drawer-container{
+        height: 75vh;
+
+        border: 1px solid black;
+        mat-drawer{
+            height: auto;
+
+            padding: 0.5rem;
+            border: 1px solid black;
+
+            input{
+                width: 70%;
+            }
+
+            .groups-container{
+                margin-top: 1rem;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        mat-drawer-content{
+        }
+    }
+}

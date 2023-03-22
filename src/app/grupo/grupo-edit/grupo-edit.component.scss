@@ -1,0 +1,19 @@
+.main-container{
+    min-width: 350px;
+    max-width: 600px;
+    width: 100%;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .buttons{
+        text-align: right;
+
+        button{
+            margin-left: 10px;
+        }
+    }
+}

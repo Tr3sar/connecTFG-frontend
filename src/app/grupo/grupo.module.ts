@@ -1,15 +1,44 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GrupoListComponent } from './grupo-list/grupo-list.component';
+import { GrupoChatComponent } from './grupo-chat/grupo-chat.component';
+import { GrupoEditComponent } from './grupo-edit/grupo-edit.component';
 
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatAutocompleteModule } from '@angular/material/autocomplete'
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
   declarations: [
-    GrupoListComponent
+    GrupoListComponent,
+    GrupoChatComponent,
+    GrupoEditComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatSidenavModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatAutocompleteModule,
+    MatChipsModule,
+    MatIconModule
+  ],
+  providers: [
+    {
+      provide: MAT_DIALOG_DATA,
+      useValue: {},
+    },
   ]
 })
 export class GrupoModule { }

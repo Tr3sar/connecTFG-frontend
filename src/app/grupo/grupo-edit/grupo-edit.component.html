@@ -1,0 +1,41 @@
+<div class="main-container">
+    <h1>Crear grupo</h1>
+
+    
+    <form>
+        <mat-form-field>
+            <mat-label>Título</mat-label>
+            <input type="text" matInput placeholder="Título" [(ngModel)]="group.name" name="name" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Descripción</mat-label>
+            <input type="text" matInput placeholder="Descripción" [(ngModel)]="group.description" name="description">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Miembros del grupo</mat-label>
+
+            <mat-chip-list #chipGrid>
+                <mat-chip *ngFor="let user from usersToAdd" (removed)="remove(user)">
+                    {{user.name}}
+                    <button matChipRemove><mat-icon>cancel</mat-icon></button>
+                </mat-chip>
+            </mat-chip-list>
+
+            <input placeholder="Nuevo miembro..." #userInput [formControl]="userCtrl"
+            [matChipInputFor]="chipGrid" [matAutocomplete]="auto" (matChipInputTokenEnd)="add($event)">
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                <mat-option *ngFor="let user of filteredUsers | async" [value]="user">
+                    {{user.name}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
+   
+    
+    <div class="buttons">
+        <button mat-stroked-button (click)="onClose()">Cerrar</button>
+        <button mat-flat-button color="primary" (click)="onSave()">Guardar</button>
+    </div>
+</div>

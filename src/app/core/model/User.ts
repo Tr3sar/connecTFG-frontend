@@ -11,7 +11,7 @@ export class User{
     degree: string;
     rol: string;
     status: string;
-    post_id: number[];
-    notification_id: number[]
-    group_id: number[];
+    //post_id: number[];
+    //notification_id: number[]
+    //group_id: number[];
 }
