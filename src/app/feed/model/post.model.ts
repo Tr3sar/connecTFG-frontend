@@ -6,6 +6,5 @@ export class Post{
     likes: Number;
     closed: boolean;
     createdAt: Date;
-    comment: string[];
-    
+    comment: string[];    
 }
