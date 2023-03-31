@@ -1,7 +1,7 @@
 <html>
 <div class="container" id="container">
-	<div class="form-container sign-up-container">
-		<form action="registro">
+	<div class="form-container sign-up-container" >
+		<form action="registro" id="formularioRegistro">
 			<h1>Crea tu Cuenta</h1>
 			<div class="social-container">
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
@@ -10,12 +10,11 @@
 			<input type="text" placeholder="Name" />
 			<input type="email" placeholder="Email" />
 			<input type="password" placeholder="Password" />
-			<button>Registrar</button>
+			<button class="button" id="signUp">Registrar</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-		
-		<form action="inicioSesion">
+		<form action="inicioSesion"  id="formularioLogin">
 			<img src="./assets/Logo.png" alt="logo">
 			<h1>Inicia sesión con tus redes sociales</h1>
 			<div class="social-container">
@@ -25,7 +24,7 @@
 			<input type="email" placeholder="Email" />
 			<input type="password" placeholder="Password" />
 			<a href="#">Olvidaste tu contraseña?</a>
-			<button class="button" id="login">Iniciar Sesión</button>
+			<button class="button" id="signIn">Iniciar Sesión</button>
 		</form>
 	</div>
 	<div class="overlay-container">
@@ -33,7 +32,7 @@
 			<div class="overlay-panel overlay-left">
 				<h1>Bienvenido!</h1>
 				<p>Para seguir en tu búsqueda, por favor ingresa tus credenciales</p>
-				<button class="ghost" id="signIn">Iniciar Sesión</button>
+				<button class="ghost">Iniciar Sesión</button>
 			</div>
 			<div class="overlay-panel overlay-right">
 				<h1>Hola, compañero!</h1>

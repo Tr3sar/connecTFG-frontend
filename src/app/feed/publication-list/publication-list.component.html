@@ -2,12 +2,23 @@
 <html ng-app="myApp">
 
 <head>
-  <title>Tu Feed</title>
+  <title>Feed</title>
 </head>
 
 <body ng-controller="FeedController">
+  <div class="panel">
+    <button mat-button class="createPost">Create your Post</button>
+  </div>
+  <p>
+    Filter your TFG Feed
+    <mat-button-toggle-group aria-label="Font Style">
+      <mat-button-toggle value="Open">OPEN</mat-button-toggle>
+      <mat-button-toggle value="Closed">CLOSED</mat-button-toggle>
+    </mat-button-toggle-group>
+  </p>
+  <hr />
   <h1>Tu Feed</h1>
-  <div *ngfor="let post of posts">
+  <div *ngFor="let post of posts | paginate: { itemsPerPage: pageSize, currentPage: pageNumber }">
     <mat-card class="post-card">
       <mat-card-header>
         <mat-card-title>{{post.title}}</mat-card-title>
@@ -15,15 +26,20 @@
       <mat-card-content>
         <p>
           {{post.content}}
-          <small>{{post.CreatedAt | date:'medium'}}</small>
+
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>COMMENT</button>
+        <button mat-button class="likear">LIKE</button>
+        <button mat-button class="comentar">COMMENT</button>
+        <button mat-button class="postular">POSTULAR</button>
       </mat-card-actions>
+      <mat-card-footer>
+        <small>{{post.createdAt | date:'medium'}}</small>
+      </mat-card-footer>
     </mat-card>
   </div>
+  <mat-paginator (page)="loadPage($event)" [pageSizeOptions]="[5, 10]" [pageIndex]="pageNumber" [pageSize]="pageSize" [length]="totalElements" showFirstLastButtons></mat-paginator>
+  
 </body>
-
 </html>

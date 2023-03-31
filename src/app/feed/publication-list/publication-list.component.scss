@@ -1,0 +1,161 @@
+.publication-card {
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #ffff0091 !important;
+}
+
+.body {
+  background-color: blue;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.createPost {
+  background-color: #8C92AC;
+  align-items: center;
+  float: initial;
+  align-self: center;
+  border-radius: 6.25rem;
+  cursor: pointer;
+}
+
+.mat-paginator {
+	padding: 0 8px;
+	width: 100%;
+	flex-wrap: wrap-reverse;
+	display: flex;
+	justify-content: center;
+  } 
+  
+.temp {
+  background: lightblue;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-header {
+  margin-top: 2px;
+  text-align: center;
+}
+
+.mat-card::ng-deep.mat-card-header-text {
+  width: 100%;
+}
+
+.card-img {
+  width: 100%;
+  margin-bottom: 0.8rem;
+  margin-top: 0.8rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.post-card {
+  background-color: #8C92AC;
+  width: 40%;
+  align-items: center;
+  margin-bottom: 32px;
+  position: flex;
+}
+
+.no-image {
+  filter: contrast(5) !important;
+}
+
+.follow-buttons {
+  text-align: right;
+}
+
+.publication-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 100px;
+  overflow: hidden;
+  float: left;
+  margin-right: 20px;
+}
+
+.publication-avatar img {
+  width: 50px;
+  height: 50px;
+}
+
+.publication-user {
+  color: #593196;
+  display: block;
+}
+
+.publication-user h3 {
+  margin-bottom: 0px;
+}
+
+.publication-text {
+  color: black;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.publication-my {
+  border: 2px;
+  border-color: #593196;
+  border-style: solid;
+}
+
+.button-trash {
+  border-radius: 6.25rem;
+  height: 2.4375rem;
+  margin-top: 0.3125rem;
+}
+
+.span-trash {
+  margin-top: 5px;
+}
+
+.postular {
+  background-color: #8C92AC;
+  align-items: end;
+  float: right;
+  border-radius: 6.25rem;
+}
+
+.postular:hover {
+  background-color: #1F75FE;
+  cursor: pointer
+}
+
+.likear {
+  background-color: #8C92AC;
+}
+
+.likear:hover {
+  background-color: #1F75FE;
+  cursor: pointer
+}
+
+.comentar {
+  background-color: #8C92AC
+}
+
+.comentar:hover {
+  background-color: #1F75FE;
+  cursor: pointer
+}
+
+.panel {
+  height: 30px;
+}
+
+.crop {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 250px;
+}
