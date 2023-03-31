@@ -7,11 +7,11 @@
             </div>
 
             <div class="groups-container">
-                <button *ngFor="let group of groups" (click)="onChangeSelectedGroup(group.id)">{{group.name}}</button>
+                <button *ngFor="let group of groups" (click)="onChangeSelectedGroup(group)">{{group.name}}</button>
             </div>
         </mat-drawer>
         <mat-drawer-content>
-            <app-grupo-chat [group_id]="selectedChatId"></app-grupo-chat>
+            <app-grupo-chat></app-grupo-chat>
         </mat-drawer-content>
     </mat-drawer-container>
 </div>

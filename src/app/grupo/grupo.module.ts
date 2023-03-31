@@ -15,12 +15,14 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 
+import { SocketService } from '../core/services/socket/socket.service';
+
 
 @NgModule({
   declarations: [
     GrupoListComponent,
     GrupoChatComponent,
-    GrupoEditComponent
+    GrupoEditComponent,
   ],
   imports: [
     CommonModule,
@@ -37,10 +39,12 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
+    SocketService,
+        
     {
       provide: MAT_DIALOG_DATA,
       useValue: {},
-    },
+    }
   ]
 })
 export class GrupoModule { }

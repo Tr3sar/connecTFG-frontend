@@ -1,8 +1,10 @@
+import { Message } from "src/app/core/model/Message";
+
 export class Group {
     id : number;
     name: string;
-    member_id: number[];
-    message_id: number[];
-    file_id: number[];
+    members: number[];
+    messages: Message[];
+    files: number[];
     description?: string;
 }

@@ -3,6 +3,7 @@ import { GrupoService } from '../grupo.service';
 import { Group } from '../model/Group';
 import { MatDialog } from '@angular/material/dialog';
 import { GrupoEditComponent } from '../grupo-edit/grupo-edit.component';
+import { SocketService } from 'src/app/core/services/socket/socket.service';
 
 @Component({
   selector: 'app-grupo-list',
@@ -11,20 +12,28 @@ import { GrupoEditComponent } from '../grupo-edit/grupo-edit.component';
 })
 export class GrupoListComponent implements OnInit {
 
-  selectedChatId: number;
+  selectedGroup: Group;
 
   groups: Group[];
-
-  constructor(private groupService: GrupoService, public dialog: MatDialog) { }
+  constructor(private groupService: GrupoService, private socketService: SocketService, public dialog: MatDialog) {
+    
+   }
 
   ngOnInit(): void {
     this.groupService.getAllGroups().subscribe(
-      groups => this.groups = groups
+      groups => { this.groups = groups; console.log('Groups', groups)}
     )
   }
 
-  onChangeSelectedGroup(id: number) {
-    this.selectedChatId = id;
+  onChangeSelectedGroup(group: Group) {
+
+    if(this.selectedGroup != null) {
+      this.socketService.leaveGroup(this.selectedGroup.id)
+    }
+
+    this.selectedGroup = group;
+
+    this.socketService.joinGroup(group)
   }
 
   onCreateGroup() {

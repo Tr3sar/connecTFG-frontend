@@ -1,17 +1,19 @@
-<div class="main-container">
+<div class="main-container" *ngIf="selectedGroup">
     <div class="info-container">
-        <p>Id del grupo: {{group_id}}</p>
+        <p>{{selectedGroup.name}}</p>
     </div>
 
     <div class="chat-container">
-        
+        <div *ngFor="let message of messages" class="message">
+            {{message}}
+        </div>
     </div>
 
     <div class="message-container">
         <mat-form-field>
-            <input matInput>
+            <input matInput [(ngModel)]="messageToSend">
         </mat-form-field>  
-        <button>
+        <button (click)="sendMessage()">
             <mat-icon>send</mat-icon>
         </button>   
     </div>

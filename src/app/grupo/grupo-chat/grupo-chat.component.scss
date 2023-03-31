@@ -13,7 +13,16 @@
     }
 
     .chat-container{
+        margin-top: 2.5rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
 
+        .message {
+            border: 1px solid black;
+            border-radius: 0.25rem;
+
+            margin-bottom: 0.25rem;
+        }
     }
 
     .message-container{
@@ -21,5 +30,9 @@
         width: 100%;
         position: absolute;
         bottom: 0.5rem;
+
+        mat-form-field{
+            width: 70vw;
+        }
     }
 }

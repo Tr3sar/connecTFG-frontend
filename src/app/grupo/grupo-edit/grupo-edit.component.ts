@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/app/core/model/User';
-import { UserService } from 'src/app/core/services/user.service';
+import { UserService } from 'src/app/core/services/user/user.service';
 import { GrupoService } from '../grupo.service';
 import { Group } from '../model/Group';
 import {Observable, of} from 'rxjs';
@@ -91,10 +91,14 @@ export class GrupoEditComponent implements OnInit {
   }
 
   onSave() {
+    console.log('GRUPO', this.group)
     if (this.group.name.trim() == "") { return; }
-
+    if (this.group.members == undefined) {
+      this.group.members = [];
+    }
+    
     this.usersToAdd.forEach((user) => {
-      this.group.member_id.push(user.id)
+      this.group.members.push(user.id)
     })
 
     this.groupService.saveGroup(this.group).subscribe(result => {

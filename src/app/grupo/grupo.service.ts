@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { GROUP_DATA } from './model/mock-group-list';
 import { of, Observable } from 'rxjs'
 import { Group } from './model/Group';
 import { HttpClient } from '@angular/common/http';
+import { Message } from './model/Message';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,14 @@ export class GrupoService {
   }
 
   saveGroup(group: Group) : Observable<Group[]> {
-    return this.http.put<Group[]>(this.url, {name: group.name, members: group.member_id, description: group.description});
+    return this.http.put<Group[]>(this.url, {name: group.name, members: group.members, description: group.description});
+  }
+
+  createMessage(group_id: number, emitter: number, message: string) {
+    return this.http.post<Group>(this.url + '/messages', {group_id, emitter, message})
+  }
+
+  getMessagesFromGroup(id: number){
+    return this.http.get<Message[]>(this.url + '/messages/' + id);
   }
 }
