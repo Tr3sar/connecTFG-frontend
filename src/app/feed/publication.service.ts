@@ -4,7 +4,6 @@ import { of, Observable } from 'rxjs'
 import { PostPage } from './model/page/postPage';
 import { HttpClient } from '@angular/common/http';
 import { Pageable } from './model/page/pageable';
-import { POST_DATA } from './model/mock';
 
 @Injectable({
   providedIn: 'root'
