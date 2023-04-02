@@ -31,13 +31,19 @@ export class GrupoListComponent implements OnInit {
       this.userJosep = this.userService.getJosepExample()
       this.userMatias = this.userService.getMatiasExample();
 
-    }, 100)
+    }, 300)
 
     setTimeout(() => {
       this.groupService.getGroupsFromUser(this.userJosep.id).subscribe(
         groups => { this.groups = groups; console.log('Groups', groups) }
       )
-    }, 200)
+    }, 500)
+
+    this.socketService.selectedGroupSubject.subscribe(
+      group => {
+        if (group == null) { location.reload() }
+      }
+    )
   }
 
   onChangeSelectedGroup(group: Group) {

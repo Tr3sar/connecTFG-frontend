@@ -12,7 +12,7 @@ export class SocketService {
   socket: Socket;
 
   messagesSubject = new Subject<any>();
-  selectedGroupSubject = new Subject<Group>();
+  selectedGroupSubject = new Subject<Group | null>();
 
   //selectedGroup: string = '';
 
@@ -63,12 +63,12 @@ export class SocketService {
     return this.messagesSubject.asObservable();
   }
 
-  setSelectedGroup(group: Group) {
+  setSelectedGroup(group: Group | null) {
     //this.selectedGroup = groupId;
     this.selectedGroupSubject.next(group);
   }
 
-  getSelectedGroup() : Observable<Group>{
+  getSelectedGroup() : Observable<Group | null>{
     return this.selectedGroupSubject.asObservable();
   }
 }

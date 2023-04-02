@@ -1,5 +1,6 @@
 <div class="main-container">
-    <h1>Crear grupo</h1>
+    <h1 *ngIf="group.id == null">Crear grupo</h1>
+    <h1 *ngIf="group.id != null">Editar grupo</h1>
 
     
     <form>
@@ -17,7 +18,7 @@
             <mat-label>Miembros del grupo</mat-label>
 
             <mat-chip-list #chipGrid>
-                <mat-chip *ngFor="let user of usersToAdd" (removed)="remove(user)">
+                <mat-chip *ngFor="let user of group.members" (removed)="remove(user)">
                     {{user.name}}
                     <button matChipRemove><mat-icon>cancel</mat-icon></button>
                 </mat-chip>
@@ -28,7 +29,7 @@
             <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
 
                 <ng-container *ngFor="let user of filteredUsers | async">
-                    <mat-option *ngIf="!usersToAdd.includes(user)" [value]="user">
+                    <mat-option *ngIf="!group.members.includes(user)" [value]="user">
                         {{user.name}}
                     </mat-option>
                 </ng-container>

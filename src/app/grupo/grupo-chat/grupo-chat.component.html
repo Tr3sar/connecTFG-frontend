@@ -1,5 +1,5 @@
 <div class="main-container" *ngIf="selectedGroup">
-    <div class="info-container">
+    <div class="info-container" (click)="onEditGroup()">
         <p>{{selectedGroup.name}}</p>
     </div>
 

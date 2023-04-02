@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/app/core/model/User';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { GrupoService } from '../grupo.service';
@@ -21,7 +21,7 @@ export class GrupoEditComponent implements OnInit {
 
   group: Group;
 
-  usersToAdd: User[] = [];
+  //usersToAdd: User[] = [];
   filteredUsers: Observable<User[]>;
   allUsers: User[];
 
@@ -29,22 +29,30 @@ export class GrupoEditComponent implements OnInit {
   @ViewChild('userInput') userInput: ElementRef<HTMLInputElement>
 
   constructor(public dialogRef: MatDialogRef<GrupoEditComponent>, private groupService: GrupoService,
-              private userService: UserService) {
+              private userService: UserService, @Inject(MAT_DIALOG_DATA) public data: any) {
 
-    this.userService.getAllUsers().subscribe(
+
+     this.userService.getAllUsers().subscribe(
       users => {
         this.allUsers = users;
         this.filteredUsers = of(users);
-    })
 
-    this.filteredUsers = this.userCtrl.valueChanges.pipe(
-      startWith(null),
-      map((name: string | null) => (name ? this._filter(name) : this.allUsers.slice()))
-    )
+        this.filteredUsers = this.userCtrl.valueChanges.pipe(
+          startWith(null),
+          map((name: string | null) => (name ? this._filter(name) : this.allUsers.slice()))
+        )
+    }) 
   }
 
   ngOnInit(): void {
-    this.group = new Group();
+    console.log('grup enviat', this.data.group)
+    if (this.data.group != null) {
+      this.group = Object.assign({}, this.data.group);
+    }
+    else {
+      this.group = new Group();
+      this.group.members = []
+    }
   }
 
   add(event: MatChipInputEvent): void {
@@ -52,9 +60,9 @@ export class GrupoEditComponent implements OnInit {
 
     const userValue = this.userService.getUserByName(value);
 
-    // Add our fruit
     if (userValue) {
-      this.usersToAdd.push(userValue);
+      //this.usersToAdd.push(userValue);
+      this.group.members.push(userValue)
     }
 
     // Clear the input value
@@ -64,10 +72,11 @@ export class GrupoEditComponent implements OnInit {
   }
 
   remove(user: User): void {
-    const index = this.usersToAdd.indexOf(user);
-
+    //const index = this.usersToAdd.indexOf(user);
+    const index = this.group.members.indexOf(user);
     if (index >= 0) {
-      this.usersToAdd.splice(index, 1);
+      //this.usersToAdd.splice(index, 1);
+      this.group.members.splice(index, 1);
     }
   }
 
@@ -75,9 +84,11 @@ export class GrupoEditComponent implements OnInit {
     const userValue = event.option.value
 
     if (!userValue) { alert('Ha habido un error'); return; }
-    if (this.usersToAdd.includes(userValue)) { return ;}
+    //if (this.usersToAdd.includes(userValue)) { return ;}
+    if (this.group.members.includes(userValue)) { return ; }
 
-    this.usersToAdd.push(userValue);
+    //this.usersToAdd.push(userValue);
+    this.group.members.push(userValue);
     this.userInput.nativeElement.value = '';
     this.userCtrl.setValue(null);
   }
@@ -98,12 +109,13 @@ export class GrupoEditComponent implements OnInit {
       this.group.members = [];
     }
     
-    this.usersToAdd.forEach((user) => {
+    /* this.usersToAdd.forEach((user) => {
       if (!this.group.members.includes(user)) {
         this.group.members.push(user)
       }
-    })
+    }) */
 
+    console.log('GRUPO EN SERVICE', this.group)
     this.groupService.saveGroup(this.group).subscribe(result => {
       this.dialogRef.close();
     });

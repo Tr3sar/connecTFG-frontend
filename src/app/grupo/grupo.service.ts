@@ -18,9 +18,12 @@ export class GrupoService {
   }
 
   saveGroup(group: Group) : Observable<Group[]> {
-    console.log('grupo enviado', group)
-    /* return this.http.put<Group[]>(this.url, {name: group.name, members: group.members, description: group.description}); */
-    return this.http.put<Group[]>(this.url, {group});
+    let url = this.url;
+    if (group.id != null) {
+      url += '/' + group.id
+    }
+    console.log('grupo a enviar')
+    return this.http.put<Group[]>(url, {group});
   }
 
   createMessage(group_id: number, emitter: number, message: string) {
