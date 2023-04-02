@@ -23,13 +23,14 @@ export class GrupoChatComponent implements OnInit {
   constructor(private grupoService: GrupoService, private userService: UserService, private socketService: SocketService) { }
 
   ngOnInit(): void {
+
     this.userService.getAllUsers().subscribe(
-      users => { this.userExample = users[0];}
-    )
+      users => this.userExample = users[1]
+    );
 
     this.socketService.getSelectedGroup().subscribe(group => {
       this.selectedGroup = group;
-      
+
       this.grupoService.getMessagesFromGroup(this.selectedGroup.id).subscribe(messages => {
         this.messages = messages.map(message => message.text);
       })
@@ -41,7 +42,7 @@ export class GrupoChatComponent implements OnInit {
   }
 
   sendMessage() {
-    if (this.messageToSend.trim() == '') { return ;}
+    if (this.messageToSend.trim() == '') { return; }
 
     this.grupoService.createMessage(this.selectedGroup.id, this.userExample.id, this.messageToSend).subscribe(
       response => {

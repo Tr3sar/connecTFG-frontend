@@ -10,6 +10,13 @@
         top: 0;
 
         border: 1px solid black;
+        border-radius: 0 0 0.5rem 0.5rem;
+
+        background-color: #cecece;
+
+        p{
+            padding: 0.5rem;
+        }
     }
 
     .chat-container{
@@ -22,6 +29,12 @@
             border-radius: 0.25rem;
 
             margin-bottom: 0.25rem;
+
+            width: fit-content;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
         }
     }
 

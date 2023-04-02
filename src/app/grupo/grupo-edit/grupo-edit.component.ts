@@ -72,8 +72,10 @@ export class GrupoEditComponent implements OnInit {
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
+    const userValue = event.option.value
 
-    const userValue = this.userService.getUserByName(event.option.viewValue)
+    if (!userValue) { alert('Ha habido un error'); return; }
+    if (this.usersToAdd.includes(userValue)) { return ;}
 
     this.usersToAdd.push(userValue);
     this.userInput.nativeElement.value = '';
@@ -91,14 +93,15 @@ export class GrupoEditComponent implements OnInit {
   }
 
   onSave() {
-    console.log('GRUPO', this.group)
     if (this.group.name.trim() == "") { return; }
     if (this.group.members == undefined) {
       this.group.members = [];
     }
     
     this.usersToAdd.forEach((user) => {
-      this.group.members.push(user.id)
+      if (!this.group.members.includes(user)) {
+        this.group.members.push(user)
+      }
     })
 
     this.groupService.saveGroup(this.group).subscribe(result => {

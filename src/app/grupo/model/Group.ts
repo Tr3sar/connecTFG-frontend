@@ -1,9 +1,10 @@
 import { Message } from "src/app/core/model/Message";
+import { User } from "src/app/core/model/User";
 
 export class Group {
     id : number;
     name: string;
-    members: number[];
+    members: User[];
     messages: Message[];
     files: number[];
     description?: string;
