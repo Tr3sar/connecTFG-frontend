@@ -65,6 +65,7 @@ export class GrupoChatComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      location.reload()
       this.ngOnInit();
     });
   }
