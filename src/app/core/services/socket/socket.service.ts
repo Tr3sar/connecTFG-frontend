@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Socket, io } from 'socket.io-client';
 import { Group } from 'src/app/grupo/model/Group';
+import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,18 +15,25 @@ export class SocketService {
   messagesSubject = new Subject<any>();
   selectedGroupSubject = new Subject<Group | null>();
 
-  //selectedGroup: string = '';
-
-  constructor() {
-    this.setupSocketConnection();
+  constructor(private userService: UserService) {
+    setTimeout(() => {
+      this.setupSocketConnection();
+    }, 300)
   }
   
 
   setupSocketConnection() {
-    this.socket = io(this.SOCKET_ENDPOINT)
+    this.socket = io(this.SOCKET_ENDPOINT, {
+      query: {
+        userId: '64284841e13f20e618b22c19'
+      }
+    })
 
     this.socket.on('connect', () => {
       console.log('Conectado al servidor de WebSocket');
+      /* this.userService.setUserStatus('connected').subscribe(
+        res => console.log('USUARI CONNECTAT')
+      ); */
     });
 
     this.socket.on('message', (message: any) => {
@@ -64,7 +72,6 @@ export class SocketService {
   }
 
   setSelectedGroup(group: Group | null) {
-    //this.selectedGroup = groupId;
     this.selectedGroupSubject.next(group);
   }
 
