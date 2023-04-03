@@ -3,21 +3,31 @@ import { of, Observable } from 'rxjs'
 import { User } from '../../model/User';
 import { USER_DATA } from '../../model/mock-user-list';
 import { HttpClient } from '@angular/common/http';
+import { Token } from '@angular/compiler';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  url = 'http://localhost:8080/user';
+  url = environment.urlService +'/user';
 
   constructor(private http: HttpClient) { }
 
-  getAllUsers() : Observable<User[]>{
+  getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.url)
   }
-  
-  getUserByName(name: string) : User{
+
+  register(name: string, surname: string, password: string, email: string, degree: string, description: string): Observable<User> {    
+    return this.http.post<User>(this.url + '/register', {email, password, name, surname, degree, description})
+  }
+  getUserByName(name: string): User {
     return USER_DATA.filter(user => user.name === name)[0];
   }
+  setToken(Token: Token) {
+    // Create a JSON Web Token (JWT)
+    // Return the token string
+  }
+
 }

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from './login.service';
+import { User } from '../core/model/User';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -7,20 +11,51 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  
+  formularioRegistro = new FormGroup({
+    name: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+    surname: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
+    degree: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required)
+  });
 
-  constructor() { }
+  formularioLogin = new FormGroup({
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
+  });
+
+  constructor(private loginService: LoginService, private router: Router) {
+
+  }
 
   ngOnInit(): void {
+    this.loginService.logout()
   }
-  
-/*  onLoginUserClicked() {
-    const Name = this.formularioLogin.controls.email.value;
-    const Password = this.formularioLogin.controls.password.value;
+
+  onSignInClicked() {
+    const email = this.formularioLogin.controls.email.value;
+    const password = this.formularioLogin.controls.password.value;
+
     try {
-      if (Name != null && Password != null)
-        this.AuthService.SignIn(Name, Password)
+      if (email != null && password != null)
+        this.loginService.SignIn(email, password).subscribe(res => {
+        this.router.navigate(['/feed'])
+        })
     } catch (error) {
       alert("El mail o contraseña es incorrecta")
     }
+  }
 
-}*/}
+  onSignUpClicked() {
+  }
+
+  onSignUpLink() {
+  }
+ 
+  onSignInLink() {
+
+  }
+
+}

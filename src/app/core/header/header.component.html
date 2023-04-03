@@ -1,4 +1,4 @@
-<div class="main-container">
+<div class="main-container" *ngIf="loginService.isAuthenticated()">
     <mat-toolbar>
         <mat-toolbar-row>
             <img src="../../../assets/images/connecTFG_logo_small.jpeg">

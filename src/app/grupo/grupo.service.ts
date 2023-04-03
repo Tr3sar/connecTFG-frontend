@@ -3,13 +3,14 @@ import { of, Observable } from 'rxjs'
 import { Group } from './model/Group';
 import { HttpClient } from '@angular/common/http';
 import { Message } from './model/Message';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GrupoService {
 
-  private url: string = 'http://localhost:8080/group'
+  private url: string = environment.urlService + '/group'
 
   constructor(private http: HttpClient) { }
 
