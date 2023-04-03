@@ -13,7 +13,17 @@ export class UserService {
 
   url = environment.urlService +'/user';
 
-  constructor(private http: HttpClient) { }
+  userJosep: User;
+  userMatias: User;
+
+  constructor(private http: HttpClient) {
+    this.getAllUsers().subscribe(
+      users => { 
+        this.userJosep = users[0]
+        this.userMatias = users[1]
+      }
+    )
+   }
 
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.url)
@@ -25,9 +35,21 @@ export class UserService {
   getUserByName(name: string): User {
     return USER_DATA.filter(user => user.name === name)[0];
   }
+<<<<<<< HEAD
   setToken(Token: Token) {
     // Create a JSON Web Token (JWT)
     // Return the token string
   }
 
+=======
+
+  getJosepExample() : any {
+    return this.userJosep
+    
+  }
+
+  getMatiasExample() : any {
+    return this.userMatias
+  }
+>>>>>>> 682cbf11d31a7ad57f9f9bfc5c06db38c1119bff
 }
