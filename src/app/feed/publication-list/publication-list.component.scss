@@ -3,23 +3,67 @@
   margin-bottom: 20px;
   background-color: #ffff0091 !important;
 }
+.panel {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 
+.panel button {
+  margin: 0 auto;
+}
+
+p {
+  text-align: center;
+}
+
+mat-button-toggle-group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  max-width: 175px;
+  margin: 0 auto;
+  
+}
+mat-button-toggle {
+  font-size: 12px;
+  height: 40px;
+  line-height: 24px;
+  padding: 0 12px;
+}
 .body {
   background-color: blue;
 }
+div[ng-controller='FeedController'] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+
+.panel {
+  margin-top: 20px;
+}
 .flex-row {
   display: flex;
   flex-direction: row;
 }
 
 .createPost {
+  margin-top: 50px;
+  margin-bottom: 20px;
   background-color: #8C92AC;
   align-items: center;
   float: initial;
   align-self: center;
   border-radius: 6.25rem;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  padding: 0.7em 1.5em;
+  
 }
 
 .mat-paginator {
@@ -54,14 +98,18 @@
   margin-top: 0.8rem;
   border-radius: 10px;
   cursor: pointer;
+  text-align: center;
 }
 
 .post-card {
   background-color: #8C92AC;
-  width: 40%;
   align-items: center;
   margin-bottom: 32px;
   position: flex;
+  max-width: 800px; /* adjust the value to your liking */
+  margin: auto;
+  margin-bottom: 30px;
+  margin-top: 20px;
 }
 
 .no-image {
@@ -97,10 +145,6 @@
 
 .publication-text {
   color: black;
-}
-
-.example-card {
-  max-width: 400px;
 }
 
 .publication-my {

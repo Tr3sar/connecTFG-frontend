@@ -6,7 +6,7 @@ import { GrupoListComponent } from './grupo/grupo-list/grupo-list.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  {path: "", redirectTo: "feed", pathMatch: "full"},
+  {path: "", redirectTo: "login", pathMatch: "full"},
   {path: "feed",component: PublicationListComponent},
   {path: "conexiones",component: ConexionListComponent},
   {path: "grupo",component: GrupoListComponent},

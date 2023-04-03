@@ -17,4 +17,17 @@ export class PublicationService {
   getAllPosts(pageable: Pageable) : Observable<PostPage>{
     return this.http.post<PostPage>(this.url, {pageable: pageable});
   }
+
+  savePost(post: Post) : Observable<Post> {
+    let url = this.url;
+
+    let title = post.title;
+    let content = post.content;
+
+    if (post.id != null) {
+      url += '/' + post.id
+    }
+    console.log('Post a enviar', post)
+    return this.http.post<Post>(url + '/create', {title, content});
+  }
 }

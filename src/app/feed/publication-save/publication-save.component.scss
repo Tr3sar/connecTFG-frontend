@@ -1,0 +1,49 @@
+.main-container{
+    min-width: 700px;
+    max-width: 700px;
+    width: 100%;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        
+    .mat-input-element textarea {
+       resize: vertical; /* Permite que el usuario pueda redimensionar la caja de texto verticalmente */
+    }
+    
+    .title textarea {
+        font-size: 18px;
+        overflow: hidden; 
+        height: auto;
+        min-height: 50px;
+        max-height: 200px;
+        min-width: 500px;
+        max-width: max-content;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        padding: 10px;
+        line-height: 1.5;
+    }
+    .content textarea {
+        font-size: 18px;
+        overflow: hidden; 
+        height: auto;
+        min-height: 50px;
+        max-height: 1000px;
+        min-width: 500px;
+        max-width: max-content;   
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        padding: 10px;
+        line-height: 1.5;
+    }
+    
+    }
+    .buttons{
+        text-align: right;
+
+        button{
+            margin-left: 60px;
+        }
+    }}

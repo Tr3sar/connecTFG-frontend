@@ -1,9 +1,12 @@
+import { User } from "src/app/core/model/User";
+
 export class Post{
-    author: string;
+    id: number;
+    author: User;
     title: string;
     content: string;
     applicant: string[];
-    likes: Number;
+    likes: number;
     closed: boolean;
     createdAt: Date;
     comment: string[];    

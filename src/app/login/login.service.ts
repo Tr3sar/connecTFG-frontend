@@ -27,7 +27,7 @@ export class LoginService {
         })
       );
   }
-
+ 
   public isAuthenticated(): boolean {
     const token = this.getToken();
     return token != null && !this.jwtHelper.isTokenExpired(token);
