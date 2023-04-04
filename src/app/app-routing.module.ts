@@ -5,11 +5,13 @@ import { PublicationListComponent } from './feed/publication-list/publication-li
 import { GrupoListComponent } from './grupo/grupo-list/grupo-list.component';
 import { LoginComponent } from './login/login.component';
 
+import { AuthGuard } from './core/guards/auth.guard'
+
 const routes: Routes = [
   {path: "", redirectTo: "login", pathMatch: "full"},
-  {path: "feed",component: PublicationListComponent},
-  {path: "conexiones",component: ConexionListComponent},
-  {path: "grupo",component: GrupoListComponent},
+  {path: "feed",component: PublicationListComponent, canActivate: [AuthGuard] },
+  {path: "conexiones",component: ConexionListComponent, canActivate: [AuthGuard]},
+  {path: "grupo",component: GrupoListComponent, canActivate: [AuthGuard]},
 
   {path: "login",component: LoginComponent},
   {path:"**", redirectTo:""}

@@ -4,8 +4,7 @@ import { Group } from '../model/Group';
 import { MatDialog } from '@angular/material/dialog';
 import { GrupoEditComponent } from '../grupo-edit/grupo-edit.component';
 import { SocketService } from 'src/app/core/services/socket/socket.service';
-import { User } from 'src/app/core/model/User';
-import { UserService } from 'src/app/core/services/user/user.service';
+import { LoginService } from 'src/app/login/login.service';
 
 @Component({
   selector: 'app-grupo-list',
@@ -18,26 +17,18 @@ export class GrupoListComponent implements OnInit {
 
   groups: Group[];
 
-  userJosep: User;
-  userMatias: User;
   constructor(private groupService: GrupoService, private socketService: SocketService, public dialog: MatDialog,
-    private userService: UserService) {
+     private loginService: LoginService) {
 
   }
 
   ngOnInit(): void {
-    //llevar timeouts quan estiga el login
-    setTimeout(() => {
-      this.userJosep = this.userService.getJosepExample()
-      this.userMatias = this.userService.getMatiasExample();
 
-    }, 300)
-
-    setTimeout(() => {
-      this.groupService.getGroupsFromUser(this.userJosep.id).subscribe(
-        groups => { this.groups = groups; console.log('Groups', groups) }
-      )
-    }, 500)
+    let activeUserId = <number> <unknown>localStorage.getItem('userId');
+    
+    this.groupService.getGroupsFromUser(activeUserId).subscribe(
+      groups => { this.groups = groups; }
+    )
 
     this.socketService.selectedGroupSubject.subscribe(
       group => {

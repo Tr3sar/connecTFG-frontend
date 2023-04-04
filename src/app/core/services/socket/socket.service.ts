@@ -3,13 +3,14 @@ import { Observable, Subject } from 'rxjs';
 import { Socket, io } from 'socket.io-client';
 import { Group } from 'src/app/grupo/model/Group';
 import { UserService } from '../user/user.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SocketService {
 
-  SOCKET_ENDPOINT: string = 'http://localhost:3000';
+  SOCKET_ENDPOINT: string = environment.urlService;
   socket: Socket;
 
   messagesSubject = new Subject<any>();
