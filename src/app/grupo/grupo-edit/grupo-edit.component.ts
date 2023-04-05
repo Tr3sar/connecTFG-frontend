@@ -117,6 +117,7 @@ export class GrupoEditComponent implements OnInit {
 
     console.log('GRUPO EN SERVICE', this.group)
     this.groupService.saveGroup(this.group).subscribe(result => {
+      location.reload()
       this.dialogRef.close();
     });
   }
