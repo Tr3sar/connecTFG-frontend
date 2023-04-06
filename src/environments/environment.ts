@@ -5,7 +5,17 @@
 export const environment = {
   production: false,
   secretKey: "TFGJOSEPMATIAS",
-  urlService: "https://localhost:443"
+  urlService: "https://localhost:443",
+  /*
+  firebaseConfig: {
+    apiKey: "AIzaSyDsUY5iEgOXeT8wJ88qbLFNzg7xlzK0Wbc",
+    authDomain: "connectfg-902af.firebaseapp.com",
+    projectId: "connectfg-902af",
+    storageBucket: "connectfg-902af.appspot.com",
+    messagingSenderId: "175317415575",
+    appId: "1:175317415575:web:3f61455c20a0b6d8895bd2",
+    measurementId: "G-29N7767K23"
+  }*/
 
 };
 
