@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  secretKey: "TFGJOSEPMATIAS",
+  urlService: "https://localhost:443"
 };
