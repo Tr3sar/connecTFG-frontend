@@ -5,26 +5,72 @@
 
     mat-drawer-container{
         height: 75vh;
+        width: 100%;
 
-        border: 1px solid black;
+        border: 1px solid var(--black);
         mat-drawer{
             height: auto;
 
             padding: 0.5rem;
-            border: 1px solid black;
 
-            input{
-                width: 70%;
+            background-color: var(--secondary-color);
+
+            .sidenav-header{
+                input{
+                    width: 70%;
+                }
+
+                button {
+                    background-color: transparent;
+                    border-color: transparent;
+                    color: var(--accent-color);
+
+                    font-size: large;
+                    font-weight: 530;
+
+                    transition: all 0.3s ease-in-out;
+                }
+
+                button:hover{
+                    cursor: pointer;
+
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                }
+
             }
 
             .groups-container{
                 margin-top: 1rem;
                 display: flex;
                 flex-direction: column;
+
+                row-gap: 0.25rem;
+
+                button{
+                    background-color: var(--light-primary-color);
+                    color: var(--black);
+
+                    font-weight: 520;
+
+                    border-color: transparent;
+                    border-radius: 0.25rem;
+
+                    padding: 0.25rem;
+
+                    transition: all 0.3s ease-in-out;
+                }
+
+                button:hover{
+                    cursor: pointer;
+
+                    filter: brightness(80%);
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                }
             }
         }
 
         mat-drawer-content{
+            overflow: hidden;
         }
     }
 }

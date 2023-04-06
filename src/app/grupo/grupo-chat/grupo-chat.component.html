@@ -10,9 +10,7 @@
     </div>
 
     <div class="message-container">
-        <mat-form-field>
-            <input matInput [(ngModel)]="messageToSend">
-        </mat-form-field>  
+        <input matInput [(ngModel)]="messageToSend">
         <button (click)="sendMessage()">
             <mat-icon>send</mat-icon>
         </button>   

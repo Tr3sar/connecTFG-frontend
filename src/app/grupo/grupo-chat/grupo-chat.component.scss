@@ -1,7 +1,11 @@
 .main-container{
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
+    
+    margin-right: 10rem;
+
+    background-image: url(../../../assets/images/chat-background.jpg);
+    background-size: 50%;
 
     .info-container{
         height: 2rem;
@@ -9,13 +13,15 @@
         position: absolute;
         top: 0;
 
-        border: 1px solid black;
+        border: 1px solid var(--black);
         border-radius: 0 0 0.5rem 0.5rem;
 
-        background-color: #cecece;
+        background-color: var(--secondary-color);
 
         p{
             padding: 0.5rem;
+            color: var(--black);
+            font-weight: 550;
         }
     }
 
@@ -24,9 +30,12 @@
         margin-left: 0.5rem;
         margin-right: 0.5rem;
 
+
         .message {
             border: 1px solid black;
             border-radius: 0.25rem;
+
+            background-color: var(--white);
 
             margin-bottom: 0.25rem;
 
@@ -40,12 +49,36 @@
 
     .message-container{
         height: 2rem;
-        width: 100%;
-        position: absolute;
-        bottom: 0.5rem;
+        width: 98%;
 
-        mat-form-field{
-            width: 70vw;
+        position: absolute;
+        bottom: 0;
+
+        margin-left: 1%;
+        margin-bottom: 0.5rem;
+
+        border: 1px solid black;
+        border-radius: 1.5rem;
+
+        background-color: var(--white);
+
+        input{
+            background-color: transparent;
+
+            height: 1.50rem;
+
+            margin-left: 0.75rem;
+
+            vertical-align: sub;
+        }
+
+        button{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+
+            background-color: transparent;
+            border-color: transparent;
         }
     }
 }
