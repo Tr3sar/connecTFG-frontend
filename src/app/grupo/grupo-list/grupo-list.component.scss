@@ -2,10 +2,14 @@
     margin-left: 1rem;
     margin-right: 1rem;
     margin-top: 1rem;
+    
 
     mat-drawer-container{
         height: 75vh;
         width: 100%;
+
+        background-image: url(../../../assets/images/chat-background.jpg);
+        background-size: 50%;
 
         border: 1px solid var(--black);
         mat-drawer{
@@ -13,8 +17,9 @@
 
             padding: 0.5rem;
 
-            background-color: var(--secondary-color);
+            
 
+            background-color: rgba(var(--light-primary-color), 0.7);
             .sidenav-header{
                 input{
                     width: 70%;
@@ -47,7 +52,8 @@
                 row-gap: 0.25rem;
 
                 button{
-                    background-color: var(--light-primary-color);
+                    //background-color: var(--light-primary-color);
+                    background-color: transparent;
                     color: var(--black);
 
                     font-weight: 520;
