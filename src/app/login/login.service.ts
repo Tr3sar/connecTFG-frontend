@@ -62,8 +62,8 @@ export class LoginService {
       this.activeUser = res;
     })
   }
-/* 
+
   getActiveUser() {
     return this.activeUser
-  } */
+  } 
 }
