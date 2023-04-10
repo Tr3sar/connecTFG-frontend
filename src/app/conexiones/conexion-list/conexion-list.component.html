@@ -1,1 +1,25 @@
-<button routerLink="/grupo">Ir a grupos</button>
+<div class="main-container">
+  <div class="conections-container" *ngIf="applicants.length > 0">
+    <div *ngFor="let applicant of applicants">
+      <ng-container class="conection" *ngIf="!userConections.includes(applicant.id)">
+        {{applicant.name}} {{applicant.surname}} quiere hacer el TFG contigo!
+        <div class="buttons-container">
+          <button class="done" (click)="onAccepted(applicant.id)">
+            <mat-icon>done</mat-icon>
+          </button>
+          <button class="close" (click)="onRejected(applicant.id)">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="conections-container" *ngIf="applicants.length <= 0">
+    No tienes ninguna nueva conexión por ahora!
+  </div>
+
+  <div class="group-button-container">
+    <button routerLink="/grupo">Ir a grupos</button>
+  </div>
+</div>

@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { of, Observable } from 'rxjs'
+import { Observable } from 'rxjs'
 import { User } from '../../model/User';
-import { USER_DATA } from '../../model/mock-user-list';
 import { HttpClient } from '@angular/common/http';
-import { Token } from '@angular/compiler';
 import { environment } from 'src/environments/environment';
+import { LoginService } from 'src/app/login/login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +13,7 @@ export class UserService {
 
   url = environment.urlService +'/user';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private loginService: LoginService) { }
 
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.url)
@@ -24,12 +23,17 @@ export class UserService {
     return this.http.post<User>(this.url + '/register', {email, password, name, surname, degree, description})
   }
   getUserByName(name: string): User {
-    return USER_DATA.filter(user => user.name === name)[0];
+    //return USER_DATA.filter(user => user.name === name)[0];
+    return new User();
   }
-  setToken(Token: Token) {
-    // Create a JSON Web Token (JWT)
-    // Return the token string
+
+  acceptUserConection(conectionUserId: number) : Observable<User> {
+    return this.http.put<User>(this.url + '/conections/' + this.loginService.getUserId(), {conectionUserId});
   }
-}
+
+  getUserConections() : Observable<number[]> {
+    return this.http.get<number[]>(this.url + '/conections/' + this.loginService.getUserId())
+  }
+ }
 
 

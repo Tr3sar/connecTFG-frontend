@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ConexionListComponent } from './conexion-list/conexion-list.component';
 
 import { RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -12,7 +13,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    MatIconModule
   ]
 })
 export class ConexionesModule { }

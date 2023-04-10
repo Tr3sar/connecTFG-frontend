@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/core/model/User';
+import { UserService } from 'src/app/core/services/user/user.service';
+import { PublicationService } from 'src/app/feed/publication.service';
 
 @Component({
   selector: 'app-conexion-list',
@@ -7,9 +10,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConexionListComponent implements OnInit {
 
-  constructor() { }
+  applicants: User[] = [];
+  userConections: number[] = [];
+
+  constructor(private publicationService: PublicationService, private userService: UserService) { }
 
   ngOnInit(): void {
+
+    this.userService.getUserConections().subscribe(
+      conections => {
+        this.userConections = conections;
+        console.log('Connections', conections)
+      }
+    )
+
+    this.publicationService.getApplicantsToUser().subscribe(
+      applicants => {
+        this.applicants = applicants;
+        console.log('Applicants', applicants)
+      }
+    )
+  }
+
+  onAccepted(id: number) {
+    this.userService.acceptUserConection(id).subscribe(
+      res => this.ngOnInit()
+    );
+  }
+
+  onRejected(id: number) {
+    this.publicationService.rejectApplicant(id).subscribe(
+      res => this.ngOnInit()
+    )
   }
 
 }
