@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of, Observable } from 'rxjs'
+import { Observable } from 'rxjs'
 import { Group } from './model/Group';
 import { HttpClient } from '@angular/common/http';
 import { Message } from './model/Message';
