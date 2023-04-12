@@ -6,12 +6,14 @@ import { GrupoListComponent } from './grupo/grupo-list/grupo-list.component';
 import { LoginComponent } from './login/login.component';
 
 import { AuthGuard } from './core/guards/auth.guard'
+import { NotificatonListComponent } from './notifications/notificaton-list/notificaton-list.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "login", pathMatch: "full"},
   {path: "feed",component: PublicationListComponent, canActivate: [AuthGuard] },
   {path: "conexiones",component: ConexionListComponent, canActivate: [AuthGuard]},
   {path: "grupo",component: GrupoListComponent, canActivate: [AuthGuard]},
+  {path: "notifications",component: NotificatonListComponent, canActivate: [AuthGuard]},
 
   {path: "login",component: LoginComponent},
   {path:"**", redirectTo:""}
