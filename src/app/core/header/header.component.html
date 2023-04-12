@@ -24,7 +24,9 @@
             </div>
 
             <div class="right">
-                <button mat-button><mat-icon class="material-symbols-outlined">notifications</mat-icon></button>
+                <button mat-button>
+                    <mat-icon class="material-symbols-outlined" [matBadge]="notificationsCount" routerLink="/notifications">notifications</mat-icon>
+                </button>
                 <button mat-button><mat-icon class="material-symbols-outlined">person</mat-icon></button>
             </div>
         </mat-toolbar-row>

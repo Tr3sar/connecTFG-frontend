@@ -8,6 +8,8 @@ import { LoginService } from 'src/app/login/login.service';
 })
 export class HeaderComponent implements OnInit {
 
+  notificationsCount = 0;
+
   constructor(public loginService: LoginService) { }
 
   ngOnInit(): void {
