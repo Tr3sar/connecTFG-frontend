@@ -1,0 +1,11 @@
+.main-container{
+    margin: 1rem;
+    .notification{
+        border: 1px solid var(--black);
+        border-radius: 0.25rem;
+
+        padding: 0.25rem;
+        
+        margin-bottom: 0.5rem;
+    }
+}

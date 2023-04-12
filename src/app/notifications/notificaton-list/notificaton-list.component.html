@@ -1,1 +1,13 @@
-<p>notificaton-list works!</p>
+<div class="main-container">
+    <div *ngFor="let notification of notifications" class="notification">
+        {{notification.message}}
+
+        <button mat-button (click)="deleteNotification(notification.id)">
+            <mat-icon class="material-symbols-outlined">delete</mat-icon>
+        </button>
+    </div>
+
+    <div *ngIf="notifications.length <= 0">
+        De momento no tienes notificaciones!
+    </div>
+</div>

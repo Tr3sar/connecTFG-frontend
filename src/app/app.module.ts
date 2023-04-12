@@ -9,11 +9,11 @@ import { FeedModule } from './feed/feed.module';
 import { GrupoModule } from './grupo/grupo.module';
 import { LoginModule } from './login/login.module';
 import { NotificatonListComponent } from './notifications/notificaton-list/notificaton-list.component';
+import { NotificationsModule } from './notifications/notifications.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NotificatonListComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +23,8 @@ import { NotificatonListComponent } from './notifications/notificaton-list/notif
     ConexionesModule,
     FeedModule,
     GrupoModule,
-    LoginModule
+    LoginModule,
+    NotificationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/login/login.service';
+import { Notification } from 'src/app/notifications/model/Notification';
+import { NotificationService } from 'src/app/notifications/notification.service';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +10,16 @@ import { LoginService } from 'src/app/login/login.service';
 })
 export class HeaderComponent implements OnInit {
 
-  notificationsCount = 0;
+  notifications: Notification[] = []
 
-  constructor(public loginService: LoginService) { }
+  constructor(public loginService: LoginService, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
+    this.notificationService.getNotifications().subscribe(
+      notifications => {
+        this.notifications = notifications;
+      }
+    )
   }
 
 }
