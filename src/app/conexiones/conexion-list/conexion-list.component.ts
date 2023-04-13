@@ -20,14 +20,12 @@ export class ConexionListComponent implements OnInit {
     this.userService.getUserConections().subscribe(
       conections => {
         this.userConections = conections;
-        console.log('Connections', conections)
       }
     )
 
     this.publicationService.getApplicantsToUser().subscribe(
       applicants => {
         this.applicants = applicants;
-        console.log('Applicants', applicants)
       }
     )
   }
