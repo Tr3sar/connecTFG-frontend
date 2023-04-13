@@ -4,6 +4,7 @@ import { Group } from './model/Group';
 import { HttpClient } from '@angular/common/http';
 import { Message } from './model/Message';
 import { environment } from 'src/environments/environment';
+import { LoginService } from '../login/login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class GrupoService {
 
   private url: string = environment.urlService + '/group'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private loginService: LoginService) { }
 
   getAllGroups() : Observable<Group[]>{
     return this.http.get<Group[]>(this.url);
@@ -35,7 +36,8 @@ export class GrupoService {
     return this.http.get<Message[]>(this.url + '/messages/' + id);
   }
 
-  getGroupsFromUser(userId: number) : Observable<Group[]>{
-    return this.http.get<Group[]>(this.url + '/groups/' + userId);
+  getGroupsFromUser() : Observable<Group[]>{
+    console.log('UserId', this.loginService.getUserId())
+    return this.http.get<Group[]>(this.url + '/groups/' + this.loginService.getUserId());
   }
 }
