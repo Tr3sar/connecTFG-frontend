@@ -22,11 +22,8 @@ export class GrupoListComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-
-    let activeUserId = <number> <unknown>localStorage.getItem('userId');
-    
-    this.groupService.getGroupsFromUser(activeUserId).subscribe(
+  ngOnInit(): void {    
+    this.groupService.getGroupsFromUser().subscribe(
       groups => { this.groups = groups; }
     )
 
