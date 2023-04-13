@@ -1,14 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 :root{
-    --primary-color: #1c6e8c;
-    --dark-primary-color: #274156;
     --light-primary-color: #c1dff0;
+    --primary-color: #2f97c1;
+    --dark-primary-color: #1c6e8c;
+    --darker-primary-color: #274156;
 
-    --secondary-color: #2f97c1;
     --light-secondary-color: #d0ccd0;
 
     --accent-color: #605856;
     --light-accent-color: #6d5959;
+
+
+    --contrast-white: #cccccc;
+    --light-contrast-white: #f5f5f5;
 
     --white: #fbfcff;
     --black: #02111b;
