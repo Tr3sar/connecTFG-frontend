@@ -43,3 +43,8 @@
     }
   }
 }
+
+::ng-deep.mat-badge-content {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
