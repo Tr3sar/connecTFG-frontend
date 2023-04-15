@@ -12,6 +12,10 @@
           </button>
         </div>
       </div>
+
+      <div class="conections-container" *ngIf="userConections.includes(applicant.id)">
+        No tienes ninguna nueva conexión por ahora!
+      </div>
     </div>
   </div>
 
