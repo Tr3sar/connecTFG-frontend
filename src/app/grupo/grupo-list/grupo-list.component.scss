@@ -20,6 +20,8 @@
             
 
             background-color: rgba(var(--light-primary-color), 0.7);
+
+            border-right: 1px solid var(--black);
             .sidenav-header{
                 input{
                     width: 70%;
@@ -28,7 +30,7 @@
                 button {
                     background-color: transparent;
                     border-color: transparent;
-                    color: var(--accent-color);
+                    color: var(--black);
 
                     font-size: large;
                     font-weight: 530;
