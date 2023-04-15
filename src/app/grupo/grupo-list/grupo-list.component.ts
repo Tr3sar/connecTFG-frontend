@@ -17,14 +17,23 @@ export class GrupoListComponent implements OnInit {
 
   groups: Group[];
 
+  loading: boolean = false;
+
   constructor(private groupService: GrupoService, private socketService: SocketService, public dialog: MatDialog,
      private loginService: LoginService) {
 
   }
 
   ngOnInit(): void {    
+    this.loading = true;
     this.groupService.getGroupsFromUser().subscribe(
-      groups => { this.groups = groups; }
+      groups => { 
+        this.groups = groups; 
+        this.loading = false;
+      },
+      err => {
+        this.loading = false;
+      }
     )
 
     this.socketService.selectedGroupSubject.subscribe(
