@@ -26,6 +26,7 @@ export class LoginService {
     return this.httpClient.post<any>(`${this.url}/login`, { email, password })
       .pipe(
         tap(response => {
+          console.log('Setting user tokens')
           this.setActiveUserWithId(response.id);
           localStorage.setItem('token', response.token);
           localStorage.setItem('userId', response.id)
@@ -40,7 +41,8 @@ export class LoginService {
   }
   logout() {
     localStorage.removeItem('token');
-    localStorage.removeItem('userId')
+    localStorage.removeItem('userId');
+    localStorage.removeItem('activeUser')
   }
 
   getToken() {
@@ -58,12 +60,14 @@ export class LoginService {
   setActiveUserWithId(id: string) {
     console.log('id de la response', id);
     this.httpClient.get<User>(this.url + '/user/' + id).subscribe(res => {
-      console.log('RESPONSE', res)
-      this.activeUser = res;
+      res.password = '';
+      const userString = JSON.stringify(res);
+      localStorage.setItem('activeUser', userString);
     })
   }
 
-  getActiveUser() {
-    return this.activeUser
+  getActiveUser() : User {
+    const userString = localStorage.getItem('activeUser')!;
+    return JSON.parse(userString);
   } 
 }
