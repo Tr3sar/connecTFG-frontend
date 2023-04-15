@@ -9,7 +9,22 @@
             </div>
 
             <div class="groups-container">
-                <button *ngFor="let group of groups" (click)="onChangeSelectedGroup(group)">{{group.name}}</button>
+                <div class="group" *ngFor="let group of groups">
+                    <button (click)="onChangeSelectedGroup(group)" class="group-button">
+                        {{group.name}}
+                    </button>
+
+                    <button class="more_vert" [matMenuTriggerFor]="menu">
+                        <mat-icon class="material-symbols-outlined">more_vert</mat-icon>
+                    </button>
+
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="deleteGroup(group.id)">
+                            <mat-icon class="material-symbols-outlined">delete</mat-icon>
+                            <span>Borrar</span>
+                        </button>
+                    </mat-menu>
+                </div>
             </div>
         </mat-drawer>
         <mat-drawer-content>

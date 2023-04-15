@@ -23,11 +23,18 @@
 
             border-right: 1px solid var(--black);
             .sidenav-header{
+
+                display: flex;
+                align-items: center;
+
                 input{
                     width: 70%;
                 }
 
                 button {
+                    position: absolute;
+                    right: 0;
+
                     background-color: transparent;
                     border-color: transparent;
                     color: var(--black);
@@ -53,33 +60,68 @@
 
                 row-gap: 0.25rem;
 
-                button{
-                    //background-color: var(--light-primary-color);
+                .group{
                     background-color: transparent;
-                    color: var(--black);
-
-                    font-weight: 520;
-
                     border-color: transparent;
                     border-radius: 0.25rem;
 
                     padding: 0.25rem;
 
                     transition: all 0.3s ease-in-out;
+
+                    display: flex;
+                    align-items: center;
                 }
 
-                button:hover{
-                    cursor: pointer;
-
-                    filter: brightness(80%);
+                .group:hover{
+                    //filter: brightness(80%);
                     background-color: var(--light-secondary-color);
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                }
+
+                .group-button{
+                    background-color: transparent;
+                    border: transparent;
+
+                    height: 100%;
+                    width:90%;
+
+                    
+                    color: var(--black);
+                    font-weight: 520;
+                }
+
+                .more_vert{
+                    background-color: transparent;
+                    border-color: transparent;
+
+                    position: absolute;
+                    right: 0;
+                }
+
+                .more_vert:hover{
+                    cursor: pointer;
                 }
             }
         }
 
         mat-drawer-content{
             overflow: hidden;
+        }
+    }
+}
+
+::ng-deep.mat-menu-panel{
+    button{
+        display: flex;
+        align-items: center;
+        
+        span{
+            font-weight: 500;
+        }
+
+        mat-icon{
+            color: red !important;
         }
     }
 }

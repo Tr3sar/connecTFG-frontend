@@ -13,6 +13,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu'
+
 import { HttpClientModule } from '@angular/common/http';
 import { NgxLoadingModule } from 'ngx-loading';
 
@@ -38,7 +40,8 @@ import { SocketService } from '../core/services/socket/socket.service';
     MatChipsModule,
     MatIconModule,
     HttpClientModule,
-    NgxLoadingModule
+    NgxLoadingModule,
+    MatMenuModule
   ],
   providers: [
     SocketService,

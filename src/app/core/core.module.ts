@@ -15,12 +15,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { SocketService } from './services/socket/socket.service';
+import { DialogConfirmationComponent } from './dialog-confirmation/dialog-confirmation.component';
 
 
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    DialogConfirmationComponent
   ],
   imports: [
     CommonModule,

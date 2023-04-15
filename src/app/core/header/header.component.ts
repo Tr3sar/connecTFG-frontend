@@ -15,11 +15,13 @@ export class HeaderComponent implements OnInit {
   constructor(public loginService: LoginService, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
-    this.notificationService.getNotifications().subscribe(
-      notifications => {
-        this.notifications = notifications;
-      }
-    )
+    if (this.loginService.isAuthenticated()) {
+      this.notificationService.getNotifications().subscribe(
+        notifications => {
+          this.notifications = notifications;
+        }
+      )
+    }
   }
 
 }

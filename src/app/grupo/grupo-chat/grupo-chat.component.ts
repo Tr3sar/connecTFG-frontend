@@ -7,6 +7,7 @@ import { Group } from '../model/Group';
 import { Message } from '../model/Message';
 import { GrupoEditComponent } from '../grupo-edit/grupo-edit.component';
 import { MatDialog } from '@angular/material/dialog';
+import { LoginService } from 'src/app/login/login.service';
 
 @Component({
   selector: 'app-grupo-chat',
@@ -20,29 +21,38 @@ export class GrupoChatComponent implements OnInit {
   messageToSend: string;
   messages: string[] = [];
 
-  userExample: User;
+  loading: boolean = false;
 
-  constructor(private grupoService: GrupoService, private userService: UserService, private socketService: SocketService,
+  constructor(private grupoService: GrupoService, private socketService: SocketService, private loginService: LoginService,
               private dialog: MatDialog) { }
 
   ngOnInit(): void {
 
-    this.userService.getAllUsers().subscribe(
-      users => this.userExample = users[1]
-    );
+    this.loading = true;
 
     this.socketService.getSelectedGroup().subscribe(group => {
       this.selectedGroup = group;
 
-      if (this.selectedGroup == null) { return ; }
+      if (this.selectedGroup == null) { 
+        this.loading = false;
+        return ;
+       }
 
       this.grupoService.getMessagesFromGroup(this.selectedGroup.id).subscribe(messages => {
         this.messages = messages.map(message => message.text);
+        this.loading = false;
       })
+    },
+    err => {
+      this.loading = false;
     })
 
     this.socketService.getMessages().subscribe(message => {
       this.messages.push(message)
+      this.loading = false;
+    },
+    err => {
+      this.loading = false;
     })
   }
 
@@ -50,7 +60,7 @@ export class GrupoChatComponent implements OnInit {
     if (this.messageToSend.trim() == '') { return; }
     if (this.selectedGroup == null) { return ; }
 
-    this.grupoService.createMessage(this.selectedGroup.id, this.userExample.id, this.messageToSend).subscribe(
+    this.grupoService.createMessage(this.selectedGroup.id, this.loginService.getUserId()!!, this.messageToSend).subscribe(
       response => {
         console.log('Response al crear mensaje', response)
       }
@@ -66,6 +76,9 @@ export class GrupoChatComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.ngOnInit();
+    },
+    err => {
+      this.loading = false;
     });
   }
 

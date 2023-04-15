@@ -4,7 +4,7 @@ import { Group } from '../model/Group';
 import { MatDialog } from '@angular/material/dialog';
 import { GrupoEditComponent } from '../grupo-edit/grupo-edit.component';
 import { SocketService } from 'src/app/core/services/socket/socket.service';
-import { LoginService } from 'src/app/login/login.service';
+import { DialogConfirmationComponent } from 'src/app/core/dialog-confirmation/dialog-confirmation.component';
 
 @Component({
   selector: 'app-grupo-list',
@@ -19,8 +19,7 @@ export class GrupoListComponent implements OnInit {
 
   loading: boolean = false;
 
-  constructor(private groupService: GrupoService, private socketService: SocketService, public dialog: MatDialog,
-     private loginService: LoginService) {
+  constructor(private groupService: GrupoService, private socketService: SocketService, public dialog: MatDialog) {
 
   }
 
@@ -62,5 +61,22 @@ export class GrupoListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.ngOnInit();
     });
+  }
+
+  deleteGroup(id : number) {
+    const dialogRef = this.dialog.open(DialogConfirmationComponent, {
+      data: { 
+        title: "Eliminar grupo",
+        description: "Atención! Si borra el grupo se perderán sus datos.<br> ¿Desea eliminar el grupo?"
+      }
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.groupService.deleteGroupById(id).subscribe(
+          res => this.ngOnInit()
+        )
+      }
+    })
   }
 }

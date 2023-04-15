@@ -45,7 +45,6 @@ export class GrupoEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('grup enviat', this.data.group)
     if (this.data.group != null) {
       this.group = Object.assign({}, this.data.group);
     }

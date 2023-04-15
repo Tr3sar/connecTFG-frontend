@@ -9,7 +9,7 @@
 
     .info-container{
         height: 2rem;
-        width: 100%;
+        width: calc(100% - 0.6rem);
         position: absolute;
         top: 0;
 
@@ -17,6 +17,8 @@
         border-radius: 0 0 0.5rem 0.5rem;
 
         background-color: var(--primary-color);
+
+        margin-left: 0.25rem;
 
         p{
             padding: 0.5rem;
@@ -61,6 +63,9 @@
         border-radius: 1.5rem;
 
         background-color: var(--white);
+
+        display: flex;
+        align-items: center;
 
         input{
             background-color: transparent;
