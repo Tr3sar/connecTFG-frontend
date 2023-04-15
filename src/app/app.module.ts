@@ -8,8 +8,8 @@ import { ConexionesModule } from './conexiones/conexiones.module';
 import { FeedModule } from './feed/feed.module';
 import { GrupoModule } from './grupo/grupo.module';
 import { LoginModule } from './login/login.module';
-import { NotificatonListComponent } from './notifications/notificaton-list/notificaton-list.component';
 import { NotificationsModule } from './notifications/notifications.module';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,10 @@ import { NotificationsModule } from './notifications/notifications.module';
     FeedModule,
     GrupoModule,
     LoginModule,
-    NotificationsModule
+    NotificationsModule,
+    NgxLoadingModule.forRoot({
+      fullScreenBackdrop: true
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
