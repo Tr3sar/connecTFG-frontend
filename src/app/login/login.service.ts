@@ -53,8 +53,8 @@ export class LoginService {
     localStorage.setItem('token', token);
   }
 
-  getUserId() {
-    return localStorage.getItem('userId')
+  getUserId() : number{
+    return <number><unknown>localStorage.getItem('userId')!!
   }
 
   setActiveUserWithId(id: string) {
@@ -68,6 +68,7 @@ export class LoginService {
 
   getActiveUser() : User {
     const userString = localStorage.getItem('activeUser')!;
+    console.log('ActiveUser', this.activeUser)
     return JSON.parse(userString);
   } 
 }
