@@ -26,20 +26,20 @@
       <mat-card-content>
         <p>
           {{post.content}}
-
         </p>
       </mat-card-content>
       <mat-card-actions>
         <button mat-button class="likear">LIKE</button>
-        <button mat-button class="comentar">COMMENT</button>
-        <button mat-button class="postular">POSTULAR</button>
+        <button mat-button class="comentar" (click)="onShowComments(post)">COMMENT</button>
+        <button mat-button class="postular" (click)="onPostularClicked(post)">POSTULAR</button>
       </mat-card-actions>
       <mat-card-footer>
         <small>{{post.createdAt | date:'medium'}}</small>
       </mat-card-footer>
     </mat-card>
   </div>
-  <mat-paginator (page)="loadPage($event)" [pageSizeOptions]="[5, 10]" [pageIndex]="pageNumber" [pageSize]="pageSize" [length]="totalElements" showFirstLastButtons></mat-paginator>
-  
+  <mat-paginator (page)="loadPage($event)" [pageSizeOptions]="[5, 10]" [pageIndex]="pageNumber" [pageSize]="pageSize"
+    [length]="totalElements" showFirstLastButtons></mat-paginator>
 </body>
+
 </html>
