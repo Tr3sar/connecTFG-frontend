@@ -1,0 +1,182 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::ng-deep .mat-dialog-container {
+  background-color: #1566c9;
+  color: #1566c9;
+  ;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #1566c9;
+  border-color: #1566c9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.comment-card {
+  min-width: 60rem;
+  max-width: 60rem;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background-color: #c1dff0;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.08);
+  flex-direction: row;
+  margin-bottom: 20px;
+
+
+}
+
+.commentController {
+  display: flex;
+  flex-direction: column;
+  height: 40rem;
+  width: 80rem;
+  align-items: center;
+
+}
+
+.input {
+  min-width: 40rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 2px solid #1566c9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+
+  comment-input {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 1.4;
+    border: none;
+    border-radius: 4px;
+    background-color: transparent;
+    resize: none;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: all 0.2s;
+  }
+}
+
+.input input {
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  padding: 10px;
+  background-color: transparent;
+}
+
+.input button {
+  background-color: #1877f2;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.input button:hover {
+  background-color: #1566c9;
+}
+
+mat-card {
+  background-color: #c1dff0;
+}
+
+mat-card-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #c1dff0;
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.card-header {
+  padding: 5px;
+  border-bottom: 1px solid #c1dff0;
+  background-color: #c1dff0;
+
+  p {
+
+    font-size: 18px;
+    font-weight: bold;
+    color: #1877f2;
+  }
+}
+
+.card-content {
+  padding: 15px;
+  align-self: center;
+  align-content: center;
+  border-bottom: 1px solid #c1dff0;
+  font-size: 16px;
+  line-height: 1.4;
+  margin-bottom: 12px;
+
+  p {
+    display: flexbox;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    margin: 0 auto;
+    /* center content horizontally */
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    word-wrap: break-word;
+  }
+}
+
+.card-footer {
+  p {}
+}
+
+.list-group-item {
+  border: none;
+  margin-bottom: 10px;
+  flex-grow: 1;
+  /* Make the list items grow to fill the remaining space */
+  display: flex;
+  /* Use flexbox */
+  flex-direction: column;
+  /* Make the content flow from top to bottom */
+}
+
+.list-group-item .comment-message {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.list-group-item .comment-author {
+  margin-right: 10px;
+}
+
+
+.list-group-item .comment-author {
+  margin-right: 10px;
+}
