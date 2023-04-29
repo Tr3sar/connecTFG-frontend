@@ -51,11 +51,22 @@ export class LoginComponent implements OnInit {
   onSignUpClicked() {
   }
 
-  onSignUpLink() {
-  }
- 
   onSignInLink() {
+    var login = document.getElementById('formularioLogin');
+    if (login != null)
+      login.style.cssText = 'display:none;';
 
+    var signup = document.getElementById('formularioRegistro');
+    if (signup != null)
+      signup.style.cssText = 'display: initial;text-align: -webkit-center;width: 100%;margin-top: 2rem;';
+  }
+  onSignUpLink() {
+    var login = document.getElementById('formularioLogin');
+    if (login != null)
+      login.style.cssText = 'display: initial;text-align: -webkit-center;width: 100%;margin-top: 2rem;';
+    var signup = document.getElementById('formularioRegistro');
+    if (signup != null)
+      signup.style.cssText = 'display:none;'
   }
 
 }

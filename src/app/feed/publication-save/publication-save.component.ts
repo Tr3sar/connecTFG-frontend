@@ -10,8 +10,8 @@ import { Post } from '../model/post.model';
   styleUrls: ['./publication-save.component.scss']
 })
 export class PublicationSaveComponent implements OnInit {
-  post : Post
-  constructor(public dialogRef: MatDialogRef<PublicationSaveComponent>, @Inject(MAT_DIALOG_DATA) public data: any,  private publicationService: PublicationService, private loginService: LoginService) { }
+  post: Post
+  constructor(public dialogRef: MatDialogRef<PublicationSaveComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private publicationService: PublicationService, private loginService: LoginService) { }
 
   ngOnInit(): void {
     if (this.data.post != null) {
@@ -21,9 +21,9 @@ export class PublicationSaveComponent implements OnInit {
       this.post = new Post();
     }
   }
-  
+
   onClose() {
-  this.dialogRef.close();
+    this.dialogRef.close();
   }
 
   onSave() {

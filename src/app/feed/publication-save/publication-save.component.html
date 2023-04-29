@@ -1,25 +1,25 @@
 <div class="main-container">
 
-    
-    <form>
-        <h1>Crea tu Post de TFG!</h1>
-        <mat-form-field class="title">
-            <mat-label>Title</mat-label>
-            <textarea matInput type="text" id="Titulo" matInput placeholder="Título"
-              name="title"  [(ngModel)]="post.title" required></textarea>
-        </mat-form-field>
 
-        <mat-form-field class="content">
-            <mat-label>Content</mat-label>
-            <textarea matInput type="text" id="Content" matInput placeholder="Content" 
-              name="content"  [(ngModel)]="post.content" required></textarea>
-        </mat-form-field>
-      
-    </form>
-   
-    
-    <div class="buttons">
-        <button mat-stroked-button (click)="onClose()">Cerrar</button>
-        <button mat-flat-button color="primary" (click)="onSave()">Guardar</button>
-    </div>
+  <form>
+    <h1>Crea tu Post de TFG!</h1>
+    <mat-form-field class="title">
+      <mat-label>Title</mat-label>
+      <input matInput type="text" id="Titulo" matInput placeholder="Título" name="title" [(ngModel)]="post.title"
+        required>
+    </mat-form-field>
+
+    <mat-form-field class="content">
+      <mat-label>Content</mat-label>
+      <input matInput type="text" id="Content" matInput placeholder="Content" name="content" [(ngModel)]="post.content"
+        required>
+    </mat-form-field>
+
+  </form>
+
+
+  <div class="buttons">
+    <button mat-stroked-button (click)="onClose()">Cerrar</button>
+    <button mat-flat-button color="primary" (click)="onSave()">Guardar</button>
+  </div>
 </div>

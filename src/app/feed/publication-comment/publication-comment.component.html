@@ -1,0 +1,31 @@
+<html>
+
+<body>
+  <div class="commentController" ng-controller="commentController">
+    <mat-card-header>
+      <mat-card-title>{{post.title}}</mat-card-title>
+    </mat-card-header>
+    <div class="comment-card" *ngFor="let comment of post.comments">
+      <mat-card class="card">
+        <mat-card-header class="card-header">
+          <p>{{comment.author.name}} {{comment.author.surname}}</p>
+        </mat-card-header>
+        <mat-card-content class="card-content">
+          <p>{{comment.message}}</p>
+        </mat-card-content>
+        <mat-card-footer class="card-footer">
+          <p>{{comment.createdAt}}</p>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+    <div class="input">
+      <textarea class="comment-input" [(ngModel)]="commentToSend" placeholder="Haz tu comentario"></textarea>
+      <mat-placeholder>Placeholder</mat-placeholder>
+      <button (click)="createComment()">
+        <mat-icon class="material-symbols-outlined">Comment</mat-icon>
+      </button>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -6,6 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { PublicationService } from '../publication.service';
 import { PublicationSaveComponent } from '../publication-save/publication-save.component';
 import { MatDialog } from '@angular/material/dialog';
+import { LoginService } from 'src/app/login/login.service';
+import { PublicationCommentComponent } from '../publication-comment/publication-comment.component';
 
 @Component({
   selector: 'app-publication-list',
@@ -17,15 +19,15 @@ export class PublicationListComponent implements OnInit {
   pageNumber: number = 0;
   pageSize: number = 5;
   totalElements: number = 0;
-  
+
   posts: Post[];
   dataSource = new MatTableDataSource<Post>();
-  constructor(private publicationService: PublicationService, public dialog: MatDialog) { }
+  constructor(private publicationService: PublicationService, public dialog: MatDialog, private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.loadPage();
   }
-  
+
   loadPage(event?: PageEvent) {
 
     let pageable: Pageable = {
@@ -47,12 +49,31 @@ export class PublicationListComponent implements OnInit {
       this.pageNumber = data.pageable.pageNumber;
       this.pageSize = data.pageable.pageSize;
       this.totalElements = data.totalElements;
-      console.log(data)
     });
 
   }
+  onPostularClicked(post: Post) {
+    if (post.applicants == undefined) {
+      post.applicants = []
+    }
+    if (post.applicants.includes(this.loginService.getUserId())) {
+      this.publicationService.rejectApplicant(post.author.id).subscribe(res => { })
+    } else {
+      this.publicationService.addApplicant(post.id).subscribe(res => { })
+      console.log(post.applicants)
+    }
+    console.log(post)
+  }
+  onShowComments(post: Post) {
+    console.log(post)
+    const dialogRef = this.dialog.open(PublicationCommentComponent, {
+      data: { post }
 
-  onShowComments(): void {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+    });
   }
 
   onLike(): void {
@@ -62,5 +83,5 @@ export class PublicationListComponent implements OnInit {
     const dialogRef = this.dialog.open(PublicationSaveComponent, {
       data: {}
     });
-}
+  }
 }

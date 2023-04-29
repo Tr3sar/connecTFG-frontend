@@ -16,8 +16,8 @@
       <div class="left">
         <div class="content">
           <h2>Sign Up</h2>
-          <form method="post" [formGroup]="formularioRegistro">
-            <div class="form-group">
+          <form method="post" [formGroup]="formularioRegistro" (ngSubmit)="onSignUpClicked()">
+            <div class="form-group" id="formularioRegistro">
               <input type="text" id="NameRegistro" placeholder="Name">
               <input type="email" id="EmailRegistro" placeholder="Email">
               <input type="password" id="PasswordRegistro" placeholder="Password">
@@ -25,9 +25,6 @@
               <input type="degree" id="Degree" placeholder="Degree">
               <input type="description" id="Description" placeholder="Description">
             </div>
-            <div class="form-group"></div>
-            <div class="form-group"></div>
-            <div class="form-group"></div>
           </form>
           <button id="goLeft" class="off" (click)="onSignInLink()">Login</button>
           <button (click)="onSignUpClicked()">Sign up</button>
@@ -36,12 +33,12 @@
       <div class="right">
         <div class="content">
           <h2>Login</h2>
-          <form method="post" [formGroup]="formularioLogin" >
-            <div class="form-group">
+          <form method="post" [formGroup]="formularioLogin" (ngSubmit)="onSignInClicked()">
+            <div class="form-group" id="formularioLogin">
               <input type="text" formControlName="email" placeholder="Email">
               <input type="password" formControlName="password"  placeholder="Password">
             </div>
-            <button id="goRight" class="off" (click)="onSignUpLink">Sign Up</button>
+            <button id="goRight" class="off" (click)="onSignUpLink()">Sign Up</button>
             <button id="login" type="submit" (click)="onSignInClicked()">Login</button>
           </form>
         </div>
