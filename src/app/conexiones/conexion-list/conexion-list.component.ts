@@ -21,7 +21,9 @@ export class ConexionListComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUserConections().subscribe(
       conections => {
-        this.userConections = conections;
+        this.userConections = conections.map(user => user.id);
+        console.log('conections', conections)
+        console.log('userConnections', this.userConections);
       }
     )
 
