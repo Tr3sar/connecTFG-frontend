@@ -9,6 +9,7 @@ import {Observable, of} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { LoginService } from 'src/app/login/login.service';
 
 @Component({
   selector: 'app-grupo-edit',
@@ -21,7 +22,6 @@ export class GrupoEditComponent implements OnInit {
 
   group: Group;
 
-  //usersToAdd: User[] = [];
   filteredUsers: Observable<User[]>;
   allUsers: User[];
 
@@ -29,10 +29,10 @@ export class GrupoEditComponent implements OnInit {
   @ViewChild('userInput') userInput: ElementRef<HTMLInputElement>
 
   constructor(public dialogRef: MatDialogRef<GrupoEditComponent>, private groupService: GrupoService,
-              private userService: UserService, @Inject(MAT_DIALOG_DATA) public data: any) {
+              private userService: UserService, public loginService: LoginService, @Inject(MAT_DIALOG_DATA) public data: any) {
 
 
-     this.userService.getAllUsers().subscribe(
+     this.userService.getUserConections().subscribe(
       users => {
         this.allUsers = users;
         this.filteredUsers = of(users);
@@ -51,17 +51,25 @@ export class GrupoEditComponent implements OnInit {
     else {
       this.group = new Group();
       this.group.members = []
+    }    
+    
+    if (this.group.members.filter(member => member.id == this.loginService.getUserId()).length == 0) {
+      this.group.members.push(this.loginService.getActiveUser());
     }
   }
 
+
+  //useless?
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
 
-    const userValue = this.userService.getUserByName(value);
+    alert('add event grupo-edit')
+    console.log('eventValue', value);
 
-    if (userValue) {
-      //this.usersToAdd.push(userValue);
-      this.group.members.push(userValue)
+    
+    if (value) {
+      //this.usersToAdd.push(value);
+      //this.group.members.push(userValue)
     }
 
     // Clear the input value
@@ -71,11 +79,12 @@ export class GrupoEditComponent implements OnInit {
   }
 
   remove(user: User): void {
-    //const index = this.usersToAdd.indexOf(user);
-    const index = this.group.members.indexOf(user);
-    if (index >= 0) {
-      //this.usersToAdd.splice(index, 1);
-      this.group.members.splice(index, 1);
+    if (user.id === this.loginService.getUserId()) { return ; }
+
+    const indexGroup = this.group.members.indexOf(user);
+    
+    if(indexGroup >= 0) {
+      this.group.members.splice(indexGroup, 1);
     }
   }
 
@@ -83,10 +92,8 @@ export class GrupoEditComponent implements OnInit {
     const userValue = event.option.value
 
     if (!userValue) { alert('Ha habido un error'); return; }
-    //if (this.usersToAdd.includes(userValue)) { return ;}
     if (this.group.members.includes(userValue)) { return ; }
 
-    //this.usersToAdd.push(userValue);
     this.group.members.push(userValue);
     this.userInput.nativeElement.value = '';
     this.userCtrl.setValue(null);
@@ -99,6 +106,10 @@ export class GrupoEditComponent implements OnInit {
   }
 
   onClose() {
+    if (this.group.id != null) {
+      location.reload();
+    }
+    
     this.dialogRef.close();
   }
 
@@ -107,14 +118,7 @@ export class GrupoEditComponent implements OnInit {
     if (this.group.members == undefined) {
       this.group.members = [];
     }
-    
-    /* this.usersToAdd.forEach((user) => {
-      if (!this.group.members.includes(user)) {
-        this.group.members.push(user)
-      }
-    }) */
 
-    console.log('GRUPO EN SERVICE', this.group)
     this.groupService.saveGroup(this.group).subscribe(result => {
       location.reload()
       this.dialogRef.close();
