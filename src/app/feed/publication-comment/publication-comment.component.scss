@@ -9,14 +9,12 @@ html {
 }
 
 ::ng-deep .mat-dialog-container {
-  background-color: #1566c9;
   color: #1566c9;
-  ;
+  background-color: var(--bg-100);
 }
 
 body {
   overflow-x: hidden;
-  background-color: #1566c9;
   border-color: #1566c9;
   display: flex;
   flex-direction: column;
@@ -27,15 +25,13 @@ body {
 .comment-card {
   min-width: 60rem;
   max-width: 60rem;
+  background-color: var(--bg-200);
   margin-bottom: 20px;
   border-radius: 5px;
-  background-color: #c1dff0;
   border: 1px solid #e5e5e5;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.08);
   flex-direction: row;
   margin-bottom: 20px;
-
-
 }
 
 .commentController {
@@ -45,6 +41,14 @@ body {
   width: 80rem;
   align-items: center;
 
+  .comment-card {
+    .card-footer {
+      .p {
+        display: flex;
+        align-items: end;
+      }
+    }
+  }
 }
 
 .input {
@@ -55,7 +59,6 @@ body {
   align-items: center;
   background-color: #fff;
   border-radius: 5px;
-  border: 2px solid #1566c9;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 
@@ -101,13 +104,13 @@ body {
 }
 
 mat-card {
-  background-color: #c1dff0;
+  background-color: rgba(var(--accent-200));
 }
 
 mat-card-title {
   font-size: 24px;
   font-weight: bold;
-  color: #c1dff0;
+  color: var(--primary-100);
   margin-bottom: 20px;
   text-align: center;
   border-radius: 2px;
@@ -116,24 +119,22 @@ mat-card-title {
 .card-header {
   padding: 5px;
   border-bottom: 1px solid #c1dff0;
-  background-color: #c1dff0;
+  text-align: start;
 
   p {
-
     font-size: 18px;
     font-weight: bold;
-    color: #1877f2;
+    color: var(-text-100);
   }
 }
 
 .card-content {
   padding: 15px;
-  align-self: center;
-  align-content: center;
   border-bottom: 1px solid #c1dff0;
   font-size: 16px;
   line-height: 1.4;
   margin-bottom: 12px;
+  text-align: start;
 
   p {
     display: flexbox;
@@ -143,7 +144,6 @@ mat-card-title {
     line-height: 1.4;
     margin-bottom: 12px;
     margin: 0 auto;
-    /* center content horizontally */
     align-self: center;
     align-content: center;
     align-items: center;
@@ -152,19 +152,38 @@ mat-card-title {
   }
 }
 
+.likear {
+  background-color: transparent;
+
+  .material-symbols-outlined {
+    color: var(--accent-100);
+    fill: var(--accent-100);
+  }
+
+  .material-symbols-outlined:hover {
+    fill: var(--accent-100);
+    color: var(--accent-100);
+    background-color: transparent;
+    cursor: pointer
+  }
+}
+
+.likear:hover {
+  fill: none;
+  color: transparent;
+  background-color: transparent;
+}
+
 .card-footer {
-  p {}
+  text-align: end;
 }
 
 .list-group-item {
   border: none;
   margin-bottom: 10px;
   flex-grow: 1;
-  /* Make the list items grow to fill the remaining space */
   display: flex;
-  /* Use flexbox */
   flex-direction: column;
-  /* Make the content flow from top to bottom */
 }
 
 .list-group-item .comment-message {
@@ -175,7 +194,6 @@ mat-card-title {
 .list-group-item .comment-author {
   margin-right: 10px;
 }
-
 
 .list-group-item .comment-author {
   margin-right: 10px;

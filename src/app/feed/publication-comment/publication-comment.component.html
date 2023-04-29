@@ -13,16 +13,20 @@
         <mat-card-content class="card-content">
           <p>{{comment.message}}</p>
         </mat-card-content>
+          <mat-card-actions>
+            <button mat-button class="likear">
+              <mat-icon class="material-symbols-outlined" >favorite</mat-icon>
+            </button>
+          </mat-card-actions>
         <mat-card-footer class="card-footer">
-          <p>{{comment.createdAt}}</p>
+          <p>{{comment.createdAt| date:'medium'}}</p>
         </mat-card-footer>
       </mat-card>
     </div>
     <div class="input">
-      <textarea class="comment-input" [(ngModel)]="commentToSend" placeholder="Haz tu comentario"></textarea>
-      <mat-placeholder>Placeholder</mat-placeholder>
+      <input class="comment-input" [(ngModel)]="commentToSend" placeholder="Haz tu comentario">
       <button (click)="createComment()">
-        <mat-icon class="material-symbols-outlined">Comment</mat-icon>
+        <mat-icon color="red" class="material-symbols-outlined" >Comment</mat-icon>
       </button>
     </div>
   </div>
