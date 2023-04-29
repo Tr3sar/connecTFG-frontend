@@ -15,7 +15,7 @@
 }
 
 p {
-  text-align: center;
+  text-align: justify;
 }
 
 mat-button-toggle-group {
@@ -57,7 +57,7 @@ div[ng-controller='FeedController'] {
 .createPost {
   margin-top: 50px;
   margin-bottom: 20px;
-  background-color: #8C92AC;
+  background-color: var(--bg-300);
   align-items: center;
   float: initial;
   align-self: center;
@@ -107,15 +107,15 @@ div[ng-controller='FeedController'] {
 }
 
 .post-card {
-  background-color: #8C92AC;
+  background-color: var(--bg-200);
   align-items: center;
   margin-bottom: 32px;
   position: flex;
   max-width: 800px;
-  /* adjust the value to your liking */
   margin: auto;
   margin-bottom: 30px;
   margin-top: 20px;
+  border: 3px solid var(--primary-200);
 }
 
 .no-image {
@@ -170,33 +170,49 @@ div[ng-controller='FeedController'] {
 }
 
 .postular {
-  background-color: #8C92AC;
+  background-color: var(--bg-200);
   align-items: end;
   float: right;
   border-radius: 6.25rem;
+  border-width: 1rem;
+  border-color: black;
 }
 
 .postular:hover {
-  background-color: #1F75FE;
+  background-color: var(--primary-200);
+  border-color: black;
   cursor: pointer
 }
 
 .likear {
-  background-color: #8C92AC;
+  .material-symbols-outlined {
+    color: var(--accent-100);
+    background-color: transparent;
+  }
+
+  .material-symbols-outlined:hover {
+    color: var(--accent-100);
+    background-color: transparent;
+    cursor: pointer
+  }
 }
 
 .likear:hover {
-  background-color: #1F75FE;
-  cursor: pointer
+  background-color: transparent;
 }
 
 .comentar {
-  background-color: #8C92AC
+  .material-symbols-outlined {
+    border-radius: 6.25rem;
+    background-color: var(--bg-200)
+  }
 }
 
-.comentar:hover {
-  background-color: #1F75FE;
-  cursor: pointer
+.comentar {
+  .material-symbols-outlined:hover {
+    color: var(--primary-200);
+    cursor: pointer
+  }
 }
 
 .panel {
