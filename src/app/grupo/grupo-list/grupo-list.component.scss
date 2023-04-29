@@ -8,20 +8,20 @@
         height: 75vh;
         width: 100%;
 
-        background-image: url(../../../assets/images/chat-background.jpg);
-        background-size: 50%;
+        /* background-image: url(../../../assets/images/chat-background.jpg);
+        background-size: 50%; */
 
-        border: 1px solid var(--black);
+        border: 1px solid var(--text-100);
         mat-drawer{
             height: auto;
 
             padding: 0.5rem;
 
-            
+            background-color: var(--bg-200);
+/* 
+            background-color: rgba(var(--primary-200), 0.7); */
 
-            background-color: rgba(var(--light-primary-color), 0.7);
-
-            border-right: 1px solid var(--black);
+            border-right: 1px solid var(--text-100);
             .sidenav-header{
 
                 display: flex;
@@ -37,7 +37,7 @@
 
                     background-color: transparent;
                     border-color: transparent;
-                    color: var(--black);
+                    color: var(--text-100);
 
                     font-size: large;
                     font-weight: 530;
@@ -75,8 +75,13 @@
 
                 .group:hover{
                     //filter: brightness(80%);
-                    background-color: var(--light-secondary-color);
+                    background-color: var(--primary-100);
+                    color: var(--bg-100);
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+                    *{
+                        color: var(--bg-100);
+                    }
                 }
 
                 .group-button{
@@ -87,7 +92,7 @@
                     width:90%;
 
                     
-                    color: var(--black);
+                    color: var(--text-100);
                     font-weight: 520;
                 }
 
