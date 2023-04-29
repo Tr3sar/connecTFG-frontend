@@ -4,25 +4,22 @@
     
     margin-right: 10rem;
 
-    background-image: url(../../../assets/images/chat-background.jpg);
-    background-size: 50%;
-
     .info-container{
         height: 2rem;
-        width: calc(100% - 0.6rem);
+        width: calc(100%);
         position: absolute;
         top: 0;
 
-        border: 1px solid var(--text-100);
+        /* border: 1px solid var(--text-100); */
         border-radius: 0 0 0.5rem 0.5rem;
 
-        background-color: var(--primary-200);
+        background-color: var(--primary-100);
+        color: var(--bg-100);
 
-        margin-left: 0.25rem;
+        /* margin-left: 0.25rem; */
 
         p{
             padding: 0.5rem;
-            color: var(--text-100);
             font-weight: 550;
         }
     }
@@ -71,6 +68,7 @@
             background-color: transparent;
 
             height: 1.50rem;
+            width: 96%;
 
             margin-left: 0.75rem;
 

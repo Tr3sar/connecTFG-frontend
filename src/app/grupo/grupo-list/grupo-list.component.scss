@@ -2,26 +2,23 @@
     margin-left: 1rem;
     margin-right: 1rem;
     margin-top: 1rem;
+    margin-bottom: 1rem;
     
 
     mat-drawer-container{
-        height: 75vh;
+        height: calc(100% - 10rem);
         width: 100%;
 
-        /* background-image: url(../../../assets/images/chat-background.jpg);
-        background-size: 50%; */
+        border-radius: 1rem;
 
-        border: 1px solid var(--text-100);
         mat-drawer{
             height: auto;
 
             padding: 0.5rem;
 
-            background-color: var(--bg-200);
-/* 
-            background-color: rgba(var(--primary-200), 0.7); */
+            background-color: var(--bg-200); 
 
-            border-right: 1px solid var(--text-100);
+            border-right: 1px solid var(--bg-100);
             .sidenav-header{
 
                 display: flex;
@@ -48,7 +45,8 @@
                 button:hover{
                     cursor: pointer;
 
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                    color: var(--primary-100);
                 }
 
             }
@@ -112,6 +110,7 @@
 
         mat-drawer-content{
             overflow: hidden;
+            background-color: var(--bg-200);
         }
     }
 }
