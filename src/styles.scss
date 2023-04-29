@@ -1,21 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 :root{
-    --light-primary-color: #c1dff0;
-    --primary-color: #2f97c1;
-    --dark-primary-color: #1c6e8c;
-    --darker-primary-color: #274156;
-
-    --light-secondary-color: #d0ccd0;
-
-    --accent-color: #605856;
-    --light-accent-color: #6d5959;
-
-
-    --contrast-white: #cccccc;
-    --light-contrast-white: #f5f5f5;
-
-    --white: #fbfcff;
-    --black: #02111b;
+    --primary-100:#3F51B5;
+    --primary-200:#757de8;
+    --primary-300:#dedeff;
+    --accent-100:#FF4081;
+    --accent-200:#ffe4ff;
+    --text-100:#333333;
+    --text-200:#5c5c5c;
+    --bg-100:#F5F5F5;
+    --bg-200:#ebebeb;
+    --bg-300:#c2c2c2;
 }
 
 html, body { height: 100%; }
