@@ -1,10 +1,10 @@
 .main-container{
   mat-toolbar > mat-toolbar-row{
     height: auto;
-    background-color: white;
+    background-color: var(--bg-100);
 
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--text-100);
 
     img{
       height: 5rem;
@@ -32,7 +32,7 @@
 
         button:hover{
           span{
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid var(--text-100);
           }
         }
       }
@@ -45,6 +45,6 @@
 }
 
 ::ng-deep.mat-badge-content {
-  background-color: var(--primary-color);
-  color: var(--white);
+  background-color: var(--accent-100);
+  color: var(--bg-100);
 }
