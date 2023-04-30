@@ -57,7 +57,7 @@ export class PublicationListComponent implements OnInit {
 
   }
   onPostularClicked(post: Post) {
-    if (post.closed=true) {
+    if (post.closed==true) {
       alert('Post is Closed. Postularse is not available');
     }else{
       if (post.applicants == undefined) {
