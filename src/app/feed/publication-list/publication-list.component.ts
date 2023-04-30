@@ -49,7 +49,6 @@ export class PublicationListComponent implements OnInit {
     }
 
     this.publicationService.getAllPosts(this.pageable, this.filterValue).subscribe(data => {
-      console.log(data)
       this.posts = data.content;
       this.pageNumber = data.pageable.pageNumber;
       this.pageSize = data.pageable.pageSize;

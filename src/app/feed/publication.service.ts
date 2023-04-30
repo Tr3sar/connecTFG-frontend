@@ -18,7 +18,6 @@ export class PublicationService {
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
   getAllPosts(pageable: Pageable, filterValue: string): Observable<PostPage> {
-    console.log("Value: ", filterValue)
     return this.http.post<PostPage>(this.url, { pageable: pageable, filterValue: filterValue });
   }
 
