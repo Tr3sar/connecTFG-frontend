@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { PublicationService } from '../publication.service';
 import { PublicationSaveComponent } from '../publication-save/publication-save.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar} from '@angular/material/snack-bar';
 import { LoginService } from 'src/app/login/login.service';
 import { PublicationCommentComponent } from '../publication-comment/publication-comment.component';
 
@@ -31,12 +32,11 @@ export class PublicationListComponent implements OnInit {
     }]
   }
 
-  constructor(private publicationService: PublicationService, public dialog: MatDialog, private loginService: LoginService) { }
+  constructor(private publicationService: PublicationService, private snackBar: MatSnackBar,public dialog: MatDialog, private loginService: LoginService) { }
 
   ngOnInit(): void {
-    this.onValChange()
     this.loadPage();
-    
+    this.onValChange()
   }
 
   loadPage(event?: PageEvent) {
@@ -58,7 +58,9 @@ export class PublicationListComponent implements OnInit {
   }
   onPostularClicked(post: Post) {
     if (post.closed==true) {
-      alert('Post is Closed. Postularse is not available');
+      this.snackBar.open('Esta oferta fue cerrada! Ya no se reciben postulaciones.', 'Cerrar', {
+        duration: 3000
+      });
     }else{
       if (post.applicants == undefined) {
         post.applicants = []

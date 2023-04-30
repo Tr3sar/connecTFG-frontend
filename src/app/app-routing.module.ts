@@ -14,7 +14,6 @@ const routes: Routes = [
   {path: "conexiones",component: ConexionListComponent, canActivate: [AuthGuard]},
   {path: "grupo",component: GrupoListComponent, canActivate: [AuthGuard]},
   {path: "notifications",component: NotificatonListComponent, canActivate: [AuthGuard]},
-
   {path: "login",component: LoginComponent},
   {path:"**", redirectTo:""}
 ];

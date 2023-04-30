@@ -6,6 +6,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { PublicationSaveComponent } from './publication-save/publication-save.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -32,6 +33,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatPaginatorModule,
     NgxPaginationModule,
     HttpClientModule,
+    MatSnackBarModule,
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
