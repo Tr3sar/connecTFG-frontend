@@ -26,7 +26,7 @@ export class PublicationListComponent implements OnInit {
     pageNumber: this.pageNumber,
     pageSize: this.pageSize,
     sort: [{
-      property: 'id',
+      property: 'createdAt',
       direction: 'ASC'
     }]
   }
