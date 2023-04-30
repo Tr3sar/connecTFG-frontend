@@ -6,24 +6,29 @@
     padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--bg-300);
 
-    img{
-      height: 5rem;
+    .left{
+      width: 20%;
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      img{
+        height: 5rem;
+      }
     }
 
     .center{
-      margin: 0 auto;
-      width: 20rem;
+      width: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      
 
-      /* input{
-        border-radius: 20px;
-        border: 1px solid black;
-
+      mat-form-field{
         width: 20rem;
-        height: 1.5rem;
-      } */
+      }
 
       .under{
-        width: 20rem;
         text-align: center;
 
         button{
@@ -38,9 +43,11 @@
       }
     }
 
-    /* .right{
-
-    } */
+    .right{
+      width: 20%;
+      display: flex;
+      justify-content: right;
+    } 
   }
 }
 
