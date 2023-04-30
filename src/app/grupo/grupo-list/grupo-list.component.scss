@@ -117,13 +117,15 @@
     button{
         display: flex;
         align-items: center;
+
+        height: 1.75rem;
         
         span{
             font-weight: 500;
         }
 
         mat-icon{
-            color: red !important;
+            color: var(--accent-100) !important;
         }
     }
 }

@@ -68,18 +68,4 @@ export class GrupoChatComponent implements OnInit {
     this.socketService.sendMessage(this.selectedGroup.id, this.messageToSend)
     this.messageToSend = '';
   }
-
-  onEditGroup() {
-    const dialogRef = this.dialog.open(GrupoEditComponent, {
-      data: { group: this.selectedGroup }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.ngOnInit();
-    },
-    err => {
-      this.loading = false;
-    });
-  }
-
 }

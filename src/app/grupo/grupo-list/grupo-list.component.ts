@@ -79,4 +79,17 @@ export class GrupoListComponent implements OnInit {
       }
     })
   }
+
+  editGroup(group: Group) {
+    const dialogRef = this.dialog.open(GrupoEditComponent, {
+      data: { group: group }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+    },
+    err => {
+      this.loading = false;
+    });
+  }
 }

@@ -19,6 +19,10 @@
                     </button>
 
                     <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="editGroup(group)">
+                            <mat-icon class="material-symbols-outlined">edit</mat-icon>
+                            <span>Editar</span>
+                        </button>
                         <button mat-menu-item (click)="deleteGroup(group.id)">
                             <mat-icon class="material-symbols-outlined">delete</mat-icon>
                             <span>Borrar</span>
