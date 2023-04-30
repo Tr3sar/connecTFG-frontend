@@ -4,6 +4,7 @@
     background-color: white;
 
     padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
     border-bottom: 1px solid var(--bg-300);
 
     .left{
@@ -20,12 +21,39 @@
       width: 60%;
       display: flex;
       justify-content: center;
+      text-align: center;
       align-items: center;
-      flex-direction: column;
-      
+      flex-direction: column;      
 
-      mat-form-field{
+      .input-container{
         width: 20rem;
+        height: 2rem;
+
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+
+        mat-icon{
+          position: relative;
+
+          left: 2rem;
+        }
+
+        input{
+          height: 100%;
+          width: 100%;
+
+          padding-left: 2.5rem;
+          padding-right: 2.5rem;
+
+          border-radius: 1rem;
+
+          margin-right: 1rem;
+
+          caret-color: var(--accent-100);
+        }
+
       }
 
       .under{
