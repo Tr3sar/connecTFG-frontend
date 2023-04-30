@@ -13,12 +13,12 @@
 
                 <div class="under">
                     <button mat-button routerLink="/feed">
-                        <span>
+                        <span [ngStyle]="{'border-bottom': currentUrl.includes('/feed') ? '2px solid red' : 'none'}">
                             Inicio
                         </span>
                     </button>
                     <button mat-button routerLink="/conexiones">
-                        <span>
+                        <span [ngStyle]="{'border-bottom': !currentUrl.includes('/feed') ? '2px solid red' : 'none'}">
                             Conexiones
                         </span>
                     </button>
