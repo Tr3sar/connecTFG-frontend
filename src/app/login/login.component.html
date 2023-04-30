@@ -1,47 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <title>Login</title>
-  <link rel="stylesheet" href="login.component.scss">
 </head>
+
 <body>
-  <div id="back">
-    <div class="backRight"></div>
-    <div class="backLeft"></div>
-  </div>
-  <div id="slideBox">
-    <div class="topLayer">
-      <div class="left">
-        <div class="content">
-          <h2>Sign Up</h2>
-          <form method="post" [formGroup]="formularioRegistro" (ngSubmit)="onSignUpClicked()">
-            <div class="form-group" id="formularioRegistro">
-              <input type="text" id="NameRegistro" placeholder="Name">
-              <input type="email" id="EmailRegistro" placeholder="Email">
-              <input type="password" id="PasswordRegistro" placeholder="Password">
-              <input type="surname" id="Surname" placeholder="Surname">
-              <input type="degree" id="Degree" placeholder="Degree">
-              <input type="description" id="Description" placeholder="Description">
-            </div>
-          </form>
-          <button id="goLeft" class="off" (click)="onSignInLink()">Login</button>
-          <button (click)="onSignUpClicked()">Sign up</button>
+  <div class="container">
+    <div class="form register-form">
+      <h2>Registrate y encuentra a tu compañero de TFG!</h2>
+      <form method="post" [formGroup]="formularioRegistro" (ngSubmit)="onSignUpClicked()">
+        <div class="form-group" id="formularioRegistro">
+          <input type="text" id="NameRegistro" placeholder="Nombre">
+          <input type="email" id="EmailRegistro" placeholder="Email">
+          <input type="password" id="PasswordRegistro" placeholder="Contraseña">
+          <input type="surname" id="Surname" placeholder="Apellido">
+          <input type="degree" id="Degree" placeholder="Grado">
+          <input type="description" id="Description" placeholder="Descripción">
+          <button class="button" type="submit" (click)="onSignUpClicked()">Sign up</button>
         </div>
+      </form>
+    </div>
+
+    <div class="divider"></div>
+    <div class="logo-login-container">
+      <div class="image-container">
+        <img src=".\.\assets\images\connecTFG_logo-removeb.png" alt="logo">
       </div>
-      <div class="right">
-        <div class="content">
-          <h2>Login</h2>
-          <form method="post" [formGroup]="formularioLogin" (ngSubmit)="onSignInClicked()">
-            <div class="form-group" id="formularioLogin">
-              <input type="text" formControlName="email" placeholder="Email">
-              <input type="password" formControlName="password"  placeholder="Password">
-            </div>
-            <button id="goRight" class="off" (click)="onSignUpLink()">Sign Up</button>
-            <button id="login" type="submit" (click)="onSignInClicked()">Login</button>
-          </form>
-        </div>
+      <div class="form login-form">
+        <h2>Bienvenido de vuelta a tu búsqueda!</h2>
+        <form method="post" [formGroup]="formularioLogin" (ngSubmit)="onSignInClicked()">
+          <div class="form-group" id="formularioLogin">
+            <input type="text" formControlName="email" placeholder="Email">
+            <input type="password" formControlName="password" placeholder="Contraseña">
+            <button class="button" type="submit" (click)="onSignInClicked()">Login</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
