@@ -10,7 +10,7 @@
     </div>
 
     <div class="message-container">
-        <input matInput [(ngModel)]="messageToSend">
+        <input matInput [(ngModel)]="messageToSend" type="text" placeholder="Escribe un mensaje...">
         <button (click)="sendMessage()">
             <mat-icon class="material-symbols-outlined">send</mat-icon>
         </button>   
