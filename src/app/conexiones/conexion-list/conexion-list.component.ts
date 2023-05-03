@@ -22,8 +22,6 @@ export class ConexionListComponent implements OnInit {
     this.userService.getUserConections().subscribe(
       conections => {
         this.userConections = conections.map(user => user.id);
-        console.log('conections', conections)
-        console.log('userConnections', this.userConections);
       }
     )
 
@@ -50,13 +48,6 @@ export class ConexionListComponent implements OnInit {
     this.publicationService.rejectApplicant(id).subscribe(
       res => this.ngOnInit()
     )
-
-    //Enviar notificacion si te rechazan ?????? xd
-    this.notificationService.createNotification(
-      `El usuario ${this.loginService.getActiveUser().name} ${this.loginService.getActiveUser().surname}
-       ha aceptado tu solicitud de conexión! Ahora ya puedes hablar con él.`,
-      id
-    ).subscribe()
   }
 
 }

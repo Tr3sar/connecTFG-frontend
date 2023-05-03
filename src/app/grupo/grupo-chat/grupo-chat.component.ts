@@ -61,9 +61,7 @@ export class GrupoChatComponent implements OnInit {
     if (this.selectedGroup == null) { return ; }
 
     this.grupoService.createMessage(this.selectedGroup.id, this.loginService.getUserId()!!, this.messageToSend).subscribe(
-      response => {
-        console.log('Response al crear mensaje', response)
-      }
+      response => { }
     )
     this.socketService.sendMessage(this.selectedGroup.id, this.messageToSend)
     this.messageToSend = '';

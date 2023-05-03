@@ -26,14 +26,10 @@ export class LoginService {
     return this.httpClient.post<any>(`${this.url}/login`, { email, password })
       .pipe(
         tap(response => {
-          console.log('Setting user tokens')
           localStorage.setItem('token', response.token);
           localStorage.setItem('userId', response.id)
-
-          console.log('userResponse', response.user)
+          
           const userString = JSON.stringify(response.user);
-
-          console.log('userString', userString)
           localStorage.setItem('activeUser', userString);
         })
       );

@@ -24,7 +24,7 @@ export class GrupoService {
     if (group.id != null) {
       url += '/' + group.id
     }
-    console.log('grupo a enviar')
+    
     return this.http.put<Group[]>(url, {group});
   }
 
@@ -37,7 +37,6 @@ export class GrupoService {
   }
 
   getGroupsFromUser() : Observable<Group[]>{
-    console.log('UserId', this.loginService.getUserId())
     return this.http.get<Group[]>(this.url + '/groups/' + this.loginService.getUserId());
   }
 

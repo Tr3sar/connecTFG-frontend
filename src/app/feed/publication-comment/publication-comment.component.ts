@@ -28,7 +28,6 @@ export class PublicationCommentComponent {
 
     this.publicationService.createComment(this.post.id, this.commentToSend).subscribe(
       response => {
-        console.log('Response al comentario', response)
         this.post.comments.push(response)
       }
     )
