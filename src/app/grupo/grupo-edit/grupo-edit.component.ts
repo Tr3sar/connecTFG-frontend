@@ -58,26 +58,6 @@ export class GrupoEditComponent implements OnInit {
     }
   }
 
-
-  //useless?
-  add(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
-
-    alert('add event grupo-edit')
-    console.log('eventValue', value);
-
-    
-    if (value) {
-      //this.usersToAdd.push(value);
-      //this.group.members.push(userValue)
-    }
-
-    // Clear the input value
-    event.chipInput!.clear();
-
-    this.userCtrl.setValue(null);
-  }
-
   remove(user: User): void {
     if (user.id === this.loginService.getUserId()) { return ; }
 
