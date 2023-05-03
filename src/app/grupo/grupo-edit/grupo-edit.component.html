@@ -25,7 +25,7 @@
             </mat-chip-list>
 
             <input placeholder="Nuevo miembro..." #userInput [formControl]="userCtrl"
-            [matChipInputFor]="chipGrid" [matAutocomplete]="auto" (matChipInputTokenEnd)="add($event)">
+            [matChipInputFor]="chipGrid" [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
 
                 <ng-container *ngFor="let user of filteredUsers | async">
