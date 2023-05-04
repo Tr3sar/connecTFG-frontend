@@ -23,7 +23,7 @@ export class GrupoChatComponent implements OnInit {
 
   loading: boolean = false;
 
-  constructor(private grupoService: GrupoService, private socketService: SocketService, private loginService: LoginService,
+  constructor(private grupoService: GrupoService, private socketService: SocketService, public loginService: LoginService,
               private dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -64,7 +64,10 @@ export class GrupoChatComponent implements OnInit {
     this.grupoService.createMessage(this.selectedGroup.id, this.loginService.getUserId()!!, this.messageToSend).subscribe(
       response => { }
     )
-    this.socketService.sendMessage(this.selectedGroup.id, this.messageToSend)
+
+    let message : Message = {emitter: this.loginService.getActiveUser(), text: this.messageToSend}
+
+    this.socketService.sendMessage(this.selectedGroup.id, message)
     this.messageToSend = '';
   }
 }

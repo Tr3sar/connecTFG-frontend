@@ -4,6 +4,7 @@ import { Socket, io } from 'socket.io-client';
 import { Group } from 'src/app/grupo/model/Group';
 import { environment } from 'src/environments/environment';
 import { LoginService } from 'src/app/login/login.service';
+import { Message } from '../../../grupo/model/Message';
 
 @Injectable({
   providedIn: 'root'
@@ -61,7 +62,7 @@ export class SocketService {
     this.socket.emit('leave', groupId)
   }
 
-  sendMessage(groupId: number, message: string) {
+  sendMessage(groupId: number, message: Message) {
     this.socket.emit('newMessage', {groupId, message})
   }
 

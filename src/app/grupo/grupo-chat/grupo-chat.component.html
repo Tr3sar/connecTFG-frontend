@@ -4,8 +4,8 @@
     </div>
 
     <div class="chat-container">
-        <div *ngFor="let message of messages" class="message">
-            <span class="emitter">{{message.emitter.name}} {{message.emitter.surname}}</span>
+        <div *ngFor="let message of messages" class="message" [ngClass]="{'own-message': message.emitter.id == loginService.getUserId()}">
+            <span class="emitter" *ngIf="message.emitter.id != loginService.getUserId()">{{message.emitter.name}} {{message.emitter.surname}}</span>
             <div class="text">{{message.text}}</div>
         </div>
     </div>

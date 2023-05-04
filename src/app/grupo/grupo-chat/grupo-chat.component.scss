@@ -32,6 +32,8 @@
         max-height: calc(100% - 6rem);
 
         overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
 
 
         .message {
@@ -58,6 +60,14 @@
 
             .text{
                 margin-top: 0.5rem;
+            }
+        }
+
+        .own-message{
+            align-self: self-end;
+
+            .text{
+                margin-top: 0;
             }
         }
 
