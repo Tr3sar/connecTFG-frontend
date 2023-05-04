@@ -1,11 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { User } from 'src/app/core/model/User';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { SocketService } from 'src/app/core/services/socket/socket.service';
-import { UserService } from 'src/app/core/services/user/user.service';
 import { GrupoService } from '../grupo.service';
 import { Group } from '../model/Group';
 import { Message } from '../model/Message';
-import { GrupoEditComponent } from '../grupo-edit/grupo-edit.component';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginService } from 'src/app/login/login.service';
 
@@ -24,7 +21,7 @@ export class GrupoChatComponent implements OnInit {
   loading: boolean = false;
 
   constructor(private grupoService: GrupoService, private socketService: SocketService, public loginService: LoginService,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog, private cdref: ChangeDetectorRef) { }
 
   ngOnInit(): void {
 
@@ -42,6 +39,8 @@ export class GrupoChatComponent implements OnInit {
         console.log('Messages', messages)
         this.messages = messages;
         this.loading = false;
+
+        this.cdref.detectChanges()
       })
     },
     err => {
