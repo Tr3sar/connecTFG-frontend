@@ -72,6 +72,16 @@
 
                 .group:hover{
                     //filter: brightness(80%);
+                    background-color: var(--primary-200);
+                    color: var(--bg-100);
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+                    *{
+                        color: var(--bg-100);
+                    }
+                }
+
+                .groupSelected{
                     background-color: var(--primary-100);
                     color: var(--bg-100);
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

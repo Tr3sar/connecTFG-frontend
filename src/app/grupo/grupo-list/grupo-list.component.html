@@ -9,7 +9,7 @@
             </div>
 
             <div class="groups-container">
-                <div class="group" *ngFor="let group of groups">
+                <div class="group" *ngFor="let group of groups" [ngClass]="{'groupSelected' : selectedGroup && selectedGroup.id == group.id}">
                     <button (click)="onChangeSelectedGroup(group)" class="group-button">
                         {{group.name}}
                     </button>

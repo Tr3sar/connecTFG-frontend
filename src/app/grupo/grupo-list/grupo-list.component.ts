@@ -43,6 +43,9 @@ export class GrupoListComponent implements OnInit {
   }
 
   onChangeSelectedGroup(group: Group) {
+    if (this.selectedGroup && group.id == this.selectedGroup.id) {
+      return ;
+    }
 
     if (this.selectedGroup != null) {
       this.socketService.leaveGroup(this.selectedGroup.id)
