@@ -20,7 +20,7 @@
             <mat-chip-list #chipGrid>
                 <mat-chip *ngFor="let user of group.members" (removed)="remove(user)" [disabled]="user.id == loginService.getUserId()">
                     {{user.name}}
-                    <button matChipRemove><mat-icon class="material-symbols-outlined">cancel</mat-icon></button>
+                    <button matChipRemove><mat-icon class="material-icons-outlined">cancel</mat-icon></button>
                 </mat-chip>
             </mat-chip-list>
 

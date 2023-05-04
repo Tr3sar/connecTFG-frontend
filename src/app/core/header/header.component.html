@@ -7,7 +7,7 @@
 
             <div class="center">
                 <div class="input-container">
-                    <mat-icon class="material-symbols-outlined">search</mat-icon>
+                    <mat-icon class="material-icons-outlined">search</mat-icon>
                     <input matInput placeholder="Buscador" type="text" name="buscador">
                 </div>
 
@@ -33,15 +33,15 @@
                 <button mat-button [ngStyle]="{
                     'border-bottom': inConections ? '2px solid var(--accent-100)' : 'none'
                 }">
-                    <mat-icon class="material-symbols-outlined" routerLink="/conexiones">hub</mat-icon>
+                    <mat-icon class="material-icons-outlined" routerLink="/conexiones">hub</mat-icon>
                 </button>
 
                 <button mat-button [ngStyle]="{
                     'border-bottom': inNotifications ? '2px solid var(--accent-100)' : 'none'
                 }">
-                    <mat-icon class="material-symbols-outlined" [matBadge]="notifications.length" routerLink="/notifications">notifications</mat-icon>
+                    <mat-icon class="material-icons-outlined" [matBadge]="notifications.length" routerLink="/notifications">notifications</mat-icon>
                 </button>
-                <button mat-button><mat-icon class="material-symbols-outlined">person</mat-icon></button>
+                <button mat-button><mat-icon class="material-icons-outlined">person</mat-icon></button>
             </div>
         </mat-toolbar-row>
     </mat-toolbar>

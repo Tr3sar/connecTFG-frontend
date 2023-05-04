@@ -185,12 +185,12 @@ div[ng-controller='FeedController'] {
 }
 
 .likear {
-  .material-symbols-outlined {
+  .material-icons-outlined {
     color: var(--accent-100);
     background-color: transparent;
   }
 
-  .material-symbols-outlined:hover {
+  .material-icons-outlined:hover {
     color: var(--accent-100);
     background-color: transparent;
     cursor: pointer
@@ -202,14 +202,14 @@ div[ng-controller='FeedController'] {
 }
 
 .comentar {
-  .material-symbols-outlined {
+  .material-icons-outlined {
     border-radius: 6.25rem;
     background-color: var(--bg-200)
   }
 }
 
 .comentar {
-  .material-symbols-outlined:hover {
+  .material-icons-outlined:hover {
     color: var(--primary-200);
     cursor: pointer
   }
