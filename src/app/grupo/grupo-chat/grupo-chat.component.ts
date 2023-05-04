@@ -19,7 +19,7 @@ export class GrupoChatComponent implements OnInit {
   selectedGroup: Group | null;
 
   messageToSend: string;
-  messages: string[] = [];
+  messages: Message[] = [];
 
   loading: boolean = false;
 
@@ -39,7 +39,8 @@ export class GrupoChatComponent implements OnInit {
        }
 
       this.grupoService.getMessagesFromGroup(this.selectedGroup.id).subscribe(messages => {
-        this.messages = messages.map(message => message.text);
+        console.log('Messages', messages)
+        this.messages = messages;
         this.loading = false;
       })
     },
