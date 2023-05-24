@@ -4,9 +4,18 @@
     height: 75vh;
 
     display: flex;
-    .conections-container{
-        width: 75%;
-        .conection{
+
+    .applicants-container{
+        width: calc(70% - 1rem);
+        height: calc(100%);
+
+        background-color: var(--bg-200);
+        border-radius: 1rem;
+        padding: 1rem;
+
+        margin-right: 0.75rem;
+        
+        .applicant{
             display: flex;
             margin-bottom: 0.25rem;
 
@@ -47,13 +56,33 @@
         }
     }
 
-    .group-button-container{
-        width: 25%;
-        height: 100%;
-        border-left: 1px solid var(--text-100);
+    .conections-container{
+        width: calc(30% - 1rem);
+        height: calc(100%);
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        padding: 1rem;
+        background-color: var(--bg-200);
+        border-radius: 1rem;
+
+        margin-left: 0.75rem;
+
+        h3{
+            color: var(--primary-100);
+        }
+        
+        .conection{
+            display: flex;
+            align-items: center;
+
+            border: 1px solid var(--primary-100);
+            border-radius: 0.25rem;
+            background-color: var(--bg-100);
+
+            padding: 0.25rem;
+
+            .separator{
+                margin: 0 auto;
+            }
+        }
     }
 }

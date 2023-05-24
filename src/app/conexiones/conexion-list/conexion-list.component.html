@@ -1,29 +1,36 @@
 <div class="main-container">
-  <div class="conections-container" *ngIf="applicants.length > 0">
-    <div *ngFor="let applicant of applicants">
-      <div class="conection" *ngIf="!userConections.includes(applicant.id)">
-        {{applicant.name}} {{applicant.surname}} quiere hacer el TFG contigo!
-        <div class="buttons-container">
-          <button class="done" (click)="onAccepted(applicant.id)" mat-button>
-            <mat-icon class="material-icons-outlined">done</mat-icon>
-          </button>
-          <button class="close" (click)="onRejected(applicant.id)" mat-button>
-            <mat-icon class="material-icons-outlined">close</mat-icon>
-          </button>
-        </div>
-      </div>
+  <div class="applicants-container" *ngIf="userNewApplicants.length > 0">
+    <div *ngFor="let applicant of userNewApplicants" class="applicant">
 
-      <div class="conections-container" *ngIf="userConections.includes(applicant.id)">
-        No tienes ninguna nueva conexión por ahora!
+      {{applicant.name}} {{applicant.surname}} quiere hacer el TFG contigo!
+      <div class="buttons-container">
+        <button class="done" (click)="onAccepted(applicant.id)" mat-button>
+          <mat-icon class="material-icons-outlined">done</mat-icon>
+        </button>
+        <button class="close" (click)="onRejected(applicant.id)" mat-button>
+          <mat-icon class="material-icons-outlined">close</mat-icon>
+        </button>
       </div>
     </div>
   </div>
 
-  <div class="conections-container" *ngIf="applicants.length <= 0">
-    No tienes ninguna nueva conexión por ahora!
+  <div class="applicants-container" *ngIf="userNewApplicants.length <= 0">
+    No tienes ninguna nueva solicitud de conexión!
   </div>
 
-  <div class="group-button-container">
-    <button routerLink="/grupo">Ir a grupos</button>
+  <div class="conections-container">
+    <h3>Tus conexiones ({{userConections.length}}): </h3>
+
+    <div class="conection" *ngFor="let conection of userConections">
+      {{conection.name}} {{conection.surname}}
+
+      <span class="separator"></span>
+
+      <div class="buttons-container">
+        <button mat-button routerLink="/grupo/{{conection.id}}">
+          <mat-icon class="material-icons-outlined">send_message</mat-icon>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
