@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/core/model/User';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { PublicationService } from 'src/app/feed/publication.service';
@@ -13,7 +14,9 @@ import { NotificationService } from 'src/app/notifications/notification.service'
 export class ConexionListComponent implements OnInit {
 
   applicants: User[] = [];
-  userConections: number[] = [];
+  userConections: User[] = [];
+
+  userNewApplicants: User[] = [];
 
   constructor(private publicationService: PublicationService, private userService: UserService,
               private notificationService: NotificationService, private loginService: LoginService) {}
@@ -21,13 +24,17 @@ export class ConexionListComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUserConections().subscribe(
       conections => {
-        this.userConections = conections.map(user => user.id);
-      }
-    )
+        this.userConections = conections;
 
-    this.publicationService.getApplicantsToUser().subscribe(
-      applicants => {
-        this.applicants = applicants;
+        this.publicationService.getApplicantsToUser().subscribe(
+          applicants => {
+            this.applicants = applicants;
+            this.userNewApplicants = applicants.filter(applicant => {
+              //Los applicants que no tengan una conexión con el usuario.
+              this.userConections.filter(conection => { applicant.id == conection.id }).length == 0
+            })
+          }
+        )
       }
     )
   }

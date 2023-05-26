@@ -30,6 +30,10 @@ export class UserService {
   getUserConections() : Observable<User[]> {
     return this.http.get<User[]>(this.url + '/conections/' + this.loginService.getUserId())
   }
+
+  getUserById(id: number) {
+    return this.http.get<User>(this.url + `/${id}`)
+  }
  }
 
 

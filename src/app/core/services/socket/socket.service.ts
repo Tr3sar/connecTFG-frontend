@@ -22,7 +22,7 @@ export class SocketService {
       this.setupSocketConnection();
     }, 300)
   }
-  
+
 
   setupSocketConnection() {
     this.socket = io(this.SOCKET_ENDPOINT, {
@@ -54,8 +54,15 @@ export class SocketService {
   }
 
   joinGroup(group: Group) {
-    this.socket.emit('join', group.id);
-    this.setSelectedGroup(group)
+    if (this.socket == undefined) {
+      setTimeout(() => {
+        this.socket.emit('join', group.id);
+        this.setSelectedGroup(group)
+      }, 500)
+    } else {
+      this.socket.emit('join', group.id);
+      this.setSelectedGroup(group)
+    }
   }
 
   leaveGroup(groupId: number) {
@@ -63,10 +70,10 @@ export class SocketService {
   }
 
   sendMessage(groupId: number, message: Message) {
-    this.socket.emit('newMessage', {groupId, message})
+    this.socket.emit('newMessage', { groupId, message })
   }
 
-  getMessages() : Observable<any> {
+  getMessages(): Observable<any> {
     return this.messagesSubject.asObservable();
   }
 
@@ -74,7 +81,7 @@ export class SocketService {
     this.selectedGroupSubject.next(group);
   }
 
-  getSelectedGroup() : Observable<Group | null>{
+  getSelectedGroup(): Observable<Group | null> {
     return this.selectedGroupSubject.asObservable();
   }
 }

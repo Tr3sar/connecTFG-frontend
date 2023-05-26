@@ -43,4 +43,9 @@ export class GrupoService {
   deleteGroupById(id: number) : Observable<Group> {
     return this.http.delete<Group>(this.url + `/${id}`)
   }
+
+  getGroupWithUser(id: number) {
+    //return this.http.get<Group>(this.url + `/two-users/${id}/${1}`)
+    return this.http.get<Group>(this.url + `/two-users/${id}/${this.loginService.getUserId()}`)
+  }
 }

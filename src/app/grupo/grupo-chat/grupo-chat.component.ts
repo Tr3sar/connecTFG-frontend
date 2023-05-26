@@ -5,6 +5,8 @@ import { Group } from '../model/Group';
 import { Message } from '../model/Message';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginService } from 'src/app/login/login.service';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/core/services/user/user.service';
 
 @Component({
   selector: 'app-grupo-chat',
@@ -21,52 +23,110 @@ export class GrupoChatComponent implements OnInit {
   loading: boolean = false;
 
   constructor(private grupoService: GrupoService, private socketService: SocketService, public loginService: LoginService,
-              private dialog: MatDialog, private cdref: ChangeDetectorRef) { }
+    private cdref: ChangeDetectorRef, private route: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit(): void {
-
     this.loading = true;
 
+    if (this.route.snapshot.params['id'] != undefined) {
+      //Buscar grup on estiguen els dos (mirar com fer-ho)
+      //Assiignar-lill a selectedGroup
+      //Si envien algún missatge, crear el grup
+      let userId = this.route.snapshot.params['id']
+      this.grupoService.getGroupWithUser(userId).subscribe(
+        (group: any) => {
+          //ja tenen un chat junts
+
+          this.changeSelectedGroup(group[0]);
+          this.selectedGroup = group[0];
+
+          if (!this.selectedGroup) {
+            return;
+          }
+
+          this.grupoService.getMessagesFromGroup(this.selectedGroup.id).subscribe(messages => {
+            this.messages = messages;
+            this.loading = false;
+
+            this.cdref.detectChanges()
+          })
+        },
+        err => {
+          console.log('En el error')
+          let newGroup = new Group()
+          newGroup.name = "Grupo nuevo"
+
+          this.userService.getUserById(userId).subscribe(
+            user => {
+              newGroup.members = [user, this.loginService.getActiveUser()]
+              this.selectedGroup = newGroup
+              this.loading = false
+            },
+            err => {
+              console.log('No existe un usuario con ese id')
+            }
+          )
+        }
+      )
+    }
     this.socketService.getSelectedGroup().subscribe(group => {
       this.selectedGroup = group;
 
-      if (this.selectedGroup == null) { 
+      if (!this.selectedGroup) {
         this.loading = false;
-        return ;
-       }
+        return;
+      }
 
       this.grupoService.getMessagesFromGroup(this.selectedGroup.id).subscribe(messages => {
-        console.log('Messages', messages)
         this.messages = messages;
         this.loading = false;
 
         this.cdref.detectChanges()
       })
     },
-    err => {
-      this.loading = false;
-    })
+      err => {
+        this.loading = false;
+      }
+    )
+
 
     this.socketService.getMessages().subscribe(message => {
       this.messages.push(message)
       this.loading = false;
     },
-    err => {
-      this.loading = false;
-    })
+      err => {
+        this.loading = false;
+      }
+    )
   }
 
   sendMessage() {
     if (this.messageToSend.trim() == '') { return; }
-    if (this.selectedGroup == null) { return ; }
+    if (this.selectedGroup == null) { return; }
 
     this.grupoService.createMessage(this.selectedGroup.id, this.loginService.getUserId()!!, this.messageToSend).subscribe(
       response => { }
     )
 
-    let message : Message = {emitter: this.loginService.getActiveUser(), text: this.messageToSend}
+    let message: Message = { emitter: this.loginService.getActiveUser(), text: this.messageToSend }
 
     this.socketService.sendMessage(this.selectedGroup.id, message)
     this.messageToSend = '';
+  }
+
+  private changeSelectedGroup(group: Group) {
+    console.log('changeGroup', group)
+    if (this.selectedGroup && group.id == this.selectedGroup.id) {
+      return;
+    }
+
+    if (this.selectedGroup != null) {
+      this.socketService.leaveGroup(this.selectedGroup.id)
+    }
+
+
+    this.selectedGroup = group;
+
+    this.socketService.joinGroup(group)
   }
 }
