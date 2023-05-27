@@ -19,13 +19,13 @@ export class GrupoService {
     return this.http.get<Group[]>(this.url);
   }
 
-  saveGroup(group: Group) : Observable<Group[]> {
+  saveGroup(group: Group) : Observable<Group> {
     let url = this.url;
     if (group.id != null) {
       url += '/' + group.id
     }
     
-    return this.http.put<Group[]>(url, {group});
+    return this.http.put<Group>(url, {group});
   }
 
   createMessage(group_id: number, emitter: number, message: string) {
@@ -45,7 +45,6 @@ export class GrupoService {
   }
 
   getGroupWithUser(id: number) {
-    //return this.http.get<Group>(this.url + `/two-users/${id}/${1}`)
     return this.http.get<Group>(this.url + `/two-users/${id}/${this.loginService.getUserId()}`)
   }
 }

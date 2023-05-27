@@ -104,18 +104,31 @@ export class GrupoChatComponent implements OnInit {
     if (this.messageToSend.trim() == '') { return; }
     if (this.selectedGroup == null) { return; }
 
-    this.grupoService.createMessage(this.selectedGroup.id, this.loginService.getUserId()!!, this.messageToSend).subscribe(
-      response => { }
-    )
-
     let message: Message = { emitter: this.loginService.getActiveUser(), text: this.messageToSend }
 
-    this.socketService.sendMessage(this.selectedGroup.id, message)
+    if (this.selectedGroup.id != null) {
+      this.grupoService.createMessage(this.selectedGroup.id, this.loginService.getUserId()!!, this.messageToSend).subscribe(
+        response => { }
+      )
+      this.socketService.sendMessage(this.selectedGroup.id, message)
+    } else {
+      this.grupoService.saveGroup(this.selectedGroup).subscribe(
+        (groupJSON: any) => {
+          let group = groupJSON.group
+          this.socketService.joinGroup(group)
+          this.grupoService.createMessage(group.id, this.loginService.getUserId()!!, message.text).subscribe(
+            response => { }
+          ) 
+          this.socketService.sendMessage(group.id, message)
+          location.reload();
+        }
+      )
+    }
+
     this.messageToSend = '';
   }
 
   private changeSelectedGroup(group: Group) {
-    console.log('changeGroup', group)
     if (this.selectedGroup && group.id == this.selectedGroup.id) {
       return;
     }
