@@ -16,6 +16,7 @@ import { UserService } from 'src/app/core/services/user/user.service';
 export class GrupoChatComponent implements OnInit {
 
   selectedGroup: Group | null;
+  selectedFile: File | null;
 
   messageToSend: string;
   messages: Message[] = [];
@@ -101,13 +102,20 @@ export class GrupoChatComponent implements OnInit {
   }
 
   sendMessage() {
-    if (this.messageToSend.trim() == '') { return; }
+    if (this.messageToSend != undefined && this.messageToSend.trim() == '' && !this.selectedFile) { return; }
     if (this.selectedGroup == null) { return; }
 
-    let message: Message = { emitter: this.loginService.getActiveUser(), text: this.messageToSend }
+    let message: Message = { 
+      emitter: this.loginService.getActiveUser(),
+      text: this.messageToSend, file: {
+        data: this.selectedFile?.arrayBuffer,
+        filename: this.selectedFile?.name!!,
+        contentType: this.selectedFile?.type!!
+      } 
+    }
 
     if (this.selectedGroup.id != null) {
-      this.grupoService.createMessage(this.selectedGroup.id, this.loginService.getUserId()!!, this.messageToSend).subscribe(
+      this.grupoService.createMessage(this.selectedGroup.id, this.loginService.getUserId()!!, this.messageToSend, this.selectedFile!!).subscribe(
         response => { }
       )
       this.socketService.sendMessage(this.selectedGroup.id, message)
@@ -116,9 +124,10 @@ export class GrupoChatComponent implements OnInit {
         (groupJSON: any) => {
           let group = groupJSON.group
           this.socketService.joinGroup(group)
-          this.grupoService.createMessage(group.id, this.loginService.getUserId()!!, message.text).subscribe(
+
+          this.grupoService.createMessage(group.id, this.loginService.getUserId()!!, message.text, this.selectedFile!!).subscribe(
             response => { }
-          ) 
+          )
           this.socketService.sendMessage(group.id, message)
           location.reload();
         }
@@ -126,6 +135,7 @@ export class GrupoChatComponent implements OnInit {
     }
 
     this.messageToSend = '';
+    this.selectedFile = null;
   }
 
   private changeSelectedGroup(group: Group) {
@@ -141,5 +151,26 @@ export class GrupoChatComponent implements OnInit {
     this.selectedGroup = group;
 
     this.socketService.joinGroup(group)
+  }
+
+  attachFile() {
+
+  }
+
+  onFileSelected(event: any): void {
+    const files: FileList | null = event.target.files;
+    this.selectedFile = files?.item(0)!!;
+    //this.sendFile();
+  }
+
+  sendFile(): void {
+    if (!this.selectedFile) {
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', this.selectedFile);
+
+    console.log('SelectedFile', this.selectedFile)
   }
 }

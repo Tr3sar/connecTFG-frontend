@@ -28,8 +28,19 @@ export class GrupoService {
     return this.http.put<Group>(url, {group});
   }
 
-  createMessage(group_id: number, emitter: number, message: string) {
-    return this.http.post<Group>(this.url + '/messages', {group_id, emitter, message})
+  createMessage(group_id: number, emitter: number, message: string, file?: File) {
+    console.log('file', file)
+    const formData = new FormData();
+
+    formData.append('group_id', group_id.toString())
+    formData.append('emitter', emitter.toString())
+    formData.append('message', message)
+
+    if (file) {
+      formData.append('file', file, file.name)
+    }
+
+    return this.http.post<Group>(this.url + '/messages', formData)
   }
 
   getMessagesFromGroup(id: number){
