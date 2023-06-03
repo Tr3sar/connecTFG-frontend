@@ -7,6 +7,8 @@ import { MatMenuModule } from '@angular/material/menu';
 
 
 import { UserService } from '../services/user/user.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AboutUsComponent } from 'src/app/about-us/about-us.component';
 
 @Component({
   selector: 'app-header',
@@ -22,7 +24,8 @@ export class HeaderComponent implements OnInit {
   inConections = false;
   inNotifications = false;
 
-  constructor(public loginService: LoginService, private notificationService: NotificationService, private router: Router, public menu: MatMenuModule) { }
+  constructor(public loginService: LoginService, private notificationService: NotificationService,
+    private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     if (this.loginService.isAuthenticated()) {
@@ -64,6 +67,16 @@ export class HeaderComponent implements OnInit {
           this.inConections = false;
         }
       }
+    });
+  }
+
+  showAboutUs() {
+    const dialogRef = this.dialog.open(AboutUsComponent, {
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
     });
   }
 }

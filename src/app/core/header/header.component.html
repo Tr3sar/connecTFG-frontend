@@ -49,12 +49,12 @@
                     <button mat-menu-item routerLink="/profile/{{loginService.getUserId()}}">
                       Profile
                     </button>
-                    <button mat-menu-item routerLink="">
-                        About Us
-                      </button>
                     <button mat-menu-item>
                       Settings
                     </button>
+                    <button mat-menu-item (click)="showAboutUs()">
+                        Sobre nosotros
+                      </button>
                     <button (click)="loginService.logout()" routerLink="/login" mat-menu-item>
                       Logout
                     </button>
