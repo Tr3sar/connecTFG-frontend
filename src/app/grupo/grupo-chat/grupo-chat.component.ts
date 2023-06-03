@@ -3,7 +3,6 @@ import { SocketService } from 'src/app/core/services/socket/socket.service';
 import { GrupoService } from '../grupo.service';
 import { Group } from '../model/Group';
 import { Message } from '../model/Message';
-import { MatDialog } from '@angular/material/dialog';
 import { LoginService } from 'src/app/login/login.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/core/services/user/user.service';
@@ -53,7 +52,6 @@ export class GrupoChatComponent implements OnInit {
           })
         },
         err => {
-          console.log('En el error')
           let newGroup = new Group()
           newGroup.name = "Grupo nuevo"
 
@@ -105,13 +103,12 @@ export class GrupoChatComponent implements OnInit {
     if (this.messageToSend != undefined && this.messageToSend.trim() == '' && !this.selectedFile) { return; }
     if (this.selectedGroup == null) { return; }
 
-    let message: Message = { 
+    let message: Message = {
       emitter: this.loginService.getActiveUser(),
       text: this.messageToSend, file: {
-        data: this.selectedFile?.arrayBuffer,
+        href: URL.createObjectURL(this.selectedFile!!),
         filename: this.selectedFile?.name!!,
-        contentType: this.selectedFile?.type!!
-      } 
+      }
     }
 
     if (this.selectedGroup.id != null) {
@@ -159,8 +156,7 @@ export class GrupoChatComponent implements OnInit {
 
   onFileSelected(event: any): void {
     const files: FileList | null = event.target.files;
-    this.selectedFile = files?.item(0)!!;
-    //this.sendFile();
+    this.selectedFile = files?.item(0)!!; 
   }
 
   sendFile(): void {

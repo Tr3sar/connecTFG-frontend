@@ -9,7 +9,7 @@
             <div class="text-container">
                 <p *ngIf="message.text != ''" class="text">{{message.text}}</p>
                 <span *ngIf="message.file != null" class="file">
-                    <a *ngIf="message.file" [href]="'data:' + message.file.contentType + ';base64,' + message.file.data" [download]="message.file.filename">{{message.file.filename}}</a>
+                    <a *ngIf="message.file" [href]="message.file.href" [download]="message.file.filename">{{message.file.filename}}</a>
                 </span>
             </div>
         </div>

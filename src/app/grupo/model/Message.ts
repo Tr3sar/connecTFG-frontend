@@ -4,8 +4,7 @@ export class Message {
     emitter: User;
     text: string;
     file: {
-        data: any,
-        filename: string,
-        contentType: string
+        href: string,
+        filename: string
     };
 }
