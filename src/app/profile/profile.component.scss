@@ -1,0 +1,177 @@
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  /* Main section styles */
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+/* Style for the main section */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  /* Style for the section elements */
+  section {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style for the section titles */
+  section h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for the section content paragraphs */
+  section p {
+    margin: 0;
+  }
+  
+  /* Style for the section links */
+  section a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  /* Style for the section links on hover */
+  section a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Edit Profile styles */
+  section.profile-info{
+    font-size: 14px;
+    background-color: var(--bg-100);
+
+  }
+  
+
+/* Style for the mat-card elements */
+mat-card {
+    width: auto;
+    margin: 0 auto 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-300);
+  }
+  
+  /* Style for the mat-card-header elements */
+  mat-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: var(--primary-100);
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for the mat-card-title elements */
+  mat-card-title {
+    font-size: 20px;
+    font-weight: bold;
+    
+  }
+  .vertical-divider {
+    border-left: 1px solid black;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  /* Style for the mat-card-content elements */
+  mat-card-content {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for the h1.name element */
+  h1.name {
+    font-size: 24px;
+    margin: 0;
+    color:var(--text-100);
+  }
+  
+  /* Style for the h2.headline element */
+  h2.headline {
+    font-size: 18px;
+    margin: 5px 0;
+    color: var(--text-200);
+  }
+  
+  /* Style for the p.location element */
+  p.location {
+    font-size: 14px;
+    margin: 0;
+    color: #888;
+  }
+  
+  /* Style for the p.connections element */
+  p.connections {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #888;
+  }
+  section.profile-info{
+    .mat-card-content{
+    width: auto;
+    margin: 0 auto 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-300);
+    margin-bottom: 10px;}
+  
+  }
+  /* Style for the ul in Experience section */
+  section.Experience{
+  background-color: var(--bg-100);
+  .mat-card-content{
+    width: auto;
+    margin: 0 auto 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-300);
+    margin-bottom: 10px;}
+  .ul {
+    list-style-type: none;
+    padding: 0;
+  }}
+  section.Summary{
+    background-color: var(--bg-100);
+    .mat-card-content{
+      width: auto;
+      margin: 0 auto 20px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: var(--bg-300);
+    }
+  }
+  /* Style for the li in Experience section */
+  section.Experience li {
+    margin-bottom: 10px;
+  }
+  
+  /* Style for the h3 in Experience section */
+  section.Experience h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  

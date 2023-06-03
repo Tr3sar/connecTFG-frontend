@@ -1,6 +1,6 @@
 .main-container{
   mat-toolbar > mat-toolbar-row{
-    height: auto;
+    height: 120px;
     background-color: white;
 
     padding-bottom: 0.5rem;
@@ -76,4 +76,26 @@
 ::ng-deep.mat-badge-content {
   background-color: var(--accent-100);
   color: var(--bg-100);
+}
+
+button.mat-menu-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  color: #000000;
+  font-size: 14px;
+  text-align: left;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button.mat-menu-item:hover {
+  background-color: #f3f3f3;
+}
+
+button.mat-menu-item:focus {
+  outline: none;
+  background-color: #f3f3f3;
 }

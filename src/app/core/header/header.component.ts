@@ -3,6 +3,9 @@ import { NavigationEnd, Router } from '@angular/router';
 import { LoginService } from 'src/app/login/login.service';
 import { Notification } from 'src/app/notifications/model/Notification';
 import { NotificationService } from 'src/app/notifications/notification.service';
+import { MatMenuModule } from '@angular/material/menu';
+
+
 
 @Component({
   selector: 'app-header',
@@ -14,7 +17,7 @@ export class HeaderComponent implements OnInit {
   notifications: Notification[] = [];
   currentUrl = window.location.href;
 
-  constructor(public loginService: LoginService, private notificationService: NotificationService, private router: Router) { }
+  constructor(public loginService: LoginService, private notificationService: NotificationService, private router: Router, public menu: MatMenuModule) { }
 
   ngOnInit(): void {
     if (this.loginService.isAuthenticated()) {

@@ -49,24 +49,21 @@ export class LoginComponent implements OnInit {
   }
 
   onSignUpClicked() {
-  }
+    const email = this.formularioRegistro.controls.email.value;
+    const password = this.formularioRegistro.controls.password.value;
+    const name = this.formularioRegistro.controls.name.value;
+    const surname = this.formularioRegistro.controls.surname.value;
+    const degree = this.formularioRegistro.controls.degree.value;
+    const description = this.formularioRegistro.controls.description.value;
 
-  onSignInLink() {
-    var login = document.getElementById('formularioLogin');
-    if (login != null)
-      login.style.cssText = 'display:none;';
-
-    var signup = document.getElementById('formularioRegistro');
-    if (signup != null)
-      signup.style.cssText = 'display: initial;text-align: -webkit-center;width: 100%;margin-top: 2rem;';
+    try {
+      if (email != null && password != null && name != null 
+        && surname != null && degree != null && description != null)
+        this.loginService.SignUp(email, password,name,surname,degree,description).subscribe(res => {
+        this.router.navigate(['/login'])
+        })
+    } catch (error) {
+      alert("El mail ya está siendo utilizado")
+    }
   }
-  onSignUpLink() {
-    var login = document.getElementById('formularioLogin');
-    if (login != null)
-      login.style.cssText = 'display: initial;text-align: -webkit-center;width: 100%;margin-top: 2rem;';
-    var signup = document.getElementById('formularioRegistro');
-    if (signup != null)
-      signup.style.cssText = 'display:none;'
   }
-
-}

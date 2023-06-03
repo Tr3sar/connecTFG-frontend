@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { SocketService } from './services/socket/socket.service';
 import { DialogConfirmationComponent } from './dialog-confirmation/dialog-confirmation.component';
@@ -29,6 +30,7 @@ import { DialogConfirmationComponent } from './dialog-confirmation/dialog-confir
     MatToolbarModule,
     MatIconModule,
     RouterModule,
+    MatMenuModule,
     MatInputModule,
     MatTabsModule,
     MatButtonModule,

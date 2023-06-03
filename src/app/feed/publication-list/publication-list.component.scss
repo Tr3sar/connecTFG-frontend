@@ -26,6 +26,19 @@ mat-button-toggle-group {
   margin: 0 auto;
 
 }
+mat-form-field {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  max-width: 175px;
+  margin: 0 auto;
+.input{
+  .placeholder{
+    display: flex;
+  justify-content: center;
+  }
+}
+}
 
 mat-button-toggle {
   font-size: 12px;
@@ -105,7 +118,9 @@ div[ng-controller='FeedController'] {
   cursor: pointer;
   text-align: center;
 }
-
+.closed-post {
+  border-color: 3px solid red; /* Change the border color to red for closed posts */
+}
 .post-card {
   background-color: var(--bg-200);
   align-items: center;

@@ -5,6 +5,6 @@ export class Comment {
     id: number;
     author: User;
     message: string;
-    likes: number
+    likes: number;
     createdAt: Date;
 }

@@ -13,6 +13,9 @@ import { Comment } from './model/comment.model';
   providedIn: 'root'
 })
 export class PublicationService {
+  getPost(id: number) {
+    throw new Error('Method not implemented.');
+  }
 
   private url: string = environment.urlService + '/feed'
   constructor(private http: HttpClient, private loginService: LoginService) { }

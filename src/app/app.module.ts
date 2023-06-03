@@ -10,6 +10,8 @@ import { GrupoModule } from './grupo/grupo.module';
 import { LoginModule } from './login/login.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { NgxLoadingModule } from 'ngx-loading';
+import { ProfileModule } from './profile/profile.module';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { NgxLoadingModule } from 'ngx-loading';
     FeedModule,
     GrupoModule,
     LoginModule,
+    ProfileModule,
     NotificationsModule,
     NgxLoadingModule.forRoot({
       fullScreenBackdrop: true

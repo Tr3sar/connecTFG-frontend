@@ -18,8 +18,13 @@
   </p>
   <hr />
   <h1>Tu Feed</h1>
+  <div>
+  <mat-form-field class="SearchPost" (keyup.enter)="onSearchPost()" (ngSubmit)="onSearchPost()">
+    <input type="string" matInput placeholder="Search publication Title" [(ngModel)]="searchValue">
+    </mat-form-field>
+  </div>
   <div *ngFor="let post of posts | paginate: { itemsPerPage: pageSize, currentPage: pageNumber }">
-    <mat-card class="post-card">
+    <mat-card class="post-card" [ngStyle]="{'border-color': filterValue === 'Closed' ? 'red' : 'blue' }">
       <mat-card-header>
         <mat-card-title>{{post.title}}</mat-card-title>
       </mat-card-header>

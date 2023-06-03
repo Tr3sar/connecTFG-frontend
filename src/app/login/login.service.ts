@@ -19,6 +19,7 @@ export class LoginService {
   constructor(private httpClient: HttpClient, private jwtHelper: JwtHelperServiceWrapper) { }
 
   SignUp(email: string, password: string, name: string, surname: string, degree: string, description: string): Observable<any> {
+    console.log("Service entro")
     return this.httpClient.post<any>(`${this.url}/register`, { email, password, name, surname, degree, description })
   }
 
@@ -48,6 +49,7 @@ export class LoginService {
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
     localStorage.removeItem('activeUser')
+    
   }
 
   getToken() {

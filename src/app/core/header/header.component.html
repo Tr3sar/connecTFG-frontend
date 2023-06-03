@@ -7,8 +7,10 @@
 
             <div class="center">
                 <div class="input-container">
-                    <mat-icon class="material-symbols-outlined">search</mat-icon>
-                    <input matInput placeholder="Buscador" type="text" name="buscador">
+                    <mat-form-field class="SearchBar">
+                        <input type="string" matInput placeholder="Search" name= "SearchBar">
+                        <button matSuffix mat-button></button>
+                        </mat-form-field>
                 </div>
 
                 <div class="under">
@@ -30,10 +32,23 @@
             </div>
 
             <div class="right">
-                <button mat-button>
-                    <mat-icon class="material-symbols-outlined" [matBadge]="notifications.length" routerLink="/notifications">notifications</mat-icon>
-                </button>
-                <button mat-button><mat-icon class="material-symbols-outlined">person</mat-icon></button>
+                <button mat-button [matMenuTriggerFor]="menu">
+                    <mat-icon class="material-symbols-outlined">person</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item routerLink="/profile">
+                      Profile
+                    </button>
+                    <button mat-menu-item>
+                      Settings
+                    </button>
+                    <button mat-menu-item>
+                        About Us
+                      </button>
+                    <button (click)="loginService.logout()" routerLink="/login" mat-menu-item>
+                      Logout
+                    </button>
+                  </mat-menu>
             </div>
         </mat-toolbar-row>
     </mat-toolbar>
