@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AboutUsComponent } from './about-us.component';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -9,7 +10,8 @@ import { AboutUsComponent } from './about-us.component';
     AboutUsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatButtonModule
   ]
 })
 export class AboutUsModule { }

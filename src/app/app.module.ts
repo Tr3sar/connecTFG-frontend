@@ -11,6 +11,7 @@ import { LoginModule } from './login/login.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { NgxLoadingModule } from 'ngx-loading';
 import { ProfileModule } from './profile/profile.module';
+import { AboutUsModule } from './about-us/about-us.module';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { ProfileModule } from './profile/profile.module';
     LoginModule,
     ProfileModule,
     NotificationsModule,
+    AboutUsModule,
     NgxLoadingModule.forRoot({
       fullScreenBackdrop: true
     })

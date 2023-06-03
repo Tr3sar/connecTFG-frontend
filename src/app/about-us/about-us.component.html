@@ -1,1 +1,11 @@
-<p>about-us works!</p>
+<main>
+    <div class="author" *ngFor="let author of authors">
+        <img src="../../assets/images/foto-{{author.imgUrl}}.jpg">
+        <h2>{{author.name}} {{author.surname}}</h2>
+        <h4>{{author.description}}</h4>
+
+        <button (click)="openLinkedin(author.linkedinUrl)" mat-button>
+            Linkedin
+        </button>
+    </div>
+</main>
