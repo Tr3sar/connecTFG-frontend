@@ -28,7 +28,6 @@ export class PublicationSaveComponent implements OnInit {
 
   onSave() {
     if (this.post.title.trim() == "") { return; }
-    console.log('Publication', this.post)
     this.publicationService.savePost(this.post).subscribe(result => {
       this.dialogRef.close();
     });

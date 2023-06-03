@@ -10,6 +10,8 @@ import { MatSnackBar} from '@angular/material/snack-bar';
 import { LoginService } from 'src/app/login/login.service';
 import { PublicationCommentComponent } from '../publication-comment/publication-comment.component';
 import { Comment } from '../model/comment.model';
+import { NotificationService } from 'src/app/notifications/notification.service';
+import { UserService } from 'src/app/core/services/user/user.service';
 
 @Component({
   selector: 'app-publication-list',
@@ -35,7 +37,8 @@ export class PublicationListComponent implements OnInit {
   }
   searchValue: any;
 
-  constructor(private publicationService: PublicationService, private snackBar: MatSnackBar,public dialog: MatDialog, private loginService: LoginService) { }
+  constructor(private publicationService: PublicationService, private snackBar: MatSnackBar,public dialog: MatDialog,
+              private loginService: LoginService, private notificationService: NotificationService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.onValChange();
@@ -73,8 +76,17 @@ export class PublicationListComponent implements OnInit {
       if (post.applicants.includes(this.loginService.getUserId())) {
         this.publicationService.rejectApplicant(post.author.id).subscribe(res => { })
       } else {
-        this.publicationService.addApplicant(post.id).subscribe(res => { })
-        console.log(post.applicants)
+        this.publicationService.addApplicant(post.id).subscribe(res => { 
+          this.userService.getUserConections().subscribe(
+            conections => {
+              if (!conections.includes(post.author)) {
+                this.notificationService.createNotification(
+                  `El usuario ${this.loginService.getActiveUser().name} ${this.loginService.getActiveUser().surname} quiere conectar contigo!`,
+                  post.author.id).subscribe();
+              }
+            }
+          )
+        })
       }
   }
 }

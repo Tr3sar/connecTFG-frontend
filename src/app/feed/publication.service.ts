@@ -33,18 +33,18 @@ export class PublicationService {
     if (post.id != null) {
       url += '/' + post.id
     }
-    console.log('Post a enviar', post)
+
     return this.http.post<Post>(url + '/create', { title, content });
   }
   createComment(postId: number, message: string) {
     const authorId = this.loginService.getUserId()
-    console.log("POST", postId, "COMENTARISTA", authorId)
+    
     return this.http.post<Comment>("http://localhost:8080" + '/comment/' + postId, { authorId, message })
   }
 
   addApplicant(postId: number): Observable<User> {
     const applicantId = this.loginService.getUserId()
-    console.log(applicantId)
+    
     return this.http.put<User>(this.url + '/apply/' + postId, { applicantId });
   }
 

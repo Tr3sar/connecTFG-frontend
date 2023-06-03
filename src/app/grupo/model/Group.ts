@@ -1,4 +1,4 @@
-import { Message } from "src/app/core/model/Message";
+import { Message } from "../model/Message";
 import { User } from "src/app/core/model/User";
 
 export class Group {

@@ -1,33 +1,39 @@
-.main-container{
+.main-container {
     width: 100%;
     height: 100%;
-    
+
     margin-right: 10rem;
 
-    .info-container{
+    .info-container {
         height: 2rem;
         width: calc(100%);
         position: absolute;
         top: 0;
 
-        /* border: 1px solid var(--text-100); */
-        border-radius: 0 0 0.5rem 0.5rem;
+        border-radius: 0 0.5rem 0 0.5rem;
 
         background-color: var(--primary-100);
         color: var(--bg-100);
 
-        /* margin-left: 0.25rem; */
+        display: flex;
+        align-items: center;
 
-        p{
+        p {
             padding: 0.5rem;
             font-weight: 550;
         }
     }
 
-    .chat-container{
+    .chat-container {
         margin-top: 2.5rem;
         margin-left: 0.5rem;
         margin-right: 0.5rem;
+
+        max-height: calc(100% - 6rem);
+
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
 
 
         .message {
@@ -36,54 +42,118 @@
 
             background-color: var(--bg-100);
 
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
 
             width: fit-content;
             padding-left: 0.5rem;
             padding-right: 0.5rem;
             padding-top: 0.25rem;
             padding-bottom: 0.25rem;
+
+            display: flex;
+            flex-direction: column;
+
+            .emitter {
+                font-size: small;
+                border-bottom: 1px solid black;
+            }
+
+            .text-container {
+                .text {
+                    margin-block-start: 0em;
+                    margin-block-end: 0em;
+                }
+
+                .file a{
+                    margin-top: 0.5rem;
+                    color: var(--accent-100);
+                }
+
+            }
+        }
+
+        .own-message {
+            align-self: self-end;
+
+            .text {
+                margin-top: 0;
+            }
+        }
+
+        &::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+
+        &::-webkit-scrollbar:vertical {
+            width: 5px;
+        }
+
+        &::-webkit-scrollbar-button:increment {
+            display: none;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--bg-300);
+            border-radius: 20px;
         }
     }
 
-    .message-container{
-        height: 2rem;
-        width: 98%;
+    .message-container {
+        height: 3rem;
+        width: 100%;
 
         position: absolute;
         bottom: 0;
-
-        margin-left: 1%;
-        margin-bottom: 0.5rem;
-
-        border: 1px solid var(--text-100);
-        border-radius: 1.5rem;
 
         background-color: var(--bg-100);
 
         display: flex;
         align-items: center;
+        justify-content: center;
 
-        input{
+        .message-input {
             background-color: transparent;
 
-            height: 1.50rem;
-            width: 96%;
+            height: 2rem;
+            width: 98%;
 
-            margin-left: 0.75rem;
+            border: 1px solid var(--text-100);
+            border-radius: 1.5rem;
 
-            border: none;
+            padding-left: 0.75rem;
+            padding-right: 4.9rem;
+
+            margin-bottom: 0.5rem;
+
+            //border: none;
             outline: none;
             vertical-align: sub;
         }
 
-        button{
+        .buttons-container {
             position: absolute;
-            right: 0;
-            bottom: 0;
+            right: 1rem;
+            bottom: 0.85rem;
 
-            background-color: transparent;
-            border-color: transparent;
+            display: flex;
+
+            .file-container {
+                input[type="file"] {
+                    opacity: 0;
+                    width: 0rem;
+                }
+
+                mat-icon {
+                    position: absolute;
+                    right: 2.5rem;
+                    bottom: 0.25rem;
+                }
+            }
+
+            button {
+                background-color: transparent;
+                border-color: transparent;
+            }
         }
     }
 }

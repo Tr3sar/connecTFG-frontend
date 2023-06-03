@@ -3,17 +3,32 @@
         <p>{{selectedGroup.name}}</p>
     </div>
 
-    <div class="chat-container">
-        <div *ngFor="let message of messages" class="message">
-            {{message}}
+    <div class="chat-container" #chatContainer [scrollTop]="chatContainer.scrollHeight">
+        <div *ngFor="let message of messages" class="message" [ngClass]="{'own-message': message.emitter.id == loginService.getUserId()}">
+            <span class="emitter" *ngIf="message.emitter.id != loginService.getUserId()">{{message.emitter.name}} {{message.emitter.surname}}</span>
+            <div class="text-container">
+                <p *ngIf="message.text != ''" class="text">{{message.text}}</p>
+                <span *ngIf="message.file != null" class="file">
+                    <a *ngIf="message.file" [href]="message.file.href" [download]="message.file.filename">{{message.file.filename}}</a>
+                </span>
+            </div>
         </div>
     </div>
 
     <div class="message-container">
-        <input matInput [(ngModel)]="messageToSend" type="text" placeholder="Escribe un mensaje...">
-        <button (click)="sendMessage()">
-            <mat-icon class="material-symbols-outlined">send</mat-icon>
-        </button>   
+        <input matInput [(ngModel)]="messageToSend" type="text" placeholder="Escribe un mensaje..." class="message-input">
+        <div class="buttons-container">
+            <div class="file-container">
+                <input type="file" #uploadFile (change)="onFileSelected($event)" accept=".pdf">
+                <button (click)="uploadFile.click()">
+                    <mat-icon class="material-icons-outlined">attach_file</mat-icon>
+                </button>
+            </div>
+
+            <button (click)="sendMessage()">
+                <mat-icon class="material-icons-outlined">send</mat-icon>
+            </button>  
+        </div> 
     </div>
 
     <ngx-loading [show]="loading"></ngx-loading>

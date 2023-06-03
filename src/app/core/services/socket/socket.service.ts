@@ -4,6 +4,7 @@ import { Socket, io } from 'socket.io-client';
 import { Group } from 'src/app/grupo/model/Group';
 import { environment } from 'src/environments/environment';
 import { LoginService } from 'src/app/login/login.service';
+import { Message } from '../../../grupo/model/Message';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class SocketService {
       this.setupSocketConnection();
     }, 300)
   }
-  
+
 
   setupSocketConnection() {
     this.socket = io(this.SOCKET_ENDPOINT, {
@@ -53,19 +54,26 @@ export class SocketService {
   }
 
   joinGroup(group: Group) {
-    this.socket.emit('join', group.id);
-    this.setSelectedGroup(group)
+    if (this.socket == undefined) {
+      setTimeout(() => {
+        this.socket.emit('join', group.id);
+        this.setSelectedGroup(group)
+      }, 500)
+    } else {
+      this.socket.emit('join', group.id);
+      this.setSelectedGroup(group)
+    }
   }
 
   leaveGroup(groupId: number) {
     this.socket.emit('leave', groupId)
   }
 
-  sendMessage(groupId: number, message: string) {
-    this.socket.emit('newMessage', {groupId, message})
+  sendMessage(groupId: number, message: Message) {
+    this.socket.emit('newMessage', { groupId, message })
   }
 
-  getMessages() : Observable<any> {
+  getMessages(): Observable<any> {
     return this.messagesSubject.asObservable();
   }
 
@@ -73,7 +81,7 @@ export class SocketService {
     this.selectedGroupSubject.next(group);
   }
 
-  getSelectedGroup() : Observable<Group | null>{
+  getSelectedGroup(): Observable<Group | null> {
     return this.selectedGroupSubject.asObservable();
   }
 }

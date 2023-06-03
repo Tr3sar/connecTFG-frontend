@@ -6,6 +6,7 @@ import { NotificationService } from 'src/app/notifications/notification.service'
 import { MatMenuModule } from '@angular/material/menu';
 
 
+import { UserService } from '../services/user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,11 @@ import { MatMenuModule } from '@angular/material/menu';
 export class HeaderComponent implements OnInit {
 
   notifications: Notification[] = [];
-  currentUrl = window.location.href;
+
+  inInicio = false;
+  inChat = false;
+  inConections = false;
+  inNotifications = false;
 
   constructor(public loginService: LoginService, private notificationService: NotificationService, private router: Router, public menu: MatMenuModule) { }
 
@@ -29,8 +34,35 @@ export class HeaderComponent implements OnInit {
     }
 
     this.router.events.subscribe(event => {
+
       if (event instanceof NavigationEnd) {
-        this.currentUrl = event.url;
+        if (event.url.includes('/feed')) {
+          this.inInicio = true;
+
+
+          this.inChat = false;
+          this.inConections = false;
+          this.inNotifications = false;
+        } else if (event.url.includes('/grupo')) {
+          this.inChat = true;
+
+
+          this.inInicio = false;
+          this.inConections = false;
+          this.inNotifications = false;
+        } else if (event.url.includes('/conexiones')) {
+          this.inConections = true;
+
+          this.inInicio = false;
+          this.inChat = false;
+          this.inNotifications = false;
+        } else if (event.url.includes('/notifications')) {
+          this.inNotifications = true;
+
+          this.inInicio = false;
+          this.inChat = false;
+          this.inConections = false;
+        }
       }
     });
   }

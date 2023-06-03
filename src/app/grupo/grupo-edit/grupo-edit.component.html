@@ -20,12 +20,12 @@
             <mat-chip-list #chipGrid>
                 <mat-chip *ngFor="let user of group.members" (removed)="remove(user)" [disabled]="user.id == loginService.getUserId()">
                     {{user.name}}
-                    <button matChipRemove><mat-icon class="material-symbols-outlined">cancel</mat-icon></button>
+                    <button matChipRemove><mat-icon class="material-icons-outlined">cancel</mat-icon></button>
                 </mat-chip>
             </mat-chip-list>
 
             <input placeholder="Nuevo miembro..." #userInput [formControl]="userCtrl"
-            [matChipInputFor]="chipGrid" [matAutocomplete]="auto" (matChipInputTokenEnd)="add($event)">
+            [matChipInputFor]="chipGrid" [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
 
                 <ng-container *ngFor="let user of filteredUsers | async">
