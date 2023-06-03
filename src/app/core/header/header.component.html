@@ -16,35 +16,47 @@
                 <div class="under">
                     <button mat-button routerLink="/feed">
                         <span [ngStyle]="{
-                            'border-bottom': currentUrl.includes('/feed') ? '2px solid var(--accent-100)' : 'none'
+                            'border-bottom': inInicio ? '2px solid var(--accent-100)' : 'none'
                         }">
                             Inicio
                         </span>
                     </button>
-                    <button mat-button routerLink="/conexiones">
+                    <button mat-button routerLink="/grupo">
                         <span [ngStyle]="{
-                            'border-bottom': !currentUrl.includes('/feed') ? '2px solid var(--accent-100)' : 'none'
+                            'border-bottom': inChat ? '2px solid var(--accent-100)' : 'none'
                         }">
-                            Conexiones
+                            Chat
                         </span>
                     </button>
                 </div>
             </div>
 
             <div class="right">
+                <button mat-button>
+                    <mat-icon [ngClass]="{'material-icons': inConections, 'material-icons-outlined': !inConections}" 
+                    [ngStyle]="{'color': inConections ? 'var(--accent-100)' : 'var(--text-100)'}"
+                    routerLink="/conexiones">hub</mat-icon>
+                </button>
+
+                <button mat-button>
+                    <mat-icon [matBadge]="notifications.length" class="notification-icon" 
+                    [ngClass]="{'material-icons': inNotifications, 'material-icons-outlined': !inNotifications}" 
+                    [ngStyle]="{'color': inNotifications ? 'var(--accent-100)' : 'var(--text-100)'}"
+                    routerLink="/notifications">notifications</mat-icon>
+                </button>
                 <button mat-button [matMenuTriggerFor]="menu">
-                    <mat-icon class="material-symbols-outlined">person</mat-icon>
+                    <mat-icon class="material-icons-outlined">person</mat-icon>
                   </button>
                   <mat-menu #menu="matMenu">
                     <button mat-menu-item routerLink="/profile">
                       Profile
                     </button>
+                    <button mat-menu-item routerLink="">
+                        About Us
+                      </button>
                     <button mat-menu-item>
                       Settings
                     </button>
-                    <button mat-menu-item routerLink="/profile">
-                        About Us
-                      </button>
                     <button (click)="loginService.logout()" routerLink="/login" mat-menu-item>
                       Logout
                     </button>
