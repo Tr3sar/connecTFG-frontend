@@ -16,9 +16,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu'
 
 import { HttpClientModule } from '@angular/common/http';
-import { NgxLoadingModule } from 'ngx-loading';
 
 import { SocketService } from '../core/services/socket/socket.service';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -40,8 +40,8 @@ import { SocketService } from '../core/services/socket/socket.service';
     MatChipsModule,
     MatIconModule,
     HttpClientModule,
-    NgxLoadingModule,
-    MatMenuModule
+    MatMenuModule,
+    NgxSpinnerModule
   ],
   providers: [
     SocketService,

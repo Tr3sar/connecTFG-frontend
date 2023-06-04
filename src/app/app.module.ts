@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,9 +9,10 @@ import { FeedModule } from './feed/feed.module';
 import { GrupoModule } from './grupo/grupo.module';
 import { LoginModule } from './login/login.module';
 import { NotificationsModule } from './notifications/notifications.module';
-import { NgxLoadingModule } from 'ngx-loading';
 import { ProfileModule } from './profile/profile.module';
 import { AboutUsModule } from './about-us/about-us.module';
+
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 @NgModule({
@@ -30,11 +31,10 @@ import { AboutUsModule } from './about-us/about-us.module';
     ProfileModule,
     NotificationsModule,
     AboutUsModule,
-    NgxLoadingModule.forRoot({
-      fullScreenBackdrop: true
-    })
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
   ],
   providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

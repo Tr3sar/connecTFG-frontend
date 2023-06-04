@@ -17,12 +17,12 @@
         <mat-form-field>
             <mat-label>Miembros del grupo</mat-label>
 
-            <mat-chip-list #chipGrid>
+            <mat-chip-grid #chipGrid>
                 <mat-chip *ngFor="let user of group.members" (removed)="remove(user)" [disabled]="user.id == loginService.getUserId()">
                     {{user.name}}
                     <button matChipRemove><mat-icon class="material-icons-outlined">cancel</mat-icon></button>
                 </mat-chip>
-            </mat-chip-list>
+            </mat-chip-grid>
 
             <input placeholder="Nuevo miembro..." #userInput [formControl]="userCtrl"
             [matChipInputFor]="chipGrid" [matAutocomplete]="auto">

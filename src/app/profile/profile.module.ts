@@ -14,7 +14,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu'
 import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
-import { NgxLoadingModule } from 'ngx-loading';
 import { SocketService } from '../core/services/socket/socket.service';
 import { ProfileComponent } from './profile.component';
 
@@ -37,7 +36,6 @@ import { ProfileComponent } from './profile.component';
     MatChipsModule,
     MatIconModule,
     HttpClientModule,
-    NgxLoadingModule,
     MatMenuModule
   ],
   providers: [

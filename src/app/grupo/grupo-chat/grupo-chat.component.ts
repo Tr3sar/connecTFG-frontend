@@ -6,6 +6,7 @@ import { Message } from '../model/Message';
 import { LoginService } from 'src/app/login/login.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/core/services/user/user.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-grupo-chat',
@@ -23,10 +24,11 @@ export class GrupoChatComponent implements OnInit {
   loading: boolean = false;
 
   constructor(private grupoService: GrupoService, private socketService: SocketService, public loginService: LoginService,
-    private cdref: ChangeDetectorRef, private route: ActivatedRoute, private userService: UserService) { }
+    private cdref: ChangeDetectorRef, private route: ActivatedRoute, private userService: UserService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.loading = true;
+    this.spinner.show();
 
     if (this.route.snapshot.params['id'] != undefined) {
       //Buscar grup on estiguen els dos (mirar com fer-ho)
@@ -47,6 +49,7 @@ export class GrupoChatComponent implements OnInit {
           this.grupoService.getMessagesFromGroup(this.selectedGroup.id).subscribe(messages => {
             this.messages = messages;
             this.loading = false;
+            this.spinner.hide();
 
             this.cdref.detectChanges()
           })
@@ -60,6 +63,7 @@ export class GrupoChatComponent implements OnInit {
               newGroup.members = [user, this.loginService.getActiveUser()]
               this.selectedGroup = newGroup
               this.loading = false
+              this.spinner.hide();
             },
             err => {
               console.log('No existe un usuario con ese id')
@@ -73,18 +77,21 @@ export class GrupoChatComponent implements OnInit {
 
       if (!this.selectedGroup) {
         this.loading = false;
+        this.spinner.hide();
         return;
       }
 
       this.grupoService.getMessagesFromGroup(this.selectedGroup.id).subscribe(messages => {
         this.messages = messages;
         this.loading = false;
+        this.spinner.hide();
 
         this.cdref.detectChanges()
       })
     },
       err => {
         this.loading = false;
+        this.spinner.hide();
       }
     )
 
@@ -92,9 +99,11 @@ export class GrupoChatComponent implements OnInit {
     this.socketService.getMessages().subscribe(message => {
       this.messages.push(message)
       this.loading = false;
+      this.spinner.hide();
     },
       err => {
         this.loading = false;
+        this.spinner.hide();
       }
     )
   }
