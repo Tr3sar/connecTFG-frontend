@@ -12,7 +12,7 @@ import { NotificationsModule } from './notifications/notifications.module';
 import { ProfileModule } from './profile/profile.module';
 import { AboutUsModule } from './about-us/about-us.module';
 
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxLoadingModule } from 'ngx-loading';
 
 
 @NgModule({
@@ -31,7 +31,9 @@ import { NgxSpinnerModule } from "ngx-spinner";
     ProfileModule,
     NotificationsModule,
     AboutUsModule,
-    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
+    NgxLoadingModule.forRoot({
+      fullScreenBackdrop: true
+    })
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

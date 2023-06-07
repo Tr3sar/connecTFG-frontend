@@ -18,8 +18,8 @@ import { MatMenuModule } from '@angular/material/menu'
 import { HttpClientModule } from '@angular/common/http';
 
 import { SocketService } from '../core/services/socket/socket.service';
-import { NgxSpinnerModule } from 'ngx-spinner';
 
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MatIconModule,
     HttpClientModule,
     MatMenuModule,
-    NgxSpinnerModule
+    NgxLoadingModule
   ],
   providers: [
     SocketService,
