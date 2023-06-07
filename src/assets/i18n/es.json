@@ -1,0 +1,39 @@
+{
+    "botones": {
+        "cerrar": "Cerrar",
+        "guardar": "Guardar",
+        "editar": "Editar",
+        "borrar": "Borrar"
+    },
+
+    "header": {
+        "buscador": {
+            "placeholder": "Busca a tus futuros compañeros..."
+        },
+        "tabs": {
+            "inicio": "Inicio",
+            "chat": "Chat"
+        },
+        "perfil": {
+            "titulo": "Perfil",
+            "ajustes": "Ajustes",
+            "sobreNosotros": "Sobre nosotros",
+            "cerrarSesion": "Cerrar sesión"
+        }
+    },
+
+    "chat": {
+        "crearGrupo": {
+            "titulo": "Crear grupo",
+            "parametros": {
+                "titulo": "Título",
+                "descripcion": "Descripción",
+                "miembros": "Miembros del grupo"
+            }
+        },
+
+        "editarGrupo": {
+            "titulo": "Editar grupo"
+        }
+    }
+}

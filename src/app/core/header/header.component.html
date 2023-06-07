@@ -8,7 +8,7 @@
             <div class="center">
                     <div class="input-container">
                         <mat-icon class="material-icons-outlined">search</mat-icon>
-                        <input matInput placeholder="Buscador" type="text" name="buscador">
+                        <input matInput placeholder="{{'header.buscador.placeholder' | translate }}" type="text" name="buscador">
                 </div>
 
                 <div class="under">
@@ -16,14 +16,14 @@
                         <span [ngStyle]="{
                             'border-bottom': inInicio ? '2px solid var(--accent-100)' : 'none'
                         }">
-                            Inicio
+                        {{'header.tabs.inicio' | translate }}
                         </span>
                     </button>
                     <button mat-button routerLink="/grupo">
                         <span [ngStyle]="{
                             'border-bottom': inChat ? '2px solid var(--accent-100)' : 'none'
                         }">
-                            Chat
+                        {{'header.tabs.chat' | translate }}
                         </span>
                     </button>
                 </div>
@@ -47,16 +47,16 @@
                   </button>
                   <mat-menu #menu="matMenu">
                     <button mat-menu-item routerLink="/profile/{{loginService.getUserId()}}">
-                      Profile
+                        {{'header.perfil.titulo' | translate }}
                     </button>
                     <button mat-menu-item>
-                      Settings
+                        {{'header.perfil.ajustes' | translate }}
                     </button>
                     <button mat-menu-item (click)="showAboutUs()">
-                        Sobre nosotros
+                        {{'header.perfil.sobreNosotros' | translate }}
                       </button>
                     <button (click)="loginService.logout()" routerLink="/login" mat-menu-item>
-                      Logout
+                        {{'header.perfil.cerrarSesion' | translate }}
                     </button>
                   </mat-menu>
             </div>
