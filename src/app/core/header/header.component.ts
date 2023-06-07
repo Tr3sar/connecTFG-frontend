@@ -3,10 +3,6 @@ import { NavigationEnd, Router } from '@angular/router';
 import { LoginService } from 'src/app/login/login.service';
 import { Notification } from 'src/app/notifications/model/Notification';
 import { NotificationService } from 'src/app/notifications/notification.service';
-import { MatMenuModule } from '@angular/material/menu';
-
-
-import { UserService } from '../services/user/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AboutUsComponent } from 'src/app/about-us/about-us.component';
 
