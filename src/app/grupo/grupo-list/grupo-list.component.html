@@ -21,11 +21,11 @@
                     <mat-menu #menu="matMenu">
                         <button mat-menu-item (click)="editGroup(group)">
                             <mat-icon class="material-icons-outlined">edit</mat-icon>
-                            <span>Editar</span>
+                            <span>{{'botones.editar' | translate}}</span>
                         </button>
                         <button mat-menu-item (click)="deleteGroup(group.id)">
                             <mat-icon class="material-icons-outlined">delete</mat-icon>
-                            <span>Borrar</span>
+                            <span>{{'botones.borrar' | translate}}</span>
                         </button>
                     </mat-menu>
                 </div>

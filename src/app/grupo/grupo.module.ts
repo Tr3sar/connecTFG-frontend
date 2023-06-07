@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { SocketService } from '../core/services/socket/socket.service';
 
+import { TranslateModule } from '@ngx-translate/core';
 import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
@@ -41,7 +42,8 @@ import { NgxLoadingModule } from 'ngx-loading';
     MatIconModule,
     HttpClientModule,
     MatMenuModule,
-    NgxLoadingModule
+    NgxLoadingModule,
+    TranslateModule
   ],
   providers: [
     SocketService,

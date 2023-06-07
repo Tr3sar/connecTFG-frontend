@@ -1,21 +1,21 @@
 <div class="main-container">
-    <h1 *ngIf="group.id == null">Crear grupo</h1>
-    <h1 *ngIf="group.id != null">Editar grupo</h1>
+    <h1 *ngIf="group.id == null">{{'chat.crearGrupo.titulo' | translate }}</h1>
+    <h1 *ngIf="group.id != null">{{'chat.editarGrupo.titulo' | translate }}</h1>
 
     
     <form>
         <mat-form-field>
-            <mat-label>Título</mat-label>
-            <input type="text" matInput placeholder="Título" [(ngModel)]="group.name" name="name" required>
+            <mat-label>{{'chat.crearGrupo.parametros.titulo' | translate }}</mat-label>
+            <input type="text" matInput [(ngModel)]="group.name" name="name" required>
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Descripción</mat-label>
-            <input type="text" matInput placeholder="Descripción" [(ngModel)]="group.description" name="description">
+            <mat-label>{{'chat.crearGrupo.parametros.descripcion' | translate }}</mat-label>
+            <input type="text" matInput [(ngModel)]="group.description" name="description">
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Miembros del grupo</mat-label>
+            <mat-label>{{'chat.crearGrupo.parametros.miembros' | translate }}</mat-label>
 
             <mat-chip-grid #chipGrid>
                 <mat-chip *ngFor="let user of group.members" (removed)="remove(user)" [disabled]="user.id == loginService.getUserId()">
