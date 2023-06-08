@@ -4,6 +4,7 @@ import { User } from 'src/app/core/model/User';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { PublicationService } from 'src/app/feed/publication.service';
 import { LoginService } from 'src/app/login/login.service';
+import { NotificationType } from 'src/app/notifications/model/NotificationType';
 import { NotificationService } from 'src/app/notifications/notification.service';
 
 @Component({
@@ -44,11 +45,7 @@ export class ConexionListComponent implements OnInit {
       res => this.ngOnInit()
     );
 
-    this.notificationService.createNotification(
-      `El usuario ${this.loginService.getActiveUser().name} ${this.loginService.getActiveUser().surname}
-       ha aceptado tu solicitud de conexión! Ahora ya puedes hablar con él.`,
-      id
-    ).subscribe()
+    this.notificationService.createNotification(NotificationType.CONNECTION, this.loginService.getUserId(), id).subscribe();
   }
 
   onRejected(id: number) {

@@ -1,6 +1,6 @@
 <div class="main-container">
     <div *ngFor="let notification of notifications" class="notification">
-        {{notification.message}}
+        {{'notificaciones.' + notification.type | translate: {emitterName: notification.emitter.name, emitterSurname: notification.emitter.surname} }}
 
         <button mat-button (click)="deleteNotification(notification.id)">
             <mat-icon class="material-icons-outlined">delete</mat-icon>

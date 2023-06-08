@@ -18,8 +18,8 @@ export class NotificationService {
     return this.http.get<Notification[]>(this.url + `/${this.loginService.getUserId()}`);
   }
 
-  createNotification(message: string, destintationUserId: number) : Observable<Notification>{
-    return this.http.put<Notification>(this.url, { message, user_id: destintationUserId });
+  createNotification(type: string, emitter_id: number, receiver_id: number) : Observable<Notification>{
+    return this.http.put<Notification>(this.url, { type, emitter: emitter_id, receiver: receiver_id });
   }
 
   deleteNotification(id: number) {
