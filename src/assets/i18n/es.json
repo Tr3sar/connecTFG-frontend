@@ -23,6 +23,7 @@
     },
 
     "chat": {
+        "messagePlaceholder": "Escribe un mensaje...",
         "crearGrupo": {
             "titulo": "Crear grupo",
             "parametros": {

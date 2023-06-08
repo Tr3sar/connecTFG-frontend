@@ -16,7 +16,7 @@
     </div>
 
     <div class="message-container">
-        <input matInput [(ngModel)]="messageToSend" type="text" placeholder="Escribe un mensaje..." class="message-input">
+        <input matInput [(ngModel)]="messageToSend" type="text" placeholder="{{'chat.messagePlaceholder' | translate}}" class="message-input">
         <div class="buttons-container">
             <div class="file-container">
                 <input type="file" #uploadFile (change)="onFileSelected($event)" accept=".pdf">
