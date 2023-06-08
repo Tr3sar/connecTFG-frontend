@@ -5,6 +5,7 @@ import { ConexionListComponent } from './conexion-list/conexion-list.component';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -16,7 +17,8 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     RouterModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    TranslateModule
   ]
 })
 export class ConexionesModule { }

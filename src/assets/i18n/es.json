@@ -35,5 +35,12 @@
         "editarGrupo": {
             "titulo": "Editar grupo"
         }
+    },
+
+    "conexiones": {
+        "peticion": "quiere hacer el TFG contigo!",
+        "noPeticiones": "No tienes ninguna nueva solicitud de conexión!",
+
+        "title" : "Tus conexiones"
     }
 }

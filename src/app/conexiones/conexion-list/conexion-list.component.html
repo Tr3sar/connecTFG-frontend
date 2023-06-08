@@ -2,7 +2,7 @@
   <div class="applicants-container" *ngIf="userNewApplicants.length > 0">
     <div *ngFor="let applicant of userNewApplicants" class="applicant">
 
-      {{applicant.name}} {{applicant.surname}} quiere hacer el TFG contigo!
+      {{applicant.name}} {{applicant.surname}} {{'conexiones.peticion' | translate}}
       <div class="buttons-container">
         <button class="done" (click)="onAccepted(applicant.id)" mat-button>
           <mat-icon class="material-icons-outlined">done</mat-icon>
@@ -15,11 +15,11 @@
   </div>
 
   <div class="applicants-container" *ngIf="userNewApplicants.length <= 0">
-    No tienes ninguna nueva solicitud de conexión!
+    {{'conexiones.noPeticiones' | translate}}
   </div>
 
   <div class="conections-container">
-    <h3>Tus conexiones ({{userConections.length}}): </h3>
+    <h3>{{"conexiones.title" | translate}} ({{userConections.length}}): </h3>
 
     <div class="conection" *ngFor="let conection of userConections">
       {{conection.name}} {{conection.surname}}
