@@ -47,6 +47,7 @@
     "notificaciones": {
         "noNotificaciones": "De momento no tienes notificaciones!",
 
-        "connection": "El usuario {{emitterName}} {{emitterSurname}} ha aceptado tu solicitud de conexion! Ahora ya puedes chatear con él."
+        "connection": "El usuario {{emitterName}} {{emitterSurname}} ha aceptado tu solicitud de conexion! Ahora ya puedes chatear con él.",
+        "post": "El usuario {{emitterName}} {{emitterSurname}} quiere conectar contigo!"
     }
 }

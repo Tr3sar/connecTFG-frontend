@@ -12,6 +12,7 @@ import { PublicationCommentComponent } from '../publication-comment/publication-
 import { Comment } from '../model/comment.model';
 import { NotificationService } from 'src/app/notifications/notification.service';
 import { UserService } from 'src/app/core/services/user/user.service';
+import { NotificationType } from 'src/app/notifications/model/NotificationType';
 
 @Component({
   selector: 'app-publication-list',
@@ -80,9 +81,7 @@ export class PublicationListComponent implements OnInit {
           this.userService.getUserConections().subscribe(
             conections => {
               if (!conections.includes(post.author)) {
-                this.notificationService.createNotification(
-                  `El usuario ${this.loginService.getActiveUser().name} ${this.loginService.getActiveUser().surname} quiere conectar contigo!`,
-                  post.author.id).subscribe();
+                this.notificationService.createNotification(NotificationType.POST, this.loginService.getUserId(), post.author.id).subscribe();
               }
             }
           )

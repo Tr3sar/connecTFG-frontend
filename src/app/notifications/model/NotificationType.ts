@@ -1,3 +1,4 @@
 export enum NotificationType {
-    CONNECTION = "connection"
+    CONNECTION = "connection",
+    POST = "post"
 }
