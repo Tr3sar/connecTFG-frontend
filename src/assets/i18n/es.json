@@ -42,5 +42,9 @@
         "noPeticiones": "No tienes ninguna nueva solicitud de conexión!",
 
         "title" : "Tus conexiones"
+    },
+
+    "notificaciones": {
+        "noNotificaciones": "De momento no tienes notificaciones!"
     }
 }

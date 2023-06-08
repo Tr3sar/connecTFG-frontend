@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { NotificatonListComponent } from './notificaton-list/notificaton-list.component';
 import { MatButtonModule } from '@angular/material/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -13,7 +14,8 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    TranslateModule
   ]
 })
 export class NotificationsModule { }
