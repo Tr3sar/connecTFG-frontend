@@ -8,14 +8,14 @@
   <div class="container">
     <div class="form register-form">
       <h2>Registrate y encuentra a tu compañero de TFG!</h2>
-      <form method="post" [formGroup]="formularioRegistro" (ngSubmit)="onSignUpClicked()">
+      <form method="post" [formGroup]="formularioRegistro" >
         <div class="form-group" id="formularioRegistro">
-          <input type="email" id="EmailRegistro" placeholder="Email">
-          <input type="password" id="PasswordRegistro" placeholder="Contraseña">
-          <input type="name" id="NameRegistro" placeholder="Nombre">
-          <input type="surname" id="Surname" placeholder="Apellido">
-          <input type="degree" id="Degree" placeholder="Grado">
-          <input type="description" id="Description" placeholder="Descripción">
+          <input type="email" formControlName="email" placeholder="Email">
+          <input type="password" formControlName="password" placeholder="Contraseña">
+          <input type="name"formControlName="name" placeholder="Nombre">
+          <input type="surname" formControlName="surname" placeholder="Apellido">
+          <input type="degree" formControlName="degree" placeholder="Grado">
+          <input type="description"  formControlName="description" placeholder="Descripción">
           <button class="button" type="submit" (click)="onSignUpClicked()">Sign up</button>
         </div>
       </form>

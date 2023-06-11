@@ -16,6 +16,7 @@ import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { SocketService } from '../core/services/socket/socket.service';
 import { ProfileComponent } from './profile.component';
+import { PublicationService } from '../feed/publication.service';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { ProfileComponent } from './profile.component';
   ],
   providers: [
     SocketService,
+    PublicationService,
         
     {
       provide: MAT_DIALOG_DATA,

@@ -4,11 +4,12 @@ export class User{
     surname: string;
     email: string;
     password: string;
-    img_url: string;
+    social_url: string[];
     tfg_url: string;
     description: string;
     university_id: number;
     degree: string;
+    conections: User[]
     rol: string;
     status: string;
     //post_id: number[];

@@ -1,93 +1,64 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="UTF-8" />
-  <title>Profile</title>
-</head>
-
-<body>
-  <hr class="vertical-divider"> 
-    
-  <main>
-    <section class="profile-info">
-
-      
-      <mat-card-header>
-        <mat-card-title>Profile Info</mat-card-title>
-      </mat-card-header>
-      <button (click)="onEditProfile()"><mat-icon class="material-symbols-outlined">Edit Square</mat-icon></button>
-      <mat-card-content>
-          <h1 class="name">NOMBRE APELLIDO</h1>
-          <h2 class="headline">DEGREE</h2>
-          <p class="connections">
-            500+ connections
-          </p>
-        </mat-card-content>
-    </section>
-    <section class="Summary">
-      <mat-card-header>
-        <mat-card-title>DESCRIPCION</mat-card-title>
-      </mat-card-header>
-      <button (click)="onEditSummary()"><mat-icon class="material-symbols-outlined">Edit Square</mat-icon></button>
+<div class="container">
+  <div class="profile">
+    <div class="profile-info">
+      <section class="profile-details" *ngIf="user">
+        <h1>{{ user.name }} {{ user.surname }}</h1>
+        <span class="rol">{{ user.degree }}</span>
+        <div><span class="description">{{ user.description }}</span></div>
+        
+        <div class="education">
+          <i class="ni education_hat mr-2"></i>Universitat Politecnica de Valencia
+        </div>
+        <div class="profile-header">
+          <button class="btn btn-info">Connect</button>
+          <button mat-button class="edit" *ngIf="user.id === loginService.getUserId()" [ngClass]="{'hidden-button': user.id !== loginService.getUserId()}">Edit Profile</button>
+        </div>
+      </section>
+      <div class="profile-stats" *ngIf="user">
+        <div>
+          <span class="description">{{ user.conections.length }}</span>
+          <span class="description">Connections</span>
+        </div>
+      </div>
+      <section class="Posts" *ngIf="user">
+        <mat-card-header>
+          <mat-card-title>Posts</mat-card-title>
+        </mat-card-header>
+        <button (click)="onEditPost()">
+          <mat-icon class="material-symbols-outlined">Edit Square</mat-icon>
+        </button>
+        <div *ngFor="let post of posts">
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.content }}</p>
+          <!-- Resto de la información del post -->
+        </div>
+      </section>
+      <section class="social-media" *ngIf="user">
+        <mat-card-header>
+          <mat-card-title>Lista de Redes Sociales</mat-card-title>
+        </mat-card-header>
+        <button (click)="onEditSocial()">
+          <mat-icon class="material-symbols-outlined">Edit Square</mat-icon>
+        </button>
+        <mat-card>
+          <mat-card-content>
+            <a href="https://www.linkedin.com/in/matiasfr"><i class="fab fa-linkedin"></i></a>
+          </mat-card-content>
+        </mat-card>
+      </section>
+      <section class="tfgurl" *ngIf="user">
+        <mat-card-header>
+          <mat-card-title>TFG Url</mat-card-title>
+        </mat-card-header>
+        <button (click)="onEditTFG()">
+          <mat-icon class="material-symbols-outlined">+</mat-icon>
+        </button>
         <mat-card-content>
           <p>
-            //Descripción del usuario
+            <a href>{{ user.tfg_url }}</a>
           </p>
         </mat-card-content>
-    </section>
-    <section class="Experience">
-      <mat-card-header>
-        <mat-card-title>Experience</mat-card-title>
-      </mat-card-header>
-      <button (click)="onEditExperience()"><mat-icon class="material-symbols-outlined">Edit Square</mat-icon></button>
-        <mat-card-content>
-          <ul>
-            <li>
-              <h3>Web Developer</h3>
-            </li>
-            //Lista de Experience
-            <li>
-              <h3>Frontend Developer</h3>
-            </li>
-          </ul>
-        </mat-card-content>
-    </section>
-    <section class="Posts">
-      <mat-card-header>
-        <mat-card-title>Posts</mat-card-title>
-      </mat-card-header>
-      <button (click)="onEditPost()"><mat-icon class="material-symbols-outlined">Edit Square</mat-icon></button>
-
-        <mat-card-content>
-          <p>
-            //Posts del usuario
-          </p>
-        </mat-card-content>
-    </section>
-    <section class="social-media">
-      <mat-card-header>
-        <mat-card-title>Lista de Redes Sociales</mat-card-title>
-      </mat-card-header>
-      <button (click)="onEditSocial()"><mat-icon class="material-symbols-outlined">Edit Square</mat-icon></button>
-      <mat-card>
-        <mat-card-content>
-          <a href="https://www.linkedin.com/in/matiasfr"><i class="fab fa-linkedin"></i></a>
-        </mat-card-content>
-      </mat-card>
-    </section>   
-    <section class="tfgurl">
-      <mat-card-header>
-        <mat-card-title>TFG Url</mat-card-title>
-      </mat-card-header>
-      <button (click)="onEditTFG()"><mat-icon class="material-symbols-outlined">Edit Square</mat-icon></button>
-        <mat-card-content>
-          <p>
-            TFG Url
-          </p>
-        </mat-card-content>
-    </section>
-  </main>
-</body>
-
-</html>
+      </section>
+    </div>
+  </div>
+</div>

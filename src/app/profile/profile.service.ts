@@ -12,5 +12,5 @@ export class ProfileService {
   private url: string = environment.urlService + '/profile'
 
   constructor(private http: HttpClient, private loginService: LoginService) { }
-
+  
 }

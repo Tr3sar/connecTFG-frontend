@@ -1,177 +1,236 @@
-/* Body styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: white;
-    margin: 0;
-    padding: 20px;
-  }
-  
-  /* Main section styles */
-  main {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-/* Style for the main section */
-main {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-  
-  /* Style for the section elements */
-  section {
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Style for the section titles */
-  section h2 {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  /* Style for the section content paragraphs */
-  section p {
-    margin: 0;
-  }
-  
-  /* Style for the section links */
-  section a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  /* Style for the section links on hover */
-  section a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Edit Profile styles */
-  section.profile-info{
-    font-size: 14px;
-    background-color: var(--bg-100);
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
 
-  }
-  
+.header {
+  position: relative;
+  height: 200px;
+  background-color: #f1f1f1;
+}
 
-/* Style for the mat-card elements */
-mat-card {
-    width: auto;
-    margin: 0 auto 20px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: var(--bg-300);
-  }
-  
-  /* Style for the mat-card-header elements */
-  mat-card-header {
-    display: flex;
-    align-items: center;
+.profile {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  background-color: #f1f1f1;
+  border-radius: 50%;
+  vertical-align: top;
+  display:inline-flex;
+  margin-left: auto;
+  align-items: center;
+  /* Adjusted alignment */
+  justify-content: center;
+  overflow: hidden;
+}
+
+
+.profile-image img {
+  max-width: 80px;
+  max-height: 80px;
+  border-radius: 50%;
+}
+
+.profile-info {
+  margin-left: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-info h3 {
+  margin: 0;
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.content {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+}
+.Posts{
+  .mat-card-header{
     justify-content: center;
-    padding: 10px;
+  }
+}
+
+.btn {
+  display: flex;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: var(--primary-300);
+  color: var(--text-100);
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-info {
+  background-color: var(--primary-200);
+  color: var(--text-100);
+}
+
+.edit{
+    display: flex;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: var(--primary-200);
+    color: var(--text-100);
+    text-decoration: none;
     border-radius: 4px;
-    background-color: var(--primary-100);
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 10px;
-  }
-  
-  /* Style for the mat-card-title elements */
-  mat-card-title {
-    font-size: 20px;
-    font-weight: bold;
-    
-  }
-  .vertical-divider {
-    border-left: 1px solid black;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-  /* Style for the mat-card-content elements */
-  mat-card-content {
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  /* Style for the h1.name element */
-  h1.name {
-    font-size: 24px;
-    margin: 0;
-    color:var(--text-100);
-  }
-  
-  /* Style for the h2.headline element */
-  h2.headline {
-    font-size: 18px;
-    margin: 5px 0;
-    color: var(--text-200);
-  }
-  
-  /* Style for the p.location element */
-  p.location {
-    font-size: 14px;
-    margin: 0;
-    color: #888;
-  }
-  
-  /* Style for the p.connections element */
-  p.connections {
-    font-size: 14px;
-    margin: 5px 0;
-    color: #888;
-  }
-  section.profile-info{
-    .mat-card-content{
-    width: auto;
-    margin: 0 auto 20px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: var(--bg-300);
-    margin-bottom: 10px;}
-  
-  }
-  /* Style for the ul in Experience section */
-  section.Experience{
-  background-color: var(--bg-100);
-  .mat-card-content{
-    width: auto;
-    margin: 0 auto 20px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: var(--bg-300);
-    margin-bottom: 10px;}
-  .ul {
-    list-style-type: none;
-    padding: 0;
-  }}
-  section.Summary{
-    background-color: var(--bg-100);
-    .mat-card-content{
-      width: auto;
-      margin: 0 auto 20px;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      background-color: var(--bg-300);
-    }
-  }
-  /* Style for the li in Experience section */
-  section.Experience li {
-    margin-bottom: 10px;
-  }
-  
-  /* Style for the h3 in Experience section */
-  section.Experience h3 {
-    margin: 0;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
+    border: solid 2px black;
+    cursor: pointer;
+}
+.hidden-button {
+  color: var(--primary-200);
+}
+
+.btn-default {
+  margin-top: 20px;
+  padding: 10px 20px;
+  cursor: pointer; 
+  text-decoration: none;
+  border-radius: 4px;
+  background-color: var(--primary-200);
+  color: var(--text-100);
+  border: 1px solid #ccc;
+}
+
+.profile {
+  display: flex;
+  margin-top: 20px;
+}
+
+.btn:hover {
+  background-color: var(--primary-300); 
+}
+
+.profile-info {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-stats {
+  margin-top: 5px;
+  display: flex;
+}
+
+.profile-stats div {
+  margin-right: 20px;
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.description {
+  font-size: 16px;
+  color: var(--text-100);
+}
+
+.profile-details h3 {
+  margin-top: 20px;
+  font-size: 24px;
+}
+
+.rol {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+
+.education {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #888;
+}
+
+.Posts,
+.social-media,
+.tfgurl {
+  margin-top: 20px;
+}
+
+.mat-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.mat-card-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.material-symbols-outlined {
+  font-size: 20px;
+}
+
+.post-card {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.cerrar {
+  background-color: red;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.cerrar:hover {
+  background-color: #dc3545;
+}
+
+.mat-card-footer {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #888;
+}
+
+.social-media mat-card-content {
+  text-align: center;
+}
+
+.social-media i {
+  font-size: 24px;
+  color: #888;
+  margin-right: 10px;
+}
+
+.tfgurl mat-card-content {
+  padding: 0;
+}
+
+.tfgurl a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.tfgurl a:hover {
+  text-decoration: underline;
+}
