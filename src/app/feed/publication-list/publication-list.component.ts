@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Pageable } from '../model/page/pageable';
 import { Post } from '../model/post.model';
@@ -87,6 +87,7 @@ export class PublicationListComponent implements OnInit {
           )
         })
       }
+      this.postularClicked.emit(post);
   }
 }
   onValChange(){
@@ -97,7 +98,8 @@ export class PublicationListComponent implements OnInit {
       this.totalElements = res.totalElements;
     })
   }
-
+  @Output() postularClicked: EventEmitter<Post> = new EventEmitter<Post>();
+  @Output() showComments: EventEmitter<Post> = new EventEmitter<Post>();
   onSearchPost() {
     if (this.searchValue) {
       this.publicationService.getAllPosts(this.pageable, this.searchValue).subscribe(
@@ -165,6 +167,7 @@ export class PublicationListComponent implements OnInit {
         }
       }
     });
+    this.showComments.emit(post);
   }
 
   onLike(): void {

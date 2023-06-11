@@ -1,5 +1,4 @@
 .publication-card {
-  align-items: center;
   margin-bottom: 20px;
   background-color: #ffff0091 !important;
 }
@@ -24,23 +23,17 @@ mat-button-toggle-group {
   margin-bottom: 20px;
   max-width: 175px;
   margin: 0 auto;
-
 }
+
 mat-form-field {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
-  max-width: 175px;
+  max-width: 300px;
   margin: 0 auto;
-.input{
-  .placeholder{
-    display: flex;
-  justify-content: center;
-  }
-}
 }
 
-mat-button-toggle {
+.mat-button-toggle {
   font-size: 12px;
   height: 40px;
   line-height: 24px;
@@ -49,6 +42,8 @@ mat-button-toggle {
 
 .body {
   background-color: blue;
+  align-items: center;
+  justify-content: center;
 }
 
 div[ng-controller='FeedController'] {
@@ -56,7 +51,6 @@ div[ng-controller='FeedController'] {
   justify-content: center;
   align-items: center;
 }
-
 
 .panel {
   margin-top: 20px;
@@ -81,15 +75,6 @@ div[ng-controller='FeedController'] {
   align-items: center;
   font-size: 1.2em;
   padding: 0.7em 1.5em;
-
-}
-
-.mat-paginator {
-  padding: 0 8px;
-  width: 100%;
-  flex-wrap: wrap-reverse;
-  display: flex;
-  justify-content: center;
 }
 
 .temp {
@@ -118,18 +103,21 @@ div[ng-controller='FeedController'] {
   cursor: pointer;
   text-align: center;
 }
+
 .closed-post {
-  border-color: 3px solid red; /* Change the border color to red for closed posts */
+  border-color: 3px solid red;
 }
+
 .post-card {
   background-color: var(--bg-200);
-  align-items: center;
   margin-bottom: 32px;
   position: flex;
   max-width: 800px;
   margin: auto;
   margin-bottom: 30px;
   margin-top: 20px;
+  text-align: justify;
+  text-justify: inter-word;
   border: 3px solid var(--primary-200);
 }
 
@@ -177,7 +165,7 @@ div[ng-controller='FeedController'] {
 .button-trash {
   border-radius: 6.25rem;
   height: 2.4375rem;
-  margin-top: 0.3125rem;
+  margin-top: 0.3125
 }
 
 .span-trash {
@@ -185,16 +173,16 @@ div[ng-controller='FeedController'] {
 }
 
 .postular {
-  background-color: var(--bg-200);
-  align-items: end;
-  float: right;
+  background-color: var(--primary-200);
+  align-items: center;
+  margin-right: 5;
   border-radius: 6.25rem;
   border-width: 1rem;
   border-color: black;
 }
 
 .postular:hover {
-  background-color: var(--primary-200);
+  background-color: var(--primary-300);
   border-color: black;
   cursor: pointer
 }
@@ -233,7 +221,17 @@ div[ng-controller='FeedController'] {
 .panel {
   height: 30px;
 }
-
+.body{
+  .SearchPost{
+    width: 20rem;
+    height: 2rem;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+}
 .crop {
   overflow: hidden;
   white-space: nowrap;
@@ -241,10 +239,30 @@ div[ng-controller='FeedController'] {
   width: 250px;
 }
 
-p {
+.filtra {
   text-align: center;
+  align-content: center;
+}
+
+p {
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 h1 {
   text-align: center;
+}
+
+.mat-mdc-paginator-container {
+  display: flex;
+  align-items: center;
+  justify-content: center !important;
+  padding: 0 8px;
+  width: 100%;
+}
+.paginator{
+  align-content: center;
+  display: flex;
+  justify-content: center;
+
 }

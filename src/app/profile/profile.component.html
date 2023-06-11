@@ -5,13 +5,14 @@
         <h1>{{ user.name }} {{ user.surname }}</h1>
         <span class="rol">{{ user.degree }}</span>
         <div><span class="description">{{ user.description }}</span></div>
-        
+
         <div class="education">
           <i class="ni education_hat mr-2"></i>Universitat Politecnica de Valencia
         </div>
         <div class="profile-header">
           <button class="btn btn-info">Connect</button>
-          <button mat-button class="edit" *ngIf="user.id === loginService.getUserId()" [ngClass]="{'hidden-button': user.id !== loginService.getUserId()}">Edit Profile</button>
+          <button mat-button class="edit" *ngIf="user.id === loginService.getUserId()"
+            [ngClass]="{'hidden-button': user.id !== loginService.getUserId()}">Edit Profile</button>
         </div>
       </section>
       <div class="profile-stats" *ngIf="user">
@@ -22,24 +23,39 @@
       </div>
       <section class="Posts" *ngIf="user">
         <mat-card-header>
-          <mat-card-title>Posts</mat-card-title>
+          <h2>Posts</h2>
         </mat-card-header>
-        <button (click)="onEditPost()">
-          <mat-icon class="material-symbols-outlined">Edit Square</mat-icon>
-        </button>
+
         <div *ngFor="let post of posts">
-          <h3>{{ post.title }}</h3>
-          <p>{{ post.content }}</p>
-          <!-- Resto de la información del post -->
+          <mat-card class="post-card" id="post-card" [ngStyle]="{'border-color': post.closed === true ? 'red' : 'blue'}">
+            <mat-card-header class="title">
+              <mat-card-title>{{post.title}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="content">
+              <p>
+                {{post.content}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions class="actions">
+              <button mat-button class="comentar">
+                <mat-icon class="material-icons-outlined">comment</mat-icon>
+              </button>
+              <button mat-button class="postular" *ngIf="user.id !== loginService.getUserId() && post.closed !==true">POSTULAR</button>
+                <button mat-button class="cerrar" *ngIf="user.id === loginService.getUserId() && post.closed ===false"
+                (click)="onCerrarClicked(post.id)">CERRAR</button>
+
+            </mat-card-actions>
+            <mat-card-footer class="date">
+              <small>{{post.createdAt | date:'medium'}}</small>
+            </mat-card-footer>
+          </mat-card>
+
         </div>
       </section>
       <section class="social-media" *ngIf="user">
         <mat-card-header>
           <mat-card-title>Lista de Redes Sociales</mat-card-title>
         </mat-card-header>
-        <button (click)="onEditSocial()">
-          <mat-icon class="material-symbols-outlined">Edit Square</mat-icon>
-        </button>
         <mat-card>
           <mat-card-content>
             <a href="https://www.linkedin.com/in/matiasfr"><i class="fab fa-linkedin"></i></a>
@@ -50,9 +66,7 @@
         <mat-card-header>
           <mat-card-title>TFG Url</mat-card-title>
         </mat-card-header>
-        <button (click)="onEditTFG()">
-          <mat-icon class="material-symbols-outlined">+</mat-icon>
-        </button>
+
         <mat-card-content>
           <p>
             <a href>{{ user.tfg_url }}</a>

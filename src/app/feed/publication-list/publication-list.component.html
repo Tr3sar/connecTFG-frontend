@@ -7,20 +7,20 @@
 
 <body ng-controller="FeedController">
   <div class="panel">
-    <button mat-button class="createPost" (click)="onCreate()">Create your Post</button>
+    <button mat-button class="createPost" (click)="onCreate()">Crea tu Publicación</button>
   </div>
-  <p>
+  <p class="filtra">
     Filtra tu feed
     <mat-button-toggle-group [(ngModel)]="filterValue" (change)="onValChange()" aria-label="Font Style">
-      <mat-button-toggle value="Open" >OPEN</mat-button-toggle>
-      <mat-button-toggle value="Closed">CLOSED</mat-button-toggle>
+      <mat-button-toggle value="Open" >Abierto</mat-button-toggle>
+      <mat-button-toggle value="Closed">Cerrado</mat-button-toggle>
     </mat-button-toggle-group>
   </p>
   <hr />
   <h1>Tu Feed</h1>
   <div>
   <mat-form-field class="SearchPost" (keyup.enter)="onSearchPost()" (ngSubmit)="onSearchPost()">
-    <input type="string" matInput placeholder="Search publication Title" [(ngModel)]="searchValue">
+    <input type="string" matInput placeholder="Búsqueda de Publicación" [(ngModel)]="searchValue" ><mat-icon matPrefix>search</mat-icon>
     </mat-form-field>
   </div>
   <div *ngFor="let post of posts | paginate: { itemsPerPage: pageSize, currentPage: pageNumber }">
@@ -40,15 +40,17 @@
         <button mat-button class="comentar" (click)="onShowComments(post)">
           <mat-icon class="material-icons-outlined">comment</mat-icon>
         </button>
-        <button mat-button class="postular" (click)="onPostularClicked(post)">POSTULAR</button>
+        <button mat-button class="postular" (click)="onPostularClicked(post)" *ngIf="post.closed !==true && post.author">POSTULAR</button>
       </mat-card-actions>
       <mat-card-footer>
         <small>{{post.createdAt | date:'medium'}}</small>
       </mat-card-footer>
     </mat-card>
   </div>
+  <div class="paginator">
   <mat-paginator (page)="loadPage($event)" [pageSizeOptions]="[5, 10]" [pageIndex]="pageNumber" [pageSize]="pageSize"
     [length]="totalElements" showFirstLastButtons></mat-paginator>
+  </div>
 </body>
 
 </html>

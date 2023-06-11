@@ -24,22 +24,39 @@ export class PublicationService {
     return this.http.post<PostPage>(this.url, { pageable: pageable, filterValue: filterValue });
   }
 
+  getPostsFromUser(id: number) : Observable<Post[]>{
+    return this.http.get<Post[]>(this.url +"/"+id);
+  }
+
   savePost(post: Post): Observable<Post> {
     let url = this.url;
 
     let title = post.title;
     let content = post.content;
-
+    let author = this.loginService.getUserId()
     if (post.id != null) {
       url += '/' + post.id
     }
 
-    return this.http.post<Post>(url + '/create', { title, content });
+    return this.http.post<Post>(url + '/create', { title, content, author });
   }
   createComment(postId: number, message: string) {
     const authorId = this.loginService.getUserId()
     
     return this.http.post<Comment>("http://localhost:8080" + '/comment/' + postId, { authorId, message })
+  }
+  
+  cerrarPost(post: Post): Observable<Post> {
+    let url = `${this.url}/${post.id}`;
+
+    let title = post.title;
+    let content = post.content;
+    let author = this.loginService.getUserId();
+    let closed = post.closed
+    if (post.id != null) {
+      url += '/' 
+    }
+    return this.http.put<Post>(url + '/close/' + post.id,  { title, content, author, closed });
   }
 
   addApplicant(postId: number): Observable<User> {

@@ -48,18 +48,47 @@ export class ProfileComponent {
       );
     }
   }
-  onCerrarClicked(id: number){
-      const dialogRef = this.dialog.open(DialogConfirmationComponent, {
-        data: { 
-          title: "Cerrar Post",
-          description: "Atención! Si cierra el Post, no se podrá postular más gente.<br> ¿Desea cerrar el post?"
-    }
-    })
+  onCerrarClicked(id: number) {
+    const dialogRef = this.dialog.open(DialogConfirmationComponent, {
+      data: {
+        title: "Cerrar Post",
+        description: "Atención! Si cierra el Post, no se podrá postular más gente.<br> ¿Desea cerrar el post?"
+      }
+      
+    });
+   
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+
+        // User confirmed to close the post
+        const postToUpdate: Post = {
+          id: id,
+          closed: true,
+          author: new User,
+          title: '',
+          content: '',
+          applicants: [],
+          likes: 0,
+          comments: [],
+          createdAt: new Date(),
+        };
+  
+        this.publicationService.cerrarPost(postToUpdate).subscribe(
+          updatedPost => {
+            // Post updated successfully
+            console.log('Post updated:', updatedPost);
+          },
+          error => {
+            // Error occurred while updating the post
+            console.error('Error updating post:', error);
+          }
+        );
+      }
+    });
   }
   onEditPost() {
 
   }
-
   onEditProfile() {
     const dialogRef = this.dialog.open(ProfileComponent, {
       data: {}
@@ -72,12 +101,12 @@ export class ProfileComponent {
 onEditSummary() {
   throw new Error('Method not implemented.');
   }
-  onEditSocial() {
+onEditSocial() {
   throw new Error('Method not implemented.');
   }
-  onEditTFG() {
+ onEditTFG() {
   throw new Error('Method not implemented.');
   }
 
-  
 }
+

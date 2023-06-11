@@ -22,7 +22,7 @@ body {
   background-color: #f1f1f1;
   border-radius: 50%;
   vertical-align: top;
-  display:inline-flex;
+  display: inline-flex;
   margin-left: auto;
   align-items: center;
   /* Adjusted alignment */
@@ -49,19 +49,25 @@ body {
 
 
 .container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
 }
 
 .content {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  text-align: justify;
+  text-justify: inter-word;
   height: 100%;
 }
-.Posts{
-  .mat-card-header{
+
+.cerrar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Posts {
+  .mat-card-header {
     justify-content: center;
   }
 }
@@ -82,17 +88,18 @@ body {
   color: var(--text-100);
 }
 
-.edit{
-    display: flex;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: var(--primary-200);
-    color: var(--text-100);
-    text-decoration: none;
-    border-radius: 4px;
-    border: solid 2px black;
-    cursor: pointer;
+.edit {
+  display: flex;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: var(--primary-200);
+  color: var(--text-100);
+  text-decoration: none;
+  border-radius: 4px;
+  border: solid 2px black;
+  cursor: pointer;
 }
+
 .hidden-button {
   color: var(--primary-200);
 }
@@ -100,7 +107,7 @@ body {
 .btn-default {
   margin-top: 20px;
   padding: 10px 20px;
-  cursor: pointer; 
+  cursor: pointer;
   text-decoration: none;
   border-radius: 4px;
   background-color: var(--primary-200);
@@ -114,7 +121,7 @@ body {
 }
 
 .btn:hover {
-  background-color: var(--primary-300); 
+  background-color: var(--primary-300);
 }
 
 .profile-info {
@@ -158,11 +165,73 @@ body {
 }
 
 
-
 .education {
   margin-top: 10px;
   font-size: 14px;
   color: #888;
+}
+
+.Posts {
+  .post-card {
+    border-radius: 2rem;
+    justify-content: center;
+    display: flex;
+    width: 1000px;
+
+    .mat-card-header {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+      margin-bottom: 5px;
+    }
+
+    .comentar {
+      margin-right: 800px;
+    }
+
+    .cerrar {
+      margin-right: 5px;
+    }
+
+    .postular {
+      background-color: var(--primary-200);
+      align-items: center;
+      margin-right: 5;
+      border-radius: 6.25rem;
+      border-width: 1rem;
+      border-color: black;
+    }
+    .postular:hover {
+      background-color: var(--primary-300);
+      border-color: black;
+      cursor: pointer
+    }
+  }
+}
+
+.Posts {
+  .mat-card {
+    .mat-card-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-right: 50px;
+
+      .comentar {
+        order: 1;
+      }
+
+      .postular {
+        order: 2;
+        margin-left: auto;
+      }
+
+      .cerrar {
+        order: 3;
+        margin-left: auto;
+      }
+    }
+  }
 }
 
 .Posts,
@@ -171,11 +240,31 @@ body {
   margin-top: 20px;
 }
 
+.closed-post {
+  border-color: 3px solid red;
+}
+
 .mat-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+}
+
+.Posts {
+  display: table-column;
+  justify-content: center;
+  margin: auto;
+
+  .mat-card-header {
+    margin: 5px
+  }
+
+  .post-card {
+    display: flex;
+    align-self: center;
+    justify-self: center;
+  }
 }
 
 .mat-card-title {
@@ -200,6 +289,8 @@ body {
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
+  display: flex;
+  align-self: center;
 }
 
 .cerrar:hover {

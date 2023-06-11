@@ -1,27 +1,44 @@
-.main-container {
-  min-width: 700px;
-  max-width: 700px;
-  width: 100%;
-
-  form {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-
-    .mat-input-element textarea {
-      resize: vertical;
-      /* Permite que el usuario pueda redimensionar la caja de texto verticalmente */
-    }
-
-    .content {
-      height: 40px;
-      text-overflow: clip;
-      white-space: break-spaces;
-      /* Prevent text from wrapping to a new line */
-    }
-  }
+body {
 
 }
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+  h1 {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .title{
+    width: 400px;
+    height: fit-content;
+    margin-bottom: 20px;
+    display: block; /* Add this line */
+  }
+  .content {
+    width: 400px;
+    height: max-content;
+    margin-bottom: 20px;
+    display: block; /* Add this line */
+  }
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+
+    button {
+      flex: 1;
+      margin: 0 5px;
+    }
+  }
+}
+
 
 .buttons {
   text-align: right;

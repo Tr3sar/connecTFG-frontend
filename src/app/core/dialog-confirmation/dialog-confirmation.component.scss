@@ -1,10 +1,15 @@
 .container {
     min-width: 350px;
-    max-width: 500px;
+    max-width: 700px;
+    height: 200px;
     width: 100%;
-
+    overflow: hidden;
+    .title{
+      margin-left: 20px;
+    }
     .description {
       margin-bottom: 20px;
+      margin: 20px;
     }
 
     .buttons {
@@ -12,6 +17,7 @@
 
       button {
           margin-left: 10px;
+          margin-right: 10px;
       }
     }
 } 
