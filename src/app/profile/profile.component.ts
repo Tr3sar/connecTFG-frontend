@@ -8,6 +8,7 @@ import { PublicationService } from '../feed/publication.service';
 import { LoginService } from '../login/login.service';
 import { Post } from '../feed/model/post.model';
 import { DialogConfirmationComponent } from '../core/dialog-confirmation/dialog-confirmation.component';
+import { ProfileService } from './profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -19,7 +20,7 @@ export class ProfileComponent {
   userId: string;
   user: User
   posts: Post[] = [];
-  constructor(public dialog: MatDialog,private route: ActivatedRoute,public loginService:LoginService, private userService: UserService, public publicationService: PublicationService) {
+  constructor(public dialog: MatDialog,private route: ActivatedRoute,public loginService:LoginService, private profileService: ProfileService ,private userService: UserService, public publicationService: PublicationService) {
 
   }
 
@@ -48,44 +49,27 @@ export class ProfileComponent {
       );
     }
   }
-  onCerrarClicked(id: number) {
+
+  onCerrarClicked(post: Post) {
     const dialogRef = this.dialog.open(DialogConfirmationComponent, {
       data: {
         title: "Cerrar Post",
         description: "Atención! Si cierra el Post, no se podrá postular más gente.<br> ¿Desea cerrar el post?"
       }
-      
     });
-   
+    
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
-
-        // User confirmed to close the post
-        const postToUpdate: Post = {
-          id: id,
-          closed: true,
-          author: new User,
-          title: '',
-          content: '',
-          applicants: [],
-          likes: 0,
-          comments: [],
-          createdAt: new Date(),
-        };
-  
-        this.publicationService.cerrarPost(postToUpdate).subscribe(
-          updatedPost => {
-            // Post updated successfully
-            console.log('Post updated:', updatedPost);
-          },
-          error => {
-            // Error occurred while updating the post
-            console.error('Error updating post:', error);
-          }
-        );
+        console.log(post)
+        post.closed = true; 
+        console.log(post)
+        this.publicationService.cerrarPost(post).subscribe(res =>{})
+        console.log("OnCerrarClicked Post")
       }
     });
+    
   }
+
   onEditPost() {
 
   }
@@ -98,15 +82,7 @@ export class ProfileComponent {
       this.ngOnInit();
     });
 }
-onEditSummary() {
-  throw new Error('Method not implemented.');
-  }
-onEditSocial() {
-  throw new Error('Method not implemented.');
-  }
- onEditTFG() {
-  throw new Error('Method not implemented.');
-  }
+
 
 }
 

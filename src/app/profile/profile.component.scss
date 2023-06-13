@@ -183,7 +183,17 @@ body {
       align-items: center;
       align-content: center;
       justify-content: center;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
+      margin-right: 60px;
+      .editar{
+        background-color: black;
+        align-items: center;
+        margin-right: 5;
+        border-radius: 6.25rem;
+        border-width: 1rem;
+        border-color: brown;
+        margin-left: auto
+      }
     }
 
     .comentar {

@@ -40,7 +40,7 @@
         <button mat-button class="comentar" (click)="onShowComments(post)">
           <mat-icon class="material-icons-outlined">comment</mat-icon>
         </button>
-        <button mat-button class="postular" (click)="onPostularClicked(post)" *ngIf="post.closed !==true && post.author">POSTULAR</button>
+        <button mat-button class="postular" (click)="onPostularClicked(post)" *ngIf="post.closed !==true && post.author.id !== this.loginService.getUserId()">POSTULAR</button>
       </mat-card-actions>
       <mat-card-footer>
         <small>{{post.createdAt | date:'medium'}}</small>

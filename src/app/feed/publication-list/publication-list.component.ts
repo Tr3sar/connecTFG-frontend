@@ -39,7 +39,7 @@ export class PublicationListComponent implements OnInit {
   searchValue: any;
 
   constructor(private publicationService: PublicationService, private snackBar: MatSnackBar,public dialog: MatDialog,
-              private loginService: LoginService, private notificationService: NotificationService, private userService: UserService) { }
+              public loginService: LoginService, private notificationService: NotificationService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.onValChange();
@@ -86,10 +86,14 @@ export class PublicationListComponent implements OnInit {
             }
           )
         })
+        this.snackBar.open('Ya estás postulado para esta publicación', 'Cerrar', {
+          duration: 3000
+        });
       }
       this.postularClicked.emit(post);
   }
 }
+
   onValChange(){
     this.publicationService.getAllPosts(this.pageable, this.filterValue).subscribe(res => {
       this.posts = res.content;
@@ -105,19 +109,16 @@ export class PublicationListComponent implements OnInit {
       this.publicationService.getAllPosts(this.pageable, this.searchValue).subscribe(
         res => {
           try {
-            console.log("Search value:", this.searchValue);
-            console.log("Response:", res);
+
   
             const filteredPosts = res.content.filter(post => {
-              console.log("Post:", post);
+
               if (post && post.title && typeof post.title === 'string') {
-                console.log("Post title:", post.title);
                 return post.title.toLowerCase().includes(this.searchValue.toLowerCase());
               }
               return false;
             });
   
-            console.log("Filtered posts:", filteredPosts);
   
             this.posts = filteredPosts;
             this.pageNumber = res.pageable.pageNumber;

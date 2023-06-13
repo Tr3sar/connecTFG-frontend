@@ -30,6 +30,7 @@
           <mat-card class="post-card" id="post-card" [ngStyle]="{'border-color': post.closed === true ? 'red' : 'blue'}">
             <mat-card-header class="title">
               <mat-card-title>{{post.title}}</mat-card-title>
+              <button mat-button class="editar" *ngIf="user.id === loginService.getUserId() && post.closed !==true"><mat-icon>edit</mat-icon></button>
             </mat-card-header>
             <mat-card-content class="content">
               <p>
@@ -40,9 +41,10 @@
               <button mat-button class="comentar">
                 <mat-icon class="material-icons-outlined">comment</mat-icon>
               </button>
+              
               <button mat-button class="postular" *ngIf="user.id !== loginService.getUserId() && post.closed !==true">POSTULAR</button>
                 <button mat-button class="cerrar" *ngIf="user.id === loginService.getUserId() && post.closed ===false"
-                (click)="onCerrarClicked(post.id)">CERRAR</button>
+                (click)="onCerrarClicked(post)">CERRAR</button>
 
             </mat-card-actions>
             <mat-card-footer class="date">
