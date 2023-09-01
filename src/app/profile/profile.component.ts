@@ -9,6 +9,7 @@ import { LoginService } from '../login/login.service';
 import { Post } from '../feed/model/post.model';
 import { DialogConfirmationComponent } from '../core/dialog-confirmation/dialog-confirmation.component';
 import { ProfileService } from './profile.service';
+import { EditProfileDialogComponent } from './dialog-profile-edit/edit-profile-dialog';
 
 @Component({
   selector: 'app-profile',
@@ -20,7 +21,7 @@ export class ProfileComponent {
   userId: string;
   user: User
   posts: Post[] = [];
-  constructor(public dialog: MatDialog,private route: ActivatedRoute,public loginService:LoginService, private profileService: ProfileService ,private userService: UserService, public publicationService: PublicationService) {
+  constructor(public dialog: MatDialog,private route: ActivatedRoute,public loginService:LoginService, private ProfileService: ProfileService ,private userService: UserService, public publicationService: PublicationService) {
 
   }
 
@@ -73,16 +74,23 @@ export class ProfileComponent {
   onEditPost() {
 
   }
+
   onEditProfile() {
-    const dialogRef = this.dialog.open(ProfileComponent, {
-      data: {}
+    console.log("Toqué")
+    const dialogRef = this.dialog.open(EditProfileDialogComponent, {
+      width: '600px',
+      disableClose: true,
+      data: {
+        user: { ...this.user }
+      }
     });
-
     dialogRef.afterClosed().subscribe(result => {
-      this.ngOnInit();
+      if (result) {
+        this.user = { ...result };
+        this.userService.editUser().subscribe(res=>{})
+      }
     });
-}
-
+  }
 
 }
 

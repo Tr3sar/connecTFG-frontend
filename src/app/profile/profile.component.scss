@@ -90,7 +90,7 @@ body {
 
 .edit {
   display: flex;
-  margin-top: 10px;
+  align-items: center;
   padding: 10px 20px;
   background-color: var(--primary-200);
   color: var(--text-100);
@@ -315,12 +315,14 @@ body {
 
 .social-media mat-card-content {
   text-align: center;
+  .a{
+    text-align: justify;
+  }
 }
 
 .social-media i {
   font-size: 24px;
   color: #888;
-  margin-right: 10px;
 }
 
 .tfgurl mat-card-content {
@@ -334,4 +336,14 @@ body {
 
 .tfgurl a:hover {
   text-decoration: underline;
+}
+.connection-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%; /* Makes it a circle */
+  display: inline-block;
+  margin-left: 10px; /* Adjust the spacing as needed */
+  border-radius: 4px;
+  border: solid 2px black;
+  cursor: pointer;
 }

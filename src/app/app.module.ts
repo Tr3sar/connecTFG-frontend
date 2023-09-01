@@ -16,6 +16,7 @@ import { NgxLoadingModule } from 'ngx-loading';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { EditProfileDialogModule } from './profile/dialog-profile-edit/profile-dialog.module';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     FeedModule,
     GrupoModule,
     LoginModule,
+    EditProfileDialogModule,
     ProfileModule,
     NotificationsModule,
     AboutUsModule,

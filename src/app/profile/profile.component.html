@@ -7,19 +7,22 @@
         <div><span class="description">{{ user.description }}</span></div>
 
         <div class="education">
-          <i class="ni education_hat mr-2"></i>Universitat Politecnica de Valencia
+          <i class="ni education_hat mr-2"></i>Universitat Politécnica de Valencia
         </div>
         <div class="profile-header">
           <button class="btn btn-info">Connect</button>
           <button mat-button class="edit" *ngIf="user.id === loginService.getUserId()"
-            [ngClass]="{'hidden-button': user.id !== loginService.getUserId()}">Edit Profile</button>
+            [ngClass]="{'hidden-button': user.id !== loginService.getUserId()}" (click)="onEditProfile()">Edit Profile</button>
         </div>
       </section>
       <div class="profile-stats" *ngIf="user">
         <div>
           <span class="description">{{ user.conections.length }}</span>
           <span class="description">Connections</span>
+          <div class="connection-dot" [ngStyle]="{ 'background-color': user.status == 'connected' ? 'green' : 'red' }">  </div>
         </div>
+        
+
       </div>
       <section class="Posts" *ngIf="user">
         <mat-card-header>
@@ -60,7 +63,12 @@
         </mat-card-header>
         <mat-card>
           <mat-card-content>
-            <a href="https://www.linkedin.com/in/matiasfr"><i class="fab fa-linkedin"></i></a>
+            <ul>
+              <li *ngFor="let url of user.social_url">
+                <a href="{{url}}" target="_blank">{{ url }}</a>
+              </li>
+            </ul>
+            <a href>{{user.social_url}}<i class="fab fa-linkedin"></i></a>
           </mat-card-content>
         </mat-card>
       </section>
