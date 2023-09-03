@@ -13,28 +13,35 @@ import { Comment } from './model/comment.model';
   providedIn: 'root'
 })
 export class PublicationService {
-  getPost(id: number) {
-    throw new Error('Method not implemented.');
-  }
+
 
   private url: string = environment.urlService + '/feed'
-  constructor(private http: HttpClient, private loginService: LoginService) { }
+  constructor(private http: HttpClient, private loginService: LoginService ) { }
 
   getAllPosts(pageable: Pageable, filterValue: string): Observable<PostPage> {
     return this.http.post<PostPage>(this.url, { pageable: pageable, filterValue: filterValue });
   }
+
+  getPostsFromUser(id: number) : Observable<Post[]>{
+    return this.http.get<Post[]>(this.url +"/"+id);
+  }
+
+  cerrarPost(post: Post): Observable<Post> {
+    console.log("OnCerrarClicked Service")
+    return this.http.post<Post>(this.url+ "/close/", {postId: post.id});
+    }
 
   savePost(post: Post): Observable<Post> {
     let url = this.url;
 
     let title = post.title;
     let content = post.content;
-
+    let author = this.loginService.getUserId()
     if (post.id != null) {
       url += '/' + post.id
     }
 
-    return this.http.post<Post>(url + '/create', { title, content });
+    return this.http.post<Post>(url + '/create', { title, content, author });
   }
   createComment(postId: number, message: string) {
     const authorId = this.loginService.getUserId()

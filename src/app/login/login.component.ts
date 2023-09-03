@@ -4,6 +4,8 @@ import { LoginService } from './login.service';
 import { User } from '../core/model/User';
 import { Router } from '@angular/router';
 
+import { MatSnackBar} from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-login',
@@ -26,7 +28,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', Validators.required)
   });
 
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(private loginService: LoginService, private router: Router, private snackBar: MatSnackBar) {
 
   }
 
@@ -61,6 +63,9 @@ export class LoginComponent implements OnInit {
         && surname != null && degree != null && description != null)
         this.loginService.SignUp(email, password,name,surname,degree,description).subscribe(res => {
         this.router.navigate(['/login'])
+        this.snackBar.open('Ya te has registrado. Inicia Sesión.', 'Cerrar', {
+          duration: 3000
+        });
         })
     } catch (error) {
       alert("El mail ya está siendo utilizado")

@@ -34,6 +34,10 @@ export class UserService {
   getUserById(id: number) {
     return this.http.get<User>(this.url + `/${id}`)
   }
+
+  editUser(): Observable<User>{
+    return this.http.put<User>(this.url + '/profile/' + this.editUser(), {User})
+  }
  }
 
 

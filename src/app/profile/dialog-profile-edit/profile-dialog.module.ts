@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,14 +12,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu'
 import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
-import { SocketService } from '../core/services/socket/socket.service';
-import { ProfileComponent } from './profile.component';
-import { PublicationService } from '../feed/publication.service';
+import { EditProfileDialogComponent } from './edit-profile-dialog';
 
 
 @NgModule({
   declarations: [
-    ProfileComponent
+    EditProfileDialogComponent
   ],
   imports: [
     CommonModule,
@@ -40,8 +36,6 @@ import { PublicationService } from '../feed/publication.service';
     MatMenuModule
   ],
   providers: [
-    SocketService,
-    PublicationService,
         
     {
       provide: MAT_DIALOG_DATA,
@@ -49,4 +43,4 @@ import { PublicationService } from '../feed/publication.service';
     }
   ]
 })
-export class ProfileModule { }
+export class EditProfileDialogModule { }

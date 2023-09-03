@@ -9,8 +9,9 @@ import { LoginService } from '../login/login.service';
 })
 export class ProfileService {
 
-  private url: string = environment.urlService + '/profile'
+  private url: string = environment.urlService + '/'
 
   constructor(private http: HttpClient, private loginService: LoginService) { }
+  
 
 }

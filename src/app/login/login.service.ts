@@ -13,13 +13,14 @@ import { User } from '../core/model/User';
   providedIn: 'root'
 })
 export class LoginService {
-  url: string = environment.urlService;
+  url: string = environment.urlService+"/auth";
   activeUser: User;
 
   constructor(private httpClient: HttpClient, private jwtHelper: JwtHelperServiceWrapper) { }
 
   SignUp(email: string, password: string, name: string, surname: string, degree: string, description: string): Observable<any> {
     console.log("Service entro")
+    console.log("El usuario nuevo:",{email, password, name, surname, degree, description})
     return this.httpClient.post<any>(`${this.url}/register`, { email, password, name, surname, degree, description })
   }
 

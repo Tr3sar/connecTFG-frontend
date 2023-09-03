@@ -1,0 +1,38 @@
+<h2>Edit Profile</h2>
+<main>
+<form (ngSubmit)="saveChanges()">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" [(ngModel)]="user.name" name="name">
+  </div>
+  <div>
+    <label for="surname">Surname:</label>
+    <input type="text" id="surname" [(ngModel)]="user.surname" name="surname">
+  </div>
+  <div>
+    <label for="degree">Degree:</label>
+    <input type="text" id="degree" [(ngModel)]="user.degree" name="degree">
+  </div>
+  <div>
+    <label for="description">Description:</label>
+    <input type= "text"id="description" [(ngModel)]="user.description" name="description">
+  </div>
+  <div>
+    <label for="urls">URLs:</label>
+    <div *ngFor="let url of user.social_url; let i = index">
+      <input type="text" id="url{{ i }}" [(ngModel)]="user.social_url[i]" name="urls"
+        (keyup)="onUrlKeyUp($event)">
+      <button type="button" (click)="removeUrl(i)">Remove</button>
+    </div>
+    <button type="button" (click)="addUrl()">Add URL</button>
+  </div>
+  <div>
+    <label for="tfg_url">TFG URL:</label>
+    <input type="text"id="tfg_url" [(ngModel)]="user.tfg_url" name="tfg_url">
+  </div>
+
+
+  <button type="submit">Save</button>
+  <button type="cancel">Cancel</button>
+</form>
+</main>

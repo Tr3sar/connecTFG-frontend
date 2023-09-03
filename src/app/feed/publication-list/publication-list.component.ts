@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Pageable } from '../model/page/pageable';
 import { Post } from '../model/post.model';
@@ -39,7 +39,7 @@ export class PublicationListComponent implements OnInit {
   searchValue: any;
 
   constructor(private publicationService: PublicationService, private snackBar: MatSnackBar,public dialog: MatDialog,
-              private loginService: LoginService, private notificationService: NotificationService, private userService: UserService) { }
+              public loginService: LoginService, private notificationService: NotificationService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.onValChange();
@@ -86,9 +86,14 @@ export class PublicationListComponent implements OnInit {
             }
           )
         })
+        this.snackBar.open('Ya estás postulado para esta publicación', 'Cerrar', {
+          duration: 3000
+        });
       }
+      this.postularClicked.emit(post);
   }
 }
+
   onValChange(){
     this.publicationService.getAllPosts(this.pageable, this.filterValue).subscribe(res => {
       this.posts = res.content;
@@ -97,25 +102,23 @@ export class PublicationListComponent implements OnInit {
       this.totalElements = res.totalElements;
     })
   }
-
+  @Output() postularClicked: EventEmitter<Post> = new EventEmitter<Post>();
+  @Output() showComments: EventEmitter<Post> = new EventEmitter<Post>();
   onSearchPost() {
     if (this.searchValue) {
       this.publicationService.getAllPosts(this.pageable, this.searchValue).subscribe(
         res => {
           try {
-            console.log("Search value:", this.searchValue);
-            console.log("Response:", res);
+
   
             const filteredPosts = res.content.filter(post => {
-              console.log("Post:", post);
+
               if (post && post.title && typeof post.title === 'string') {
-                console.log("Post title:", post.title);
                 return post.title.toLowerCase().includes(this.searchValue.toLowerCase());
               }
               return false;
             });
   
-            console.log("Filtered posts:", filteredPosts);
   
             this.posts = filteredPosts;
             this.pageNumber = res.pageable.pageNumber;
@@ -165,6 +168,7 @@ export class PublicationListComponent implements OnInit {
         }
       }
     });
+    this.showComments.emit(post);
   }
 
   onLike(): void {

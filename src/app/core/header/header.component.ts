@@ -5,6 +5,15 @@ import { Notification } from 'src/app/notifications/model/Notification';
 import { NotificationService } from 'src/app/notifications/notification.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AboutUsComponent } from 'src/app/about-us/about-us.component';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Observable, of } from 'rxjs';
+import { map, startWith, timeout } from 'rxjs/operators';
+import { NgFor, AsyncPipe } from '@angular/common';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { User } from '../model/User';
+import { UserService } from '../services/user/user.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -13,6 +22,10 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+  SearchControl = new FormControl('');
+  allUsers: User[]
+  filteredUsers: Observable<User[]>;
 
   notifications: Notification[] = [];
 
@@ -30,10 +43,28 @@ export class HeaderComponent implements OnInit {
   inNotifications = false;
 
   constructor(public loginService: LoginService, private notificationService: NotificationService,
+    private router: Router, public dialog: MatDialog, private userService: UserService) {
+    userService.getAllUsers().subscribe(res => this.allUsers = res)
+
+    this.userService.getAllUsers().subscribe(
+      users => {
+        this.allUsers = users;
+        this.filteredUsers = of(users);
+
+        this.filteredUsers = this.SearchControl.valueChanges.pipe(
+          startWith(null),
+          map((name: string | null) => (name ? this._filter(name) : this.allUsers.slice()))
+        )
+      })
+  }
     private router: Router, public dialog: MatDialog, private translate: TranslateService) {
   }
 
   ngOnInit(): void {
+
+
+
+
 
     this.setupLanguage();
 
@@ -44,6 +75,7 @@ export class HeaderComponent implements OnInit {
         }
       )
     }
+
 
     this.router.events.subscribe(event => {
 
@@ -95,6 +127,12 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  refresh() {
+    setTimeout(() => {
+      window.location.reload()
+    }, 500)
+
+  }
   showAboutUs() {
     const dialogRef = this.dialog.open(AboutUsComponent, {
       data: {}
@@ -103,6 +141,12 @@ export class HeaderComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.ngOnInit();
     });
+  }
+
+  private _filter(value: string): User[] {
+    const filterValue = value.toLowerCase();
+
+    return this.allUsers.filter(user => user.name.toLowerCase().includes(filterValue));
   }
 
   changeSelectedLanguage(code: string) {

@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: "grupo", component: GrupoListComponent, canActivate: [AuthGuard] },
   { path: "notifications", component: NotificatonListComponent, canActivate: [AuthGuard] },
   { path: "login", component: LoginComponent },
-  { path: "profile", component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: "profile/:id", component: ProfileComponent, canActivate: [AuthGuard] },
   { path: "**", redirectTo: "" }
 ];
 

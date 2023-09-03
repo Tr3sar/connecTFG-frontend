@@ -1,0 +1,88 @@
+form {
+    max-width: 400px;
+    margin: 20px auto; /* Added margin to create space around the form */
+    padding: 20px; /* Added padding to create space between the form and the borders */
+    border: 1px solid #ccc; /* Added a border with color #ccc */
+    border-radius: 8px; /* Added border radius to create rounded corners */
+  }
+  
+  div {
+    margin-bottom: 10px; /* Reduced margin bottom to create space between form elements */
+  }
+  h2 {
+    text-align: center; /* Add text-align property and set it to center */
+  }
+  label {
+    display: flex;
+    margin-left: 5px; /* Adjusted margin left for better alignment with inputs */
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  button {
+    margin-left: 5px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%; /* Added width to inputs to fill the parent container */
+    box-sizing: border-box; /* Ensures the width includes padding and border */
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px; /* Added margin top to create space between buttons */
+  }
+  
+  button.cancel {
+    background-color: #dc3545;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  button.cancel:hover {
+    background-color: #c82333;
+  }
+  
+  /* Styles for the URLs section */
+  .urls-container {
+    margin-bottom: 10px;
+  }
+  
+  .urls-container input[type="text"] {
+    width: 80%;
+  }
+  
+  .urls-container button {
+    margin-left: 5px; /* Adjusted margin left for better alignment with inputs */
+  }
+  
+  /* Styles for the TFG URL section */
+  #tfg_url {
+    width: 100%;
+  }
+  
+  .main {
+    margin: 20px;
+  }
+  
+  button[type="submit"] {
+    background-color: var(--primary-200);
+    margin-right: 5px; /* Added margin right to create space between buttons */
+  }
+  
+  button[type="submit"]:hover {
+    background-color: var(--primary-300);
+  }
+  
+  button[type="cancel"] {
+    background-color: var(--accent-100);
+  }
+  
+  button[type="cancel"]:hover {
+    background-color: var(--accent-300);
+  }
+  

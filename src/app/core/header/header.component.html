@@ -7,8 +7,20 @@
 
             <div class="center">
                     <div class="input-container">
-                        <mat-icon class="material-icons-outlined">search</mat-icon>
-                        <input matInput placeholder="{{'header.buscador.placeholder' | translate }}" type="text" name="buscador">
+                        <form class="SearchForm">
+                            
+                              <input type="text"
+                                     placeholder="Busca a tu futuro compañero"
+                                     aria-label="Number"
+                                     matInput
+                                     [formControl]="SearchControl"
+                                     [matAutocomplete]="auto">
+                              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                                <mat-option *ngFor="let option of filteredUsers | async" [value]="option.name+ ' ' + option.surname" (click)="refresh()" routerLink="/profile/{{option.id}}">
+                                  {{option.name}} {{option.surname}}
+                                </mat-option>
+                              </mat-autocomplete>
+                          </form>
                 </div>
 
                 <div class="under">
