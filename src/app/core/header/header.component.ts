@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit {
   inNotifications = false;
 
   constructor(public loginService: LoginService, private notificationService: NotificationService,
-    private router: Router, public dialog: MatDialog, private userService: UserService) {
+    private router: Router, public dialog: MatDialog, private userService: UserService, private translate: TranslateService) {
     userService.getAllUsers().subscribe(res => this.allUsers = res)
 
     this.userService.getAllUsers().subscribe(
@@ -57,15 +57,8 @@ export class HeaderComponent implements OnInit {
         )
       })
   }
-    private router: Router, public dialog: MatDialog, private translate: TranslateService) {
-  }
 
   ngOnInit(): void {
-
-
-
-
-
     this.setupLanguage();
 
     if (this.loginService.isAuthenticated()) {
