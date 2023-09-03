@@ -29,7 +29,6 @@ export class GrupoService {
   }
 
   createMessage(group_id: number, emitter: number, message: string, file?: File) {
-    console.log('file', file)
     const formData = new FormData();
 
     formData.append('group_id', group_id.toString())

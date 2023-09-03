@@ -30,33 +30,40 @@
             </div>
 
             <div class="right">
-                <button mat-button>
+                <button mat-button routerLink="/conexiones">
                     <mat-icon [ngClass]="{'material-icons': inConections, 'material-icons-outlined': !inConections}" 
                     [ngStyle]="{'color': inConections ? 'var(--accent-100)' : 'var(--text-100)'}"
-                    routerLink="/conexiones">hub</mat-icon>
+                    >hub</mat-icon>
                 </button>
 
-                <button mat-button>
+                <button mat-button routerLink="/notifications">
                     <mat-icon [matBadge]="notifications.length" class="notification-icon" 
                     [ngClass]="{'material-icons': inNotifications, 'material-icons-outlined': !inNotifications}" 
-                    [ngStyle]="{'color': inNotifications ? 'var(--accent-100)' : 'var(--text-100)'}"
-                    routerLink="/notifications">notifications</mat-icon>
+                    [ngStyle]="{'color': inNotifications ? 'var(--accent-100)' : 'var(--text-100)'}">notifications</mat-icon>
                 </button>
-                <button mat-button [matMenuTriggerFor]="menu">
+                <button mat-button [matMenuTriggerFor]="menuProfile">
                     <mat-icon class="material-icons-outlined">person</mat-icon>
                   </button>
-                  <mat-menu #menu="matMenu">
+                  <mat-menu #menuProfile="matMenu">
                     <button mat-menu-item routerLink="/profile/{{loginService.getUserId()}}">
                         {{'header.perfil.titulo' | translate }}
                     </button>
-                    <button mat-menu-item>
-                        {{'header.perfil.ajustes' | translate }}
+                    <button mat-menu-item [matMenuTriggerFor]="menuIdiomas">
+                        {{selectedLanguage}}
                     </button>
                     <button mat-menu-item (click)="showAboutUs()">
                         {{'header.perfil.sobreNosotros' | translate }}
                       </button>
                     <button (click)="loginService.logout()" routerLink="/login" mat-menu-item>
                         {{'header.perfil.cerrarSesion' | translate }}
+                    </button>
+                  </mat-menu>
+
+                  <mat-menu #menuIdiomas="matMenu">
+                    <button *ngFor="let language of languages" mat-menu-item (click)="changeSelectedLanguage(language.code)"
+                    [ngStyle]="{'background-color': language.name == selectedLanguage ? 'var(--accent-200)' : 'transparent'}">
+                        <img [src]="'../../../assets/images/flag-' + language.code + '.png'" class="bandera">
+                        {{language.name}}
                     </button>
                   </mat-menu>
             </div>

@@ -105,7 +105,8 @@ export class GrupoChatComponent implements OnInit {
 
     let message: Message = {
       emitter: this.loginService.getActiveUser(),
-      text: this.messageToSend, file: {
+      text: this.messageToSend,
+      file: {
         href: URL.createObjectURL(this.selectedFile!!),
         filename: this.selectedFile?.name!!,
       }
@@ -150,23 +151,8 @@ export class GrupoChatComponent implements OnInit {
     this.socketService.joinGroup(group)
   }
 
-  attachFile() {
-
-  }
-
   onFileSelected(event: any): void {
     const files: FileList | null = event.target.files;
     this.selectedFile = files?.item(0)!!; 
-  }
-
-  sendFile(): void {
-    if (!this.selectedFile) {
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append('file', this.selectedFile);
-
-    console.log('SelectedFile', this.selectedFile)
   }
 }

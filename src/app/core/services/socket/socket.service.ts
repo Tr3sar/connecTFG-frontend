@@ -73,7 +73,7 @@ export class SocketService {
     this.socket.emit('newMessage', { groupId, message })
   }
 
-  getMessages(): Observable<any> {
+  getMessages(): Observable<Message> {
     return this.messagesSubject.asObservable();
   }
 

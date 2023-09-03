@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { LoginService } from '../login/login.service';
 import { Observable, Subject } from 'rxjs';
 import { Notification } from './model/Notification';
+import { SocketService } from '../core/services/socket/socket.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class NotificationService {
 
   url = environment.urlService + '/notification'
 
-  constructor(private http: HttpClient, private loginService: LoginService) { }
+  constructor(private http: HttpClient, private loginService: LoginService, private socketService: SocketService) { }
 
   getNotifications() : Observable<Notification[]>{
     return this.http.get<Notification[]>(this.url + `/${this.loginService.getUserId()}`);

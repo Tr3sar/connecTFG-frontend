@@ -78,6 +78,11 @@
   }
 }
 
+.bandera {
+  height: 1rem;
+  width: 2rem;
+}
+
 ::ng-deep.mat-badge-content {
   background-color: var(--accent-100);
   color: var(--bg-100);

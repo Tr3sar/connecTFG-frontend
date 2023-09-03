@@ -17,6 +17,7 @@ import { MatMenuModule } from '@angular/material/menu';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { DialogConfirmationComponent } from './dialog-confirmation/dialog-confirmation.component';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -39,7 +40,8 @@ import { DialogConfirmationComponent } from './dialog-confirmation/dialog-confir
     ReactiveFormsModule,
     HttpClientModule,
     MatBadgeModule,
-    TranslateModule
+    TranslateModule,
+    MatSelectModule
     
   ],
   exports: [
