@@ -32,7 +32,7 @@ export class ConexionListComponent implements OnInit {
             this.applicants = applicants;
             this.userNewApplicants = applicants.filter(applicant => {
               //Los applicants que no tengan una conexión con el usuario.
-              this.userConections.filter(conection => { applicant.id == conection.id }).length == 0
+              return this.userConections.filter(conection => { applicant.id == conection.id }).length == 0
             })
           }
         )
