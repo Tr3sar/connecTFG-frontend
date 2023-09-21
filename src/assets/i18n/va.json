@@ -1,1 +1,54 @@
-{}
+{
+    "botones": {
+        "cerrar": "Tancar",
+        "guardar": "Guardar",
+        "editar": "Editar",
+        "borrar": "Borrar"
+    },
+
+    "header": {
+        "buscador": {
+            "placeholder": "Busca el teu futur company..."
+        },
+        "tabs": {
+            "inicio": "Inici",
+            "chat": "Xat"
+        },
+        "perfil": {
+            "titulo": "Perfil",
+            "ajustes": "Configuració",
+            "sobreNosotros": "Sobre nosaltres",
+            "cerrarSesion": "Tancar sessió"
+        }
+    },
+
+    "chat": {
+        "messagePlaceholder": "Escriu un missatge...",
+        "crearGrupo": {
+            "titulo": "Crear grup",
+            "parametros": {
+                "titulo": "Títol",
+                "descripcion": "Descripció",
+                "miembros": "Membres del grup"
+            }
+        },
+
+        "editarGrupo": {
+            "titulo": "Editar grup"
+        }
+    },
+
+    "conexiones": {
+        "peticion": "vol fer el TFG amb tú!",
+        "noPeticiones": "No tens cap nova sol·licitud de connexió!",
+
+        "title" : "Les teues connexions"
+    },
+
+    "notificaciones": {
+        "noNotificaciones": "De moment no tens notificacions!",
+
+        "connection": "L'usuari {{emitterName}} {{emitterSurname}} ha acceptat la teua sol·licitud de connexió! Ara ja pots xatejar amb ell.",
+        "post": "L'usuari {{emitterName}} {{emitterSurname}} vol connectar amb tú!"
+    }
+}

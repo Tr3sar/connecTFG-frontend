@@ -6,5 +6,5 @@ export class Message {
     file: {
         href: string,
         filename: string
-    };
+    } | undefined;
 }

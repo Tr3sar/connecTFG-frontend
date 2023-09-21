@@ -53,7 +53,10 @@ export class GrupoChatComponent implements OnInit {
         },
         err => {
           let newGroup = new Group()
-          newGroup.name = "Grupo nuevo"
+          //newGroup.name = "Grupo nuevo"
+          newGroup.name = "Grup nou"
+
+          console.log('En el grup nou')
 
           this.userService.getUserById(userId).subscribe(
             user => {
@@ -103,13 +106,17 @@ export class GrupoChatComponent implements OnInit {
     if (this.messageToSend != undefined && this.messageToSend.trim() == '' && !this.selectedFile) { return; }
     if (this.selectedGroup == null) { return; }
 
+    console.log('Dins de enviar missatge')
+
+    if (!this.selectedFile) { console.log('no fitxer')}
+
     let message: Message = {
       emitter: this.loginService.getActiveUser(),
       text: this.messageToSend,
-      file: {
+      file: this.selectedFile ? {
         href: URL.createObjectURL(this.selectedFile!!),
         filename: this.selectedFile?.name!!,
-      }
+      } : undefined
     }
 
     if (this.selectedGroup.id != null) {

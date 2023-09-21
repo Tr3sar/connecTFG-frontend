@@ -1,5 +1,6 @@
 <div class="main-container">
   <div class="applicants-container" *ngIf="userNewApplicants.length > 0">
+    <h3>Tens {{userNewApplicants.length}} sol·licitud(s) de connexió!</h3>
     <div *ngFor="let applicant of userNewApplicants" class="applicant">
 
       {{applicant.name}} {{applicant.surname}} {{'conexiones.peticion' | translate}}

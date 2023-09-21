@@ -6,6 +6,11 @@
     display: flex;
 
     .applicants-container{
+
+        h3{
+            color: var(--primary-100);
+        }
+        
         width: calc(70% - 1rem);
         height: calc(100%);
 
@@ -25,8 +30,10 @@
 
             align-items: center;
 
-            border: 1px solid var(--text-100);
+            border: 1px solid var(--primary-100);
             border-radius: 0.5rem;
+
+            background-color: var(--bg-100);
 
             padding: 0.25rem;
 
@@ -35,6 +42,7 @@
 
                 button{
                     margin-left: 1rem;
+                    max-width: 1.25rem;
 
                     border-color: transparent;
                     background-color: transparent;
@@ -81,6 +89,8 @@
             background-color: var(--bg-100);
 
             padding: 0.25rem;
+
+            margin-bottom: 0.5rem;
 
             .separator{
                 margin: 0 auto;
